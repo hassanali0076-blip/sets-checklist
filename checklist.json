@@ -1,0 +1,1494 @@
+{
+  "schemaVersion": 1,
+  "title": "SETS — shared checklist",
+  "updatedAt": "2026-08-31T03:20:11.753Z",
+  "reviewedThrough": "2026-08-31",
+  "release": {
+    "web": "The SETS app is unchanged by this checklist publication.",
+    "backend": "Staging is prepared; isolated sync and deployment approval remain open.",
+    "next": "Gym Environments, Scanner 2.0, sharing and Settings: local candidate, not released."
+  },
+  "notes": [
+    "All 146 private checklist records are represented by public-safe summaries. Internal diagnostics, account examples and release access details are not published.",
+    "Assigned to is the current owner. Codex owns former Grok and Claude assignments; Josh assignments are unchanged. You means Aadam. Unassigned preserves a missing owner.",
+    "Earlier sign-offs are historical coverage, not a fresh audit or confirmation that an old symptom is impossible today.",
+    "Next release means a local candidate that may still need integration and approval. Needs checking does not mean implemented or released.",
+    "Viewing needs no login. Updating the shared source requires repository write permission or an approved pull request."
+  ],
+  "changes": [
+    {
+      "date": "2026-08-31",
+      "text": "Published the shared SETS checklist with all 146 task records, prominent assignee badges and search/status/area/owner filters."
+    },
+    {
+      "date": "2026-08-31",
+      "text": "Kept Josh’s 14 assignments unchanged and moved 14 former Grok/Claude assignments to Codex."
+    },
+    {
+      "date": "2026-08-31",
+      "text": "Recorded that the staging implementation already exists. Its isolated sync connection and release gates remain open."
+    }
+  ],
+  "tasks": [
+    {
+      "id": "sets-legacy-001",
+      "title": "Generator can add an unsafe or excluded exercise after the safety check",
+      "area": "Critical — fix before release",
+      "status": "history",
+      "assignee": "Codex",
+      "summary": "Exercise exclusions must survive every stage of program generation, including later substitutions.",
+      "nextStep": "Retain this earlier record. Reopen a new report separately if the behavior recurs.",
+      "updated": "2026-08-31"
+    },
+    {
+      "id": "sets-legacy-002",
+      "title": "Feedback retention during account deletion",
+      "area": "Critical — fix before release",
+      "status": "issue",
+      "assignee": "Josh",
+      "summary": "Account deletion needs a clear, verified policy for feedback and bug-report content.",
+      "nextStep": "Remains assigned to Josh. Confirm the current implementation and validation needs before any release.",
+      "updated": "2026-08-31"
+    },
+    {
+      "id": "sets-legacy-003",
+      "title": "Account deletion sync completeness",
+      "area": "Critical — fix before release",
+      "status": "testing",
+      "assignee": "Josh",
+      "summary": "Deletion must remain complete after the app reconnects and receives synced data.",
+      "nextStep": "Remains assigned to Josh. Confirm the current implementation and validation needs before any release.",
+      "updated": "2026-08-31"
+    },
+    {
+      "id": "sets-legacy-004",
+      "title": "Selective deletion data protection",
+      "area": "High — fix before release",
+      "status": "testing",
+      "assignee": "Josh",
+      "summary": "Deleting selected data must preserve unrelated workouts that have not finished syncing.",
+      "nextStep": "Remains assigned to Josh. Confirm the current implementation and validation needs before any release.",
+      "updated": "2026-08-31"
+    },
+    {
+      "id": "sets-legacy-005",
+      "title": "“Different gym per day” is ignored",
+      "area": "High — fix before release",
+      "status": "testing",
+      "assignee": "Josh",
+      "summary": "Each training day should use the equipment available at its assigned gym.",
+      "nextStep": "Remains assigned to Josh. Confirm the current implementation and validation needs before any release.",
+      "updated": "2026-08-31"
+    },
+    {
+      "id": "sets-legacy-006",
+      "title": "Changing equipment can leave incompatible exercises unchanged",
+      "area": "High — fix before release",
+      "status": "testing",
+      "assignee": "Josh",
+      "summary": "Equipment changes should update exercises that no longer fit the available setup.",
+      "nextStep": "Remains assigned to Josh. Confirm the current implementation and validation needs before any release.",
+      "updated": "2026-08-31"
+    },
+    {
+      "id": "sets-legacy-007",
+      "title": "Superset / Myo-Reps / periodisation / intensity choices are ignored",
+      "area": "High — fix before release",
+      "status": "testing",
+      "assignee": "Josh",
+      "summary": "Saved training-method choices need to be honored when generating a program.",
+      "nextStep": "Remains assigned to Josh. Confirm the current implementation and validation needs before any release.",
+      "updated": "2026-08-31"
+    },
+    {
+      "id": "sets-legacy-008",
+      "title": "Signed-out device data cleanup",
+      "area": "High — fix before release",
+      "status": "testing",
+      "assignee": "Josh",
+      "summary": "Signing out must clear account-specific device data safely.",
+      "nextStep": "Remains assigned to Josh. Confirm the current implementation and validation needs before any release.",
+      "updated": "2026-08-31"
+    },
+    {
+      "id": "sets-legacy-009",
+      "title": "Manual sync recovery correctness",
+      "area": "High — fix before release",
+      "status": "testing",
+      "assignee": "Josh",
+      "summary": "Manual recovery should preserve recent edits while syncing is underway.",
+      "nextStep": "Remains assigned to Josh. Confirm the current implementation and validation needs before any release.",
+      "updated": "2026-08-31"
+    },
+    {
+      "id": "sets-legacy-010",
+      "title": "Fatigue model: the writer and readers disagree",
+      "area": "Medium — fix next",
+      "status": "next_release",
+      "assignee": "Codex",
+      "summary": "An existing fatigue-model candidate needs careful integration; it is not a ready-to-release fix.",
+      "nextStep": "Reconcile the existing candidate, run the relevant checks and obtain release approval.",
+      "updated": "2026-08-31"
+    },
+    {
+      "id": "sets-legacy-011",
+      "title": "A high-fatigue profile can’t recover",
+      "area": "Medium — fix next",
+      "status": "history",
+      "assignee": "Codex",
+      "summary": "Earlier work covered recovery from an overly high learned fatigue estimate.",
+      "nextStep": "Retain this earlier record. Reopen a new report separately if the behavior recurs.",
+      "updated": "2026-08-31"
+    },
+    {
+      "id": "sets-legacy-012",
+      "title": "Multi-category deletion consistency",
+      "area": "Medium — fix next",
+      "status": "issue",
+      "assignee": "Josh",
+      "summary": "Deleting several categories needs a clear outcome if part of the operation fails.",
+      "nextStep": "Remains assigned to Josh. Confirm the current implementation and validation needs before any release.",
+      "updated": "2026-08-31"
+    },
+    {
+      "id": "sets-legacy-013",
+      "title": "Session renewal and sync coordination",
+      "area": "Medium — fix next",
+      "status": "testing",
+      "assignee": "Josh",
+      "summary": "Authentication renewal and syncing need consistent coordination.",
+      "nextStep": "Remains assigned to Josh. Confirm the current implementation and validation needs before any release.",
+      "updated": "2026-08-31"
+    },
+    {
+      "id": "sets-legacy-014",
+      "title": "Scanner photos are kept with no stated age limit",
+      "area": "Medium — fix next",
+      "status": "issue",
+      "assignee": "You",
+      "summary": "Scanner photo retention still needs a product decision and verified enforcement.",
+      "nextStep": "The founder’s decision or acceptance is needed. No release action is authorized by this task.",
+      "updated": "2026-08-31"
+    },
+    {
+      "id": "sets-legacy-015",
+      "title": "Paid scanner request limits",
+      "area": "Medium — fix next",
+      "status": "history",
+      "assignee": "Codex",
+      "summary": "Earlier work added controls on paid scanner requests and service usage.",
+      "nextStep": "Retain this earlier record. Reopen a new report separately if the behavior recurs.",
+      "updated": "2026-08-31"
+    },
+    {
+      "id": "sets-legacy-016",
+      "title": "Pinch-zoom is disabled everywhere",
+      "area": "UI & accessibility",
+      "status": "history",
+      "assignee": "You",
+      "summary": "The founder chose to keep pinch zoom disabled. This is a recorded decision, not a new implementation.",
+      "nextStep": "Retain this earlier record. Reopen a new report separately if the behavior recurs.",
+      "updated": "2026-08-31"
+    },
+    {
+      "id": "sets-legacy-017",
+      "title": "SmartVolume loses the next manually authored rep/RIR target",
+      "area": "Additional Codex fixes — outside the original 33",
+      "status": "history",
+      "assignee": "Codex",
+      "summary": "Earlier work preserved individually authored rep and effort targets when recommendations change.",
+      "nextStep": "Retain this earlier record. Reopen a new report separately if the behavior recurs.",
+      "updated": "2026-08-31"
+    },
+    {
+      "id": "sets-legacy-018",
+      "title": "ATLAS keeps re-reporting the same repaired recommendation",
+      "area": "Additional Codex fixes — outside the original 33",
+      "status": "history",
+      "assignee": "Codex",
+      "summary": "Earlier work prevented repeated reporting of a recommendation that had already been repaired.",
+      "nextStep": "Retain this earlier record. Reopen a new report separately if the behavior recurs.",
+      "updated": "2026-08-31"
+    },
+    {
+      "id": "sets-legacy-019",
+      "title": "Switching single-arm tracking on/off can scramble finished sets",
+      "area": "Being worked on & next up",
+      "status": "history",
+      "assignee": "Codex",
+      "summary": "Earlier work kept finished sets intact when changing between combined and per-side tracking.",
+      "nextStep": "Retain this earlier record. Reopen a new report separately if the behavior recurs.",
+      "updated": "2026-08-31"
+    },
+    {
+      "id": "sets-legacy-020",
+      "title": "Lowering the set count hides sets you already logged",
+      "area": "Being worked on & next up",
+      "status": "history",
+      "assignee": "Codex",
+      "summary": "Earlier work prevented a lower planned set count from hiding work already logged.",
+      "nextStep": "Retain this earlier record. Reopen a new report separately if the behavior recurs.",
+      "updated": "2026-08-31"
+    },
+    {
+      "id": "sets-legacy-021",
+      "title": "A set can use another set's rules",
+      "area": "Being worked on & next up",
+      "status": "history",
+      "assignee": "Codex",
+      "summary": "Earlier work addressed set-specific targets and ownership rather than applying another row’s rules.",
+      "nextStep": "Retain this earlier record. Reopen a new report separately if the behavior recurs.",
+      "updated": "2026-08-31"
+    },
+    {
+      "id": "sets-legacy-022",
+      "title": "Single-arm next-set target asks a rep too few",
+      "area": "Being worked on & next up",
+      "status": "issue",
+      "assignee": "Codex",
+      "summary": "Single-arm next-set recommendations remain lower than expected; the cause still needs investigation.",
+      "nextStep": "Investigate the recorded behavior and validate the next change before release.",
+      "updated": "2026-08-31"
+    },
+    {
+      "id": "sets-legacy-023",
+      "title": "Slow to concede when you’re genuinely getting weaker",
+      "area": "Being worked on & next up",
+      "status": "history",
+      "assignee": "Codex",
+      "summary": "Earlier work adjusted recommendations during a sustained decline in performance.",
+      "nextStep": "Retain this earlier record. Reopen a new report separately if the behavior recurs.",
+      "updated": "2026-08-31"
+    },
+    {
+      "id": "sets-legacy-024",
+      "title": "Rep ladder stalls at 19 then drops to 13",
+      "area": "Being worked on & next up",
+      "status": "history",
+      "assignee": "Codex",
+      "summary": "Earlier work addressed backward rep targets and stalled progression.",
+      "nextStep": "Retain this earlier record. Reopen a new report separately if the behavior recurs.",
+      "updated": "2026-08-31"
+    },
+    {
+      "id": "sets-legacy-025",
+      "title": "Learning the difficulty of a weight change",
+      "area": "Being worked on & next up",
+      "status": "history",
+      "assignee": "Fable",
+      "summary": "Earlier work improved how the engine learns the difficulty of equipment weight changes.",
+      "nextStep": "Retain this earlier record. Reopen a new report separately if the behavior recurs.",
+      "updated": "2026-08-31"
+    },
+    {
+      "id": "sets-legacy-026",
+      "title": "Share a gym with another SETS user",
+      "area": "Being worked on & next up",
+      "status": "active",
+      "assignee": "You",
+      "summary": "Gym sharing is implemented in the local release candidate. Staging and real-device acceptance remain open.",
+      "nextStep": "Complete separately approved staging, cloud-sync and real-device acceptance before release.",
+      "updated": "2026-08-31"
+    },
+    {
+      "id": "consolidated-settings-set-46",
+      "title": "SET-46: Consolidated Settings and workout controls",
+      "area": "Being worked on & next up",
+      "status": "testing",
+      "assignee": "Unassigned",
+      "summary": "The Settings candidate includes equipment-limit explanations and rest after the final warm-up. Cloud-sync and device checks remain open.",
+      "nextStep": "Complete separately approved staging, cloud-sync and real-device acceptance before release.",
+      "updated": "2026-08-31"
+    },
+    {
+      "id": "powersync-instance-confirmation",
+      "title": "Resolve safe PowerSync use for the already prepared staging app",
+      "area": "Being worked on & next up",
+      "status": "testing",
+      "assignee": "Unassigned",
+      "summary": "The staging implementation already exists. A safe isolated sync connection is still needed before its deployment can proceed.",
+      "nextStep": "Inspect the existing sync services and staging resources read-only. Resolve any remaining ownership question before requesting approval for a specific change.",
+      "updated": "2026-08-31"
+    },
+    {
+      "id": "sets-legacy-029",
+      "title": "Editing a gym doesn't update your existing programs",
+      "area": "Being worked on & next up",
+      "status": "planned",
+      "assignee": "Josh",
+      "summary": "Editing equipment at the current gym should update affected programs, not only switching gyms.",
+      "nextStep": "Remains assigned to Josh. Confirm the current implementation and validation needs before any release.",
+      "updated": "2026-08-31"
+    },
+    {
+      "id": "sets-legacy-030",
+      "title": "Generation and the workout screen disagree about which gym",
+      "area": "Being worked on & next up",
+      "status": "planned",
+      "assignee": "Josh",
+      "summary": "Program generation and the workout screen need to use the same assigned gym.",
+      "nextStep": "Remains assigned to Josh. Confirm the current implementation and validation needs before any release.",
+      "updated": "2026-08-31"
+    },
+    {
+      "id": "sets-legacy-031",
+      "title": "The swap \"no match\" message can't say why",
+      "area": "Being worked on & next up",
+      "status": "history",
+      "assignee": "Codex",
+      "summary": "Earlier work made exercise-swap messages distinguish a missing gym from incomplete equipment setup.",
+      "nextStep": "Retain this earlier record. Reopen a new report separately if the behavior recurs.",
+      "updated": "2026-08-31"
+    },
+    {
+      "id": "sets-legacy-032",
+      "title": "Account-switching safety",
+      "area": "Reviewed — ready to ship",
+      "status": "next_release",
+      "assignee": "Josh",
+      "summary": "A reviewed candidate improves account-switching safety. It has not been accepted as a completed release here.",
+      "nextStep": "Reconcile the existing candidate, run the relevant checks and obtain release approval.",
+      "updated": "2026-08-31"
+    },
+    {
+      "id": "sets-legacy-033",
+      "title": "Folders, workout templates & custom exercises could get messy across two devices",
+      "area": "Reviewed — ready to ship",
+      "status": "next_release",
+      "assignee": "Josh",
+      "summary": "A reviewed candidate improves consistency when folders, templates and custom exercises change across devices.",
+      "nextStep": "Reconcile the existing candidate, run the relevant checks and obtain release approval.",
+      "updated": "2026-08-31"
+    },
+    {
+      "id": "sets-legacy-034",
+      "title": "Stall-Breaker",
+      "area": "Waiting on you",
+      "status": "planned",
+      "assignee": "You",
+      "summary": "A progression strategy for genuinely stalled exercises awaits the founder’s remaining decisions.",
+      "nextStep": "The founder’s decision or acceptance is needed. No release action is authorized by this task.",
+      "updated": "2026-08-31"
+    },
+    {
+      "id": "sets-legacy-035",
+      "title": "Release approval check",
+      "area": "Waiting on you",
+      "status": "planned",
+      "assignee": "You",
+      "summary": "The release approval step remains with the founder. Internal release controls are not published.",
+      "nextStep": "The founder’s decision or acceptance is needed. No release action is authorized by this task.",
+      "updated": "2026-08-31"
+    },
+    {
+      "id": "sets-legacy-036",
+      "title": "Open the app once before your next workout",
+      "area": "Waiting on you",
+      "status": "planned",
+      "assignee": "You",
+      "summary": "A recorded follow-up asks the founder to open the app so the updated program behavior can be checked.",
+      "nextStep": "The founder’s decision or acceptance is needed. No release action is authorized by this task.",
+      "updated": "2026-08-31"
+    },
+    {
+      "id": "sets-legacy-037",
+      "title": "Stall-Breaker rulings (7 decisions) + solo \"@0\" ruling",
+      "area": "Waiting on you",
+      "status": "planned",
+      "assignee": "You",
+      "summary": "Remaining decisions cover stalled progression and effort targets for separately logged arms.",
+      "nextStep": "The founder’s decision or acceptance is needed. No release action is authorized by this task.",
+      "updated": "2026-08-31"
+    },
+    {
+      "id": "sets-legacy-038",
+      "title": "Smaller items under watch",
+      "area": "Watching",
+      "status": "planned",
+      "assignee": "You",
+      "summary": "Several smaller behavior and device checks remain on the watch list.",
+      "nextStep": "The founder’s decision or acceptance is needed. No release action is authorized by this task.",
+      "updated": "2026-08-31"
+    },
+    {
+      "id": "sets-legacy-039",
+      "title": "Loads bounce between two weights for weeks",
+      "area": "Audit & recent fixes — shipped this campaign",
+      "status": "history",
+      "assignee": "Unassigned",
+      "summary": "Earlier work addressed repeated back-and-forth recommendations between neighboring weights.",
+      "nextStep": "Retain this earlier record. Reopen a new report separately if the behavior recurs.",
+      "updated": "2026-08-31"
+    },
+    {
+      "id": "sets-legacy-040",
+      "title": "A Quick / template workout advances the wrong program (and its deload)",
+      "area": "Audit & recent fixes — shipped this campaign",
+      "status": "history",
+      "assignee": "Unassigned",
+      "summary": "Earlier work kept quick and template sessions from advancing an unrelated program.",
+      "nextStep": "Retain this earlier record. Reopen a new report separately if the behavior recurs.",
+      "updated": "2026-08-31"
+    },
+    {
+      "id": "sets-legacy-041",
+      "title": "The Block-Complete “X” silently restarts your whole block",
+      "area": "Audit & recent fixes — shipped this campaign",
+      "status": "history",
+      "assignee": "Unassigned",
+      "summary": "Earlier work addressed closing the block-complete screen without restarting the training block.",
+      "nextStep": "Retain this earlier record. Reopen a new report separately if the behavior recurs.",
+      "updated": "2026-08-31"
+    },
+    {
+      "id": "sets-legacy-042",
+      "title": "A left-open workout inflates duration & calories",
+      "area": "Audit & recent fixes — shipped this campaign",
+      "status": "history",
+      "assignee": "Unassigned",
+      "summary": "Earlier work addressed inflated duration and calorie estimates when a workout is left open.",
+      "nextStep": "Retain this earlier record. Reopen a new report separately if the behavior recurs.",
+      "updated": "2026-08-31"
+    },
+    {
+      "id": "sets-legacy-043",
+      "title": "A recommendation survives even when its workout didn’t save",
+      "area": "Audit & recent fixes — shipped this campaign",
+      "status": "history",
+      "assignee": "Unassigned",
+      "summary": "Earlier work kept recommendations consistent with whether a workout was actually saved.",
+      "nextStep": "Retain this earlier record. Reopen a new report separately if the behavior recurs.",
+      "updated": "2026-08-31"
+    },
+    {
+      "id": "sets-legacy-044",
+      "title": "A lighter back-off set can mark a heavier failed set “successful”",
+      "area": "Audit & recent fixes — shipped this campaign",
+      "status": "history",
+      "assignee": "Unassigned",
+      "summary": "Earlier work distinguished lighter back-off performance from success at a heavier weight.",
+      "nextStep": "Retain this earlier record. Reopen a new report separately if the behavior recurs.",
+      "updated": "2026-08-31"
+    },
+    {
+      "id": "sets-legacy-045",
+      "title": "Restore can get stuck “complete” before it finished",
+      "area": "Audit & recent fixes — shipped this campaign",
+      "status": "history",
+      "assignee": "Unassigned",
+      "summary": "Earlier work required restore operations to finish before reporting completion.",
+      "nextStep": "Retain this earlier record. Reopen a new report separately if the behavior recurs.",
+      "updated": "2026-08-31"
+    },
+    {
+      "id": "sets-legacy-046",
+      "title": "Developer diagnostics access controls",
+      "area": "Audit & recent fixes — shipped this campaign",
+      "status": "history",
+      "assignee": "Unassigned",
+      "summary": "Earlier work covered access controls for internal diagnostics.",
+      "nextStep": "Retain this earlier record. Reopen a new report separately if the behavior recurs.",
+      "updated": "2026-08-31"
+    },
+    {
+      "id": "sets-legacy-047",
+      "title": "The “this screen isn’t cached” dead-end after an update",
+      "area": "Audit & recent fixes — shipped this campaign",
+      "status": "history",
+      "assignee": "Codex",
+      "summary": "Earlier work addressed an update-related dead end when a screen was unavailable.",
+      "nextStep": "Retain this earlier record. Reopen a new report separately if the behavior recurs.",
+      "updated": "2026-08-31"
+    },
+    {
+      "id": "sets-legacy-048",
+      "title": "One missing screen while offline deletes the offline app & downloaded videos",
+      "area": "Audit & recent fixes — shipped this campaign",
+      "status": "history",
+      "assignee": "Unassigned",
+      "summary": "Earlier work preserved offline app content and downloaded videos during recovery.",
+      "nextStep": "Retain this earlier record. Reopen a new report separately if the behavior recurs.",
+      "updated": "2026-08-31"
+    },
+    {
+      "id": "sets-legacy-049",
+      "title": "Unsaved edits are only warned about on some exits",
+      "area": "Audit & recent fixes — shipped this campaign",
+      "status": "history",
+      "assignee": "Unassigned",
+      "summary": "Earlier work made warnings about unsaved changes consistent across exit paths.",
+      "nextStep": "Retain this earlier record. Reopen a new report separately if the behavior recurs.",
+      "updated": "2026-08-31"
+    },
+    {
+      "id": "sets-legacy-050",
+      "title": "Library deletes a template on one tap, no confirm",
+      "area": "Audit & recent fixes — shipped this campaign",
+      "status": "history",
+      "assignee": "Unassigned",
+      "summary": "Earlier work added a confirmation step before deleting a workout template.",
+      "nextStep": "Retain this earlier record. Reopen a new report separately if the behavior recurs.",
+      "updated": "2026-08-31"
+    },
+    {
+      "id": "sets-legacy-051",
+      "title": "Removing an added exercise can erase logged sets with no consistent undo",
+      "area": "Audit & recent fixes — shipped this campaign",
+      "status": "history",
+      "assignee": "Unassigned",
+      "summary": "Earlier work addressed removal of exercises that already contain logged sets.",
+      "nextStep": "Retain this earlier record. Reopen a new report separately if the behavior recurs.",
+      "updated": "2026-08-31"
+    },
+    {
+      "id": "sets-legacy-052",
+      "title": "Workout logger buttons are unnamed and too small",
+      "area": "Audit & recent fixes — shipped this campaign",
+      "status": "history",
+      "assignee": "Unassigned",
+      "summary": "Earlier work improved workout-control labels and touch targets.",
+      "nextStep": "Retain this earlier record. Reopen a new report separately if the behavior recurs.",
+      "updated": "2026-08-31"
+    },
+    {
+      "id": "sets-legacy-053",
+      "title": "Several main cards can’t be used by keyboard",
+      "area": "Audit & recent fixes — shipped this campaign",
+      "status": "history",
+      "assignee": "Unassigned",
+      "summary": "Earlier work covered keyboard access to major cards and navigation actions.",
+      "nextStep": "Retain this earlier record. Reopen a new report separately if the behavior recurs.",
+      "updated": "2026-08-31"
+    },
+    {
+      "id": "sets-legacy-054",
+      "title": "The Rest Timer settings shortcut lands at the top of Settings",
+      "area": "Audit & recent fixes — shipped this campaign",
+      "status": "history",
+      "assignee": "Unassigned",
+      "summary": "Earlier work made the rest-timer shortcut open the relevant Settings section.",
+      "nextStep": "Retain this earlier record. Reopen a new report separately if the behavior recurs.",
+      "updated": "2026-08-31"
+    },
+    {
+      "id": "sets-legacy-055",
+      "title": "Unilateral warm-up completion can attach to the wrong side",
+      "area": "Audit & recent fixes — shipped this campaign",
+      "status": "history",
+      "assignee": "Unassigned",
+      "summary": "Earlier work kept unilateral warm-up completion attached to the correct side.",
+      "nextStep": "Retain this earlier record. Reopen a new report separately if the behavior recurs.",
+      "updated": "2026-08-31"
+    },
+    {
+      "id": "sets-legacy-056",
+      "title": "Status-bar icons don’t follow theme (native app)",
+      "area": "Audit & recent fixes — shipped this campaign",
+      "status": "history",
+      "assignee": "Unassigned",
+      "summary": "Earlier work covered native status-bar appearance when the app theme changes.",
+      "nextStep": "Retain this earlier record. Reopen a new report separately if the behavior recurs.",
+      "updated": "2026-08-31"
+    },
+    {
+      "id": "sets-legacy-057",
+      "title": "Onboarding can log the wrong final step number",
+      "area": "Audit & recent fixes — shipped this campaign",
+      "status": "history",
+      "assignee": "Unassigned",
+      "summary": "Earlier work corrected onboarding step tracking.",
+      "nextStep": "Retain this earlier record. Reopen a new report separately if the behavior recurs.",
+      "updated": "2026-08-31"
+    },
+    {
+      "id": "sets-legacy-058",
+      "title": "Drop sets / myo-reps lose track of their own rows live",
+      "area": "Audit & recent fixes — shipped this campaign",
+      "status": "history",
+      "assignee": "Unassigned",
+      "summary": "Earlier work kept special-set rows and their identities consistent during a workout.",
+      "nextStep": "Retain this earlier record. Reopen a new report separately if the behavior recurs.",
+      "updated": "2026-08-31"
+    },
+    {
+      "id": "sets-legacy-059",
+      "title": "Faster app startup (cold-start speed-ups)",
+      "area": "Shipped — Fixed & live this campaign",
+      "status": "history",
+      "assignee": "Unassigned",
+      "summary": "Earlier work reduced the amount of work needed when the app first opens.",
+      "nextStep": "Retain this earlier record. Reopen a new report separately if the behavior recurs.",
+      "updated": "2026-08-31"
+    },
+    {
+      "id": "sets-legacy-060",
+      "title": "Single-arm target regression",
+      "area": "Shipped — Fixed & live this campaign",
+      "status": "history",
+      "assignee": "Unassigned",
+      "summary": "Earlier work corrected a single-arm target regression.",
+      "nextStep": "Retain this earlier record. Reopen a new report separately if the behavior recurs.",
+      "updated": "2026-08-31"
+    },
+    {
+      "id": "sets-legacy-061",
+      "title": "Affected saved recommendations repaired",
+      "area": "Shipped — Fixed & live this campaign",
+      "status": "history",
+      "assignee": "Unassigned",
+      "summary": "Earlier work repaired affected saved recommendations. Individual account details are private.",
+      "nextStep": "Retain this earlier record. Reopen a new report separately if the behavior recurs.",
+      "updated": "2026-08-31"
+    },
+    {
+      "id": "sets-legacy-062",
+      "title": "Build-then-bump progression policy (engine audit phase 1)",
+      "area": "Shipped — Fixed & live this campaign",
+      "status": "history",
+      "assignee": "Unassigned",
+      "summary": "Earlier engine work clarified the policy for building reps before increasing weight.",
+      "nextStep": "Retain this earlier record. Reopen a new report separately if the behavior recurs.",
+      "updated": "2026-08-31"
+    },
+    {
+      "id": "sets-legacy-063",
+      "title": "Targets land inside your written rep range (engine audit phase 0)",
+      "area": "Shipped — Fixed & live this campaign",
+      "status": "history",
+      "assignee": "Unassigned",
+      "summary": "Earlier engine work kept recommendations within the user’s written rep range.",
+      "nextStep": "Retain this earlier record. Reopen a new report separately if the behavior recurs.",
+      "updated": "2026-08-31"
+    },
+    {
+      "id": "sets-legacy-064",
+      "title": "Workout regression cases in the release gate",
+      "area": "Shipped — Fixed & live this campaign",
+      "status": "history",
+      "assignee": "Unassigned",
+      "summary": "Earlier work added reported workout cases to release regression coverage.",
+      "nextStep": "Retain this earlier record. Reopen a new report separately if the behavior recurs.",
+      "updated": "2026-08-31"
+    },
+    {
+      "id": "sets-legacy-065",
+      "title": "Exercise classification and history display",
+      "area": "Shipped — Fixed & live this campaign",
+      "status": "history",
+      "assignee": "Unassigned",
+      "summary": "Earlier work repaired exercise tracking classification and the resulting history display.",
+      "nextStep": "Retain this earlier record. Reopen a new report separately if the behavior recurs.",
+      "updated": "2026-08-31"
+    },
+    {
+      "id": "sets-legacy-066",
+      "title": "This master checklist, ranked and complete",
+      "area": "Step 1 — Map everything",
+      "status": "history",
+      "assignee": "Unassigned",
+      "summary": "The original checklist organized work and preserved historical completion records.",
+      "nextStep": "Retain this earlier record. Reopen a new report separately if the behavior recurs.",
+      "updated": "2026-08-31"
+    },
+    {
+      "id": "sets-legacy-067",
+      "title": "Blind-spot sweep of the whole app",
+      "area": "Step 1 — Map everything",
+      "status": "history",
+      "assignee": "Unassigned",
+      "summary": "An earlier app-wide review looked for issues outside the initially reported cases.",
+      "nextStep": "Retain this earlier record. Reopen a new report separately if the behavior recurs.",
+      "updated": "2026-08-31"
+    },
+    {
+      "id": "sets-legacy-068",
+      "title": "Competitor complaint research",
+      "area": "Step 1 — Map everything",
+      "status": "history",
+      "assignee": "Unassigned",
+      "summary": "Earlier research considered common complaints about comparable training apps.",
+      "nextStep": "Retain this earlier record. Reopen a new report separately if the behavior recurs.",
+      "updated": "2026-08-31"
+    },
+    {
+      "id": "sets-legacy-069",
+      "title": "Signing out destroys workouts waiting to upload — and any workout in progress",
+      "area": "Step 2 — Protect your training record",
+      "status": "history",
+      "assignee": "Unassigned",
+      "summary": "Earlier work protected active and pending workouts during sign-out.",
+      "nextStep": "Retain this earlier record. Reopen a new report separately if the behavior recurs.",
+      "updated": "2026-08-31"
+    },
+    {
+      "id": "sets-legacy-070",
+      "title": "App updates force-reload the phone mid-workout",
+      "area": "Step 2 — Protect your training record",
+      "status": "history",
+      "assignee": "Unassigned",
+      "summary": "Earlier work kept app updates from interrupting an active workout.",
+      "nextStep": "Retain this earlier record. Reopen a new report separately if the behavior recurs.",
+      "updated": "2026-08-31"
+    },
+    {
+      "id": "sets-legacy-071",
+      "title": "Phone storage full → sets silently vanish while the app shows them saved",
+      "area": "Step 2 — Protect your training record",
+      "status": "history",
+      "assignee": "Unassigned",
+      "summary": "Earlier work made storage failures visible instead of reporting unsaved sets as saved.",
+      "nextStep": "Retain this earlier record. Reopen a new report separately if the behavior recurs.",
+      "updated": "2026-08-31"
+    },
+    {
+      "id": "sets-legacy-072",
+      "title": "Un-checking a set to correct it can lose the set entirely",
+      "area": "Step 2 — Protect your training record",
+      "status": "history",
+      "assignee": "Unassigned",
+      "summary": "Earlier work protected set data when a completed row is reopened for correction.",
+      "nextStep": "Retain this earlier record. Reopen a new report separately if the behavior recurs.",
+      "updated": "2026-08-31"
+    },
+    {
+      "id": "sets-legacy-073",
+      "title": "Fast second-arm confirm: phone buzzes, nothing logged",
+      "area": "Step 2 — Protect your training record",
+      "status": "history",
+      "assignee": "Unassigned",
+      "summary": "Earlier work covered rapid confirmation of the second side of an exercise.",
+      "nextStep": "Retain this earlier record. Reopen a new report separately if the behavior recurs.",
+      "updated": "2026-08-31"
+    },
+    {
+      "id": "sets-legacy-074",
+      "title": "Correcting a set then tapping Finish throws the correction away",
+      "area": "Step 2 — Protect your training record",
+      "status": "history",
+      "assignee": "Unassigned",
+      "summary": "Earlier work preserved a correction made immediately before finishing a workout.",
+      "nextStep": "Retain this earlier record. Reopen a new report separately if the behavior recurs.",
+      "updated": "2026-08-31"
+    },
+    {
+      "id": "sets-legacy-075",
+      "title": "Swapping an exercise mid-workout deletes its logged sets, no warning",
+      "area": "Step 2 — Protect your training record",
+      "status": "history",
+      "assignee": "Unassigned",
+      "summary": "Earlier work protected logged sets when swapping exercises mid-workout.",
+      "nextStep": "Retain this earlier record. Reopen a new report separately if the behavior recurs.",
+      "updated": "2026-08-31"
+    },
+    {
+      "id": "sets-legacy-076",
+      "title": "Deleting a set can rewrite the wrong one",
+      "area": "Step 2 — Protect your training record",
+      "status": "history",
+      "assignee": "Unassigned",
+      "summary": "Earlier work kept set deletion attached to the intended row.",
+      "nextStep": "Retain this earlier record. Reopen a new report separately if the behavior recurs.",
+      "updated": "2026-08-31"
+    },
+    {
+      "id": "sets-legacy-077",
+      "title": "Workout summary reorders sets and crosses arms",
+      "area": "Step 2 — Protect your training record",
+      "status": "history",
+      "assignee": "Unassigned",
+      "summary": "Earlier work kept workout-summary ordering and left/right identity consistent.",
+      "nextStep": "Retain this earlier record. Reopen a new report separately if the behavior recurs.",
+      "updated": "2026-08-31"
+    },
+    {
+      "id": "sets-legacy-078",
+      "title": "Your first-ever cloud upload can miss workouts",
+      "area": "Step 2 — Protect your training record",
+      "status": "history",
+      "assignee": "Unassigned",
+      "summary": "Earlier work improved completeness of an account’s initial workout sync.",
+      "nextStep": "Retain this earlier record. Reopen a new report separately if the behavior recurs.",
+      "updated": "2026-08-31"
+    },
+    {
+      "id": "sets-legacy-079",
+      "title": "One storage hiccup deletes the whole local database — including the upload queue",
+      "area": "Step 2 — Protect your training record",
+      "status": "history",
+      "assignee": "Unassigned",
+      "summary": "Earlier work protected local workout data and pending uploads during storage recovery.",
+      "nextStep": "Retain this earlier record. Reopen a new report separately if the behavior recurs.",
+      "updated": "2026-08-31"
+    },
+    {
+      "id": "sets-legacy-080",
+      "title": "Editing or deleting an old workout wipes your PR history",
+      "area": "Step 2 — Protect your training record",
+      "status": "history",
+      "assignee": "Unassigned",
+      "summary": "Earlier work preserved personal-record history when an old workout is edited or removed.",
+      "nextStep": "Retain this earlier record. Reopen a new report separately if the behavior recurs.",
+      "updated": "2026-08-31"
+    },
+    {
+      "id": "sets-legacy-081",
+      "title": "PRs quietly shrink as history grows",
+      "area": "Step 2 — Protect your training record",
+      "status": "history",
+      "assignee": "Unassigned",
+      "summary": "Earlier work kept personal records consistent as the history grows.",
+      "nextStep": "Retain this earlier record. Reopen a new report separately if the behavior recurs.",
+      "updated": "2026-08-31"
+    },
+    {
+      "id": "sets-legacy-082",
+      "title": "Reused custom-exercise IDs inherit a dead exercise’s history",
+      "area": "Step 2 — Protect your training record",
+      "status": "history",
+      "assignee": "Unassigned",
+      "summary": "Earlier work kept custom-exercise histories separate when identities change.",
+      "nextStep": "Retain this earlier record. Reopen a new report separately if the behavior recurs.",
+      "updated": "2026-08-31"
+    },
+    {
+      "id": "sets-legacy-083",
+      "title": "Changing your mind on a swap can empty the slot from your program",
+      "area": "Step 2 — Protect your training record",
+      "status": "history",
+      "assignee": "Unassigned",
+      "summary": "Earlier work protected a program slot when an exercise swap is canceled.",
+      "nextStep": "Retain this earlier record. Reopen a new report separately if the behavior recurs.",
+      "updated": "2026-08-31"
+    },
+    {
+      "id": "sets-legacy-084",
+      "title": "A weigh-in can overwrite another day’s weigh-in",
+      "area": "Step 2 — Protect your training record",
+      "status": "history",
+      "assignee": "Unassigned",
+      "summary": "Earlier work kept weigh-ins attached to the correct date.",
+      "nextStep": "Retain this earlier record. Reopen a new report separately if the behavior recurs.",
+      "updated": "2026-08-31"
+    },
+    {
+      "id": "sets-legacy-085",
+      "title": "Height in ft/in can corrupt your stored height by a whole foot",
+      "area": "Step 2 — Protect your training record",
+      "status": "history",
+      "assignee": "Unassigned",
+      "summary": "Earlier work corrected height conversion and storage for feet-and-inches entry.",
+      "nextStep": "Retain this earlier record. Reopen a new report separately if the behavior recurs.",
+      "updated": "2026-08-31"
+    },
+    {
+      "id": "sets-legacy-086",
+      "title": "Creating a superset can hide completed sets",
+      "area": "Step 2 — Protect your training record",
+      "status": "history",
+      "assignee": "Unassigned",
+      "summary": "Earlier work kept completed sets visible when a superset is created.",
+      "nextStep": "Retain this earlier record. Reopen a new report separately if the behavior recurs.",
+      "updated": "2026-08-31"
+    },
+    {
+      "id": "sets-legacy-087",
+      "title": "Finishing a paused workout inflates duration and calories",
+      "area": "Step 2 — Protect your training record",
+      "status": "history",
+      "assignee": "Unassigned",
+      "summary": "Earlier work excluded paused time from workout duration and calorie estimates.",
+      "nextStep": "Retain this earlier record. Reopen a new report separately if the behavior recurs.",
+      "updated": "2026-08-31"
+    },
+    {
+      "id": "sets-legacy-088",
+      "title": "Rest timer doesn't start after the first arm of set 1 (one-arm exercises)",
+      "area": "Step 2 — Protect your training record",
+      "status": "history",
+      "assignee": "Unassigned",
+      "summary": "Earlier work covered rest timing between separately logged sides.",
+      "nextStep": "Retain this earlier record. Reopen a new report separately if the behavior recurs.",
+      "updated": "2026-08-31"
+    },
+    {
+      "id": "sets-legacy-089",
+      "title": "Finishing a workout can invent an arm you never did",
+      "area": "Step 2 — Protect your training record",
+      "status": "history",
+      "assignee": "Unassigned",
+      "summary": "Earlier work prevented workout completion from inventing an unlogged side.",
+      "nextStep": "Retain this earlier record. Reopen a new report separately if the behavior recurs.",
+      "updated": "2026-08-31"
+    },
+    {
+      "id": "sets-legacy-090",
+      "title": "Editing any program in the builder deletes its periodisation plan",
+      "area": "Step 2b — Protect your programs",
+      "status": "history",
+      "assignee": "Unassigned",
+      "summary": "Earlier work preserved periodisation when a program is edited.",
+      "nextStep": "Retain this earlier record. Reopen a new report separately if the behavior recurs.",
+      "updated": "2026-08-31"
+    },
+    {
+      "id": "sets-legacy-091",
+      "title": "The Periodisation screen can overwrite your ACTIVE program with one you’re just viewing",
+      "area": "Step 2b — Protect your programs",
+      "status": "history",
+      "assignee": "Unassigned",
+      "summary": "Earlier work kept edits to a viewed program separate from the active program.",
+      "nextStep": "Retain this earlier record. Reopen a new report separately if the behavior recurs.",
+      "updated": "2026-08-31"
+    },
+    {
+      "id": "sets-legacy-092",
+      "title": "\"Editing Week N\" actually edits every week",
+      "area": "Step 2b — Protect your programs",
+      "status": "history",
+      "assignee": "Unassigned",
+      "summary": "Earlier work addressed whether an edit belongs to one week or every week.",
+      "nextStep": "Retain this earlier record. Reopen a new report separately if the behavior recurs.",
+      "updated": "2026-08-31"
+    },
+    {
+      "id": "sets-legacy-093",
+      "title": "Swipe-deleting a set in the builder deletes the wrong set",
+      "area": "Step 2b — Protect your programs",
+      "status": "history",
+      "assignee": "Unassigned",
+      "summary": "Earlier work attached swipe deletion to the selected builder row.",
+      "nextStep": "Retain this earlier record. Reopen a new report separately if the behavior recurs.",
+      "updated": "2026-08-31"
+    },
+    {
+      "id": "sets-legacy-094",
+      "title": "Swapping an exercise in the builder resets its targets and breaks its superset",
+      "area": "Step 2b — Protect your programs",
+      "status": "history",
+      "assignee": "Unassigned",
+      "summary": "Earlier work preserved targets and superset relationships during an exercise swap.",
+      "nextStep": "Retain this earlier record. Reopen a new report separately if the behavior recurs.",
+      "updated": "2026-08-31"
+    },
+    {
+      "id": "sets-legacy-095",
+      "title": "\"Save as Draft\" files the wrong program into Drafts",
+      "area": "Step 2b — Protect your programs",
+      "status": "history",
+      "assignee": "Unassigned",
+      "summary": "Earlier work made Save as Draft affect the intended program.",
+      "nextStep": "Retain this earlier record. Reopen a new report separately if the behavior recurs.",
+      "updated": "2026-08-31"
+    },
+    {
+      "id": "sets-legacy-096",
+      "title": "Changing a program’s gym keeps the gym but loses the adapted exercises",
+      "area": "Step 2b — Protect your programs",
+      "status": "history",
+      "assignee": "Unassigned",
+      "summary": "Earlier work saved equipment-adapted exercises together with a program’s gym change.",
+      "nextStep": "Retain this earlier record. Reopen a new report separately if the behavior recurs.",
+      "updated": "2026-08-31"
+    },
+    {
+      "id": "sets-legacy-097",
+      "title": "Builder edits wipe per-day gym assignments",
+      "area": "Step 2b — Protect your programs",
+      "status": "history",
+      "assignee": "Unassigned",
+      "summary": "Earlier work preserved day-specific gym assignments through builder saves.",
+      "nextStep": "Retain this earlier record. Reopen a new report separately if the behavior recurs.",
+      "updated": "2026-08-31"
+    },
+    {
+      "id": "sets-legacy-098",
+      "title": "Reordering days pointed \"next workout\" and skip marks at the wrong days",
+      "area": "Step 2b — Protect your programs",
+      "status": "history",
+      "assignee": "Unassigned",
+      "summary": "Earlier work moved workout pointers, skip marks and gym assignments with reordered days.",
+      "nextStep": "Retain this earlier record. Reopen a new report separately if the behavior recurs.",
+      "updated": "2026-08-31"
+    },
+    {
+      "id": "sets-legacy-099",
+      "title": "Saving workout changes now updates your volume numbers and keeps muscles correct",
+      "area": "Step 2b — Protect your programs",
+      "status": "history",
+      "assignee": "Unassigned",
+      "summary": "Earlier work kept volume totals and muscle assignments consistent after saved workout changes.",
+      "nextStep": "Retain this earlier record. Reopen a new report separately if the behavior recurs.",
+      "updated": "2026-08-31"
+    },
+    {
+      "id": "sets-legacy-100",
+      "title": "Pre-workout \"Save order\" now actually saves the order",
+      "area": "Step 2b — Protect your programs",
+      "status": "history",
+      "assignee": "Unassigned",
+      "summary": "Earlier work made pre-workout ordering changes persist.",
+      "nextStep": "Retain this earlier record. Reopen a new report separately if the behavior recurs.",
+      "updated": "2026-08-31"
+    },
+    {
+      "id": "sets-legacy-101",
+      "title": "Template supersets pair the right exercises",
+      "area": "Step 2b — Protect your programs",
+      "status": "history",
+      "assignee": "Unassigned",
+      "summary": "Earlier work paired the correct exercises in template supersets.",
+      "nextStep": "Retain this earlier record. Reopen a new report separately if the behavior recurs.",
+      "updated": "2026-08-31"
+    },
+    {
+      "id": "sets-legacy-102",
+      "title": "Per-side rest now survives a builder edit",
+      "area": "Step 2b — Protect your programs",
+      "status": "history",
+      "assignee": "Unassigned",
+      "summary": "Earlier work preserved between-side rest through builder edits.",
+      "nextStep": "Retain this earlier record. Reopen a new report separately if the behavior recurs.",
+      "updated": "2026-08-31"
+    },
+    {
+      "id": "sets-legacy-103",
+      "title": "Deleting or reordering a day keeps your next-workout + skip marks",
+      "area": "Step 2b — Protect your programs",
+      "status": "history",
+      "assignee": "Unassigned",
+      "summary": "Earlier work kept next-workout pointers and skip marks aligned after day edits.",
+      "nextStep": "Retain this earlier record. Reopen a new report separately if the behavior recurs.",
+      "updated": "2026-08-31"
+    },
+    {
+      "id": "sets-legacy-104",
+      "title": "Single-arm ghost collapses to a no-progress ask",
+      "area": "Step 3 — Safe, correct coaching",
+      "status": "history",
+      "assignee": "Unassigned",
+      "summary": "Earlier work addressed a single-arm recommendation that failed to reflect earned progress.",
+      "nextStep": "Retain this earlier record. Reopen a new report separately if the behavior recurs.",
+      "updated": "2026-08-31"
+    },
+    {
+      "id": "sets-legacy-105",
+      "title": "Normal sets no longer tell you to grind to failure",
+      "area": "Step 3 — Safe, correct coaching",
+      "status": "history",
+      "assignee": "Unassigned",
+      "summary": "Earlier work distinguished normal-set effort targets from explicitly all-out sets.",
+      "nextStep": "Retain this earlier record. Reopen a new report separately if the behavior recurs.",
+      "updated": "2026-08-31"
+    },
+    {
+      "id": "sets-legacy-106",
+      "title": "Stall-breaker — breaks you through a plateau instead of the endless \"one more rep\" grind",
+      "area": "Step 3 — Safe, correct coaching",
+      "status": "history",
+      "assignee": "Unassigned",
+      "summary": "Earlier work tested a strategy for moving beyond a sustained plateau.",
+      "nextStep": "Retain this earlier record. Reopen a new report separately if the behavior recurs.",
+      "updated": "2026-08-31"
+    },
+    {
+      "id": "sets-legacy-107",
+      "title": "Finishing set 2 rewrites set 1's plan",
+      "area": "Step 3 — Safe, correct coaching",
+      "status": "history",
+      "assignee": "Unassigned",
+      "summary": "Earlier work covered the independence of earlier and later set targets.",
+      "nextStep": "Retain this earlier record. Reopen a new report separately if the behavior recurs.",
+      "updated": "2026-08-31"
+    },
+    {
+      "id": "sets-legacy-108",
+      "title": "Same workout, different advice depending on tap order",
+      "area": "Step 3 — Safe, correct coaching",
+      "status": "history",
+      "assignee": "Unassigned",
+      "summary": "Earlier work checked that equivalent workout evidence gives consistent advice regardless of entry order.",
+      "nextStep": "Retain this earlier record. Reopen a new report separately if the behavior recurs.",
+      "updated": "2026-08-31"
+    },
+    {
+      "id": "sets-legacy-109",
+      "title": "Advice built from half a pair",
+      "area": "Step 3 — Safe, correct coaching",
+      "status": "history",
+      "assignee": "Unassigned",
+      "summary": "Earlier work avoided deriving complete-pair advice from incomplete unilateral data.",
+      "nextStep": "Retain this earlier record. Reopen a new report separately if the behavior recurs.",
+      "updated": "2026-08-31"
+    },
+    {
+      "id": "sets-legacy-110",
+      "title": "Two-arm merge weakens correct plans",
+      "area": "Step 3 — Safe, correct coaching",
+      "status": "history",
+      "assignee": "Unassigned",
+      "summary": "Earlier work preserved appropriate progress when combining left and right results.",
+      "nextStep": "Retain this earlier record. Reopen a new report separately if the behavior recurs.",
+      "updated": "2026-08-31"
+    },
+    {
+      "id": "sets-legacy-111",
+      "title": "Turning RIR off doesn't stop the app using a made-up RIR",
+      "area": "Step 3 — Safe, correct coaching",
+      "status": "history",
+      "assignee": "Unassigned",
+      "summary": "Earlier work made hidden effort tracking respect the user’s setting.",
+      "nextStep": "Retain this earlier record. Reopen a new report separately if the behavior recurs.",
+      "updated": "2026-08-31"
+    },
+    {
+      "id": "sets-legacy-112",
+      "title": "A machine-max set drags lighter sets to the max",
+      "area": "Step 3 — Safe, correct coaching",
+      "status": "history",
+      "assignee": "Unassigned",
+      "summary": "Earlier work kept lighter back-off targets separate from an equipment-ceiling set.",
+      "nextStep": "Retain this earlier record. Reopen a new report separately if the behavior recurs.",
+      "updated": "2026-08-31"
+    },
+    {
+      "id": "sets-legacy-113",
+      "title": "Ceiling plans promise weights that don't exist",
+      "area": "Step 3 — Safe, correct coaching",
+      "status": "history",
+      "assignee": "Unassigned",
+      "summary": "Earlier work kept recommendations within weights the equipment actually provides.",
+      "nextStep": "Retain this earlier record. Reopen a new report separately if the behavior recurs.",
+      "updated": "2026-08-31"
+    },
+    {
+      "id": "sets-legacy-114",
+      "title": "Plus / Drop / Myo sets have no shared left-right owner",
+      "area": "Step 3 — Safe, correct coaching",
+      "status": "history",
+      "assignee": "Unassigned",
+      "summary": "Earlier work coordinated special-set identity across left and right sides.",
+      "nextStep": "Retain this earlier record. Reopen a new report separately if the behavior recurs.",
+      "updated": "2026-08-31"
+    },
+    {
+      "id": "sets-legacy-115",
+      "title": "\"Average\" mode can ask the weaker arm for an unproven weight",
+      "area": "Step 3 — Safe, correct coaching",
+      "status": "history",
+      "assignee": "Unassigned",
+      "summary": "Earlier work kept combined-arm recommendations within demonstrated capability.",
+      "nextStep": "Retain this earlier record. Reopen a new report separately if the behavior recurs.",
+      "updated": "2026-08-31"
+    },
+    {
+      "id": "sets-legacy-116",
+      "title": "Superset auto-advance jumps wrong",
+      "area": "Step 3 — Safe, correct coaching",
+      "status": "history",
+      "assignee": "Unassigned",
+      "summary": "Earlier work made superset auto-advance respect unfinished partner exercises.",
+      "nextStep": "Retain this earlier record. Reopen a new report separately if the behavior recurs.",
+      "updated": "2026-08-31"
+    },
+    {
+      "id": "sets-legacy-117",
+      "title": "The \"you need an easier week\" detector can never fire",
+      "area": "Step 3 — Safe, correct coaching",
+      "status": "history",
+      "assignee": "Unassigned",
+      "summary": "Earlier work covered detection of a sustained need for an easier training week.",
+      "nextStep": "Retain this earlier record. Reopen a new report separately if the behavior recurs.",
+      "updated": "2026-08-31"
+    },
+    {
+      "id": "sets-legacy-118",
+      "title": "Solo single-arm sets can still ask for \"0 in reserve\"",
+      "area": "Step 3 — Safe, correct coaching",
+      "status": "history",
+      "assignee": "Unassigned",
+      "summary": "Earlier work checked effort targets for sessions with only one logged side.",
+      "nextStep": "Retain this earlier record. Reopen a new report separately if the behavior recurs.",
+      "updated": "2026-08-31"
+    },
+    {
+      "id": "sets-legacy-119",
+      "title": "Mid-workout weight adjustments (the live version of the range fix)",
+      "area": "Step 3 — Safe, correct coaching",
+      "status": "history",
+      "assignee": "Unassigned",
+      "summary": "Earlier work brought rep-range handling into within-workout weight adjustments.",
+      "nextStep": "Retain this earlier record. Reopen a new report separately if the behavior recurs.",
+      "updated": "2026-08-31"
+    },
+    {
+      "id": "sets-legacy-120",
+      "title": "Warm-up weights solved on the wrong plate rack for lb users",
+      "area": "Step 3 — Safe, correct coaching",
+      "status": "history",
+      "assignee": "Unassigned",
+      "summary": "Earlier work checked warm-up plate selection for the chosen weight unit.",
+      "nextStep": "Retain this earlier record. Reopen a new report separately if the behavior recurs.",
+      "updated": "2026-08-31"
+    },
+    {
+      "id": "sets-legacy-121",
+      "title": "Your body weight has two stores that drift apart",
+      "area": "Step 3 — Safe, correct coaching",
+      "status": "history",
+      "assignee": "Unassigned",
+      "summary": "Earlier work kept body-weight history and workout calculations consistent.",
+      "nextStep": "Retain this earlier record. Reopen a new report separately if the behavior recurs.",
+      "updated": "2026-08-31"
+    },
+    {
+      "id": "sets-legacy-122",
+      "title": "Old PR e1RMs oscillate between two formulas on every sync",
+      "area": "Step 3 — Safe, correct coaching",
+      "status": "history",
+      "assignee": "Unassigned",
+      "summary": "Earlier work made personal-record strength calculations consistent across sync.",
+      "nextStep": "Retain this earlier record. Reopen a new report separately if the behavior recurs.",
+      "updated": "2026-08-31"
+    },
+    {
+      "id": "sets-legacy-123",
+      "title": "Minimum-equipment rep targets",
+      "area": "Step 3 — Safe, correct coaching",
+      "status": "history",
+      "assignee": "Unassigned",
+      "summary": "Earlier work examined rep targets when equipment cannot be made any lighter.",
+      "nextStep": "Retain this earlier record. Reopen a new report separately if the behavior recurs.",
+      "updated": "2026-08-31"
+    },
+    {
+      "id": "sets-legacy-124",
+      "title": "Single-arm exercises no longer double-count your volume",
+      "area": "Step 4 — Honest screens & counts",
+      "status": "history",
+      "assignee": "Unassigned",
+      "summary": "Earlier work prevented unilateral tracking from doubling weekly volume counts.",
+      "nextStep": "Retain this earlier record. Reopen a new report separately if the behavior recurs.",
+      "updated": "2026-08-31"
+    },
+    {
+      "id": "sets-legacy-125",
+      "title": "Analytics shows raw kg to lb users, everywhere",
+      "area": "Step 4 — Honest screens & counts",
+      "status": "history",
+      "assignee": "Unassigned",
+      "summary": "Earlier work made analytics and explanations honor the selected weight unit.",
+      "nextStep": "Retain this earlier record. Reopen a new report separately if the behavior recurs.",
+      "updated": "2026-08-31"
+    },
+    {
+      "id": "sets-legacy-126",
+      "title": "Two different \"e1RM\" formulas live in the app",
+      "area": "Step 4 — Honest screens & counts",
+      "status": "history",
+      "assignee": "Unassigned",
+      "summary": "Earlier work aligned the strength-estimate calculation across the app.",
+      "nextStep": "Retain this earlier record. Reopen a new report separately if the behavior recurs.",
+      "updated": "2026-08-31"
+    },
+    {
+      "id": "sets-legacy-127",
+      "title": "Drop sets count as 3–4 sets in every volume number",
+      "area": "Step 4 — Honest screens & counts",
+      "status": "history",
+      "assignee": "Unassigned",
+      "summary": "Earlier work counted a special-set chain consistently in volume summaries.",
+      "nextStep": "Retain this earlier record. Reopen a new report separately if the behavior recurs.",
+      "updated": "2026-08-31"
+    },
+    {
+      "id": "sets-legacy-128",
+      "title": "Strength trend can point two directions on one screen",
+      "area": "Step 4 — Honest screens & counts",
+      "status": "history",
+      "assignee": "Unassigned",
+      "summary": "Earlier work aligned strength-trend indicators across views.",
+      "nextStep": "Retain this earlier record. Reopen a new report separately if the behavior recurs.",
+      "updated": "2026-08-31"
+    },
+    {
+      "id": "sets-legacy-129",
+      "title": "\"% change\" can compare the wrong sessions",
+      "area": "Step 4 — Honest screens & counts",
+      "status": "history",
+      "assignee": "Unassigned",
+      "summary": "Earlier work compared matching weighted sessions when calculating percentage changes.",
+      "nextStep": "Retain this earlier record. Reopen a new report separately if the behavior recurs.",
+      "updated": "2026-08-31"
+    },
+    {
+      "id": "sets-legacy-130",
+      "title": "New users are told volume is climbing when it’s flat",
+      "area": "Step 4 — Honest screens & counts",
+      "status": "history",
+      "assignee": "Unassigned",
+      "summary": "Earlier work improved volume trends for new users and gaps in training.",
+      "nextStep": "Retain this earlier record. Reopen a new report separately if the behavior recurs.",
+      "updated": "2026-08-31"
+    },
+    {
+      "id": "sets-legacy-131",
+      "title": "Wrong day lights up for evening and morning lifters",
+      "area": "Step 4 — Honest screens & counts",
+      "status": "history",
+      "assignee": "Unassigned",
+      "summary": "Earlier work grouped workout dates consistently in the user’s local time.",
+      "nextStep": "Retain this earlier record. Reopen a new report separately if the behavior recurs.",
+      "updated": "2026-08-31"
+    },
+    {
+      "id": "sets-legacy-132",
+      "title": "First time doing an exercise is reported as a PR",
+      "area": "Step 4 — Honest screens & counts",
+      "status": "history",
+      "assignee": "Unassigned",
+      "summary": "Earlier work treated an exercise’s first logged session as a baseline.",
+      "nextStep": "Retain this earlier record. Reopen a new report separately if the behavior recurs.",
+      "updated": "2026-08-31"
+    },
+    {
+      "id": "sets-legacy-133",
+      "title": "\"Hard Sets\" toggle changes the list but not the body diagram",
+      "area": "Step 4 — Honest screens & counts",
+      "status": "history",
+      "assignee": "Unassigned",
+      "summary": "Earlier work kept the hard-sets filter consistent with the body diagram.",
+      "nextStep": "Retain this earlier record. Reopen a new report separately if the behavior recurs.",
+      "updated": "2026-08-31"
+    },
+    {
+      "id": "sets-legacy-134",
+      "title": "Muscle totals don’t match their own drill-down",
+      "area": "Step 4 — Honest screens & counts",
+      "status": "history",
+      "assignee": "Unassigned",
+      "summary": "Earlier work aligned muscle totals with their detailed breakdowns.",
+      "nextStep": "Retain this earlier record. Reopen a new report separately if the behavior recurs.",
+      "updated": "2026-08-31"
+    },
+    {
+      "id": "sets-legacy-135",
+      "title": "Explanations can survive the decision they explain being repaired",
+      "area": "Step 4 — Honest screens & counts",
+      "status": "history",
+      "assignee": "Unassigned",
+      "summary": "Earlier work kept explanatory text consistent with the final recommendation.",
+      "nextStep": "Retain this earlier record. Reopen a new report separately if the behavior recurs.",
+      "updated": "2026-08-31"
+    },
+    {
+      "id": "sets-legacy-136",
+      "title": "Rest timer honesty cluster",
+      "area": "Step 4 — Honest screens & counts",
+      "status": "history",
+      "assignee": "Unassigned",
+      "summary": "Earlier work covered rest persistence, pausing and weight-unit handling.",
+      "nextStep": "Retain this earlier record. Reopen a new report separately if the behavior recurs.",
+      "updated": "2026-08-31"
+    },
+    {
+      "id": "sets-legacy-137",
+      "title": "Saved ceiling plan mislabelled as \"Building Reps\"",
+      "area": "Step 4 — Honest screens & counts",
+      "status": "history",
+      "assignee": "Unassigned",
+      "summary": "Earlier work distinguished an equipment-ceiling plan from normal rep building.",
+      "nextStep": "Retain this earlier record. Reopen a new report separately if the behavior recurs.",
+      "updated": "2026-08-31"
+    },
+    {
+      "id": "sets-legacy-138",
+      "title": "Progress screens mark unfinished work as complete",
+      "area": "Step 4 — Honest screens & counts",
+      "status": "history",
+      "assignee": "Unassigned",
+      "summary": "Earlier work made completion indicators reflect actual finished rows.",
+      "nextStep": "Retain this earlier record. Reopen a new report separately if the behavior recurs.",
+      "updated": "2026-08-31"
+    },
+    {
+      "id": "sets-legacy-139",
+      "title": "Small honesty items (grouped)",
+      "area": "Step 4 — Honest screens & counts",
+      "status": "history",
+      "assignee": "Unassigned",
+      "summary": "Earlier work addressed smaller consistency issues in dates, muscle coverage and exercise setup.",
+      "nextStep": "Retain this earlier record. Reopen a new report separately if the behavior recurs.",
+      "updated": "2026-08-31"
+    },
+    {
+      "id": "sets-legacy-140",
+      "title": "False PR on legacy custom exercises",
+      "area": "Step 4 — Honest screens & counts",
+      "status": "history",
+      "assignee": "Unassigned",
+      "summary": "Earlier work corrected personal-record lookup for older custom-exercise sessions.",
+      "nextStep": "Retain this earlier record. Reopen a new report separately if the behavior recurs.",
+      "updated": "2026-08-31"
+    },
+    {
+      "id": "sets-legacy-141",
+      "title": "Failure scoreboard blames the app for your extra effort",
+      "area": "Step 5 — Fix the referees",
+      "status": "history",
+      "assignee": "Unassigned",
+      "summary": "Earlier work distinguished prescribed effort from effort the lifter chose to add.",
+      "nextStep": "Retain this earlier record. Reopen a new report separately if the behavior recurs.",
+      "updated": "2026-08-31"
+    },
+    {
+      "id": "sets-legacy-142",
+      "title": "Benchmark converts cable weights wrongly",
+      "area": "Step 5 — Fix the referees",
+      "status": "history",
+      "assignee": "Unassigned",
+      "summary": "Earlier work improved simulated performance across changes in cable weight.",
+      "nextStep": "Retain this earlier record. Reopen a new report separately if the behavior recurs.",
+      "updated": "2026-08-31"
+    },
+    {
+      "id": "sets-legacy-143",
+      "title": "The simulated lifter performs weights it wasn't asked",
+      "area": "Step 5 — Fix the referees",
+      "status": "history",
+      "assignee": "Unassigned",
+      "summary": "Earlier work verified that simulated lifters follow their assigned loads.",
+      "nextStep": "Retain this earlier record. Reopen a new report separately if the behavior recurs.",
+      "updated": "2026-08-31"
+    },
+    {
+      "id": "sets-legacy-144",
+      "title": "Tests that can't fail + screens tested without screens",
+      "area": "Step 5 — Fix the referees",
+      "status": "history",
+      "assignee": "Unassigned",
+      "summary": "Earlier work replaced weak assertions and expanded real-screen regression coverage.",
+      "nextStep": "Retain this earlier record. Reopen a new report separately if the behavior recurs.",
+      "updated": "2026-08-31"
+    },
+    {
+      "id": "sets-legacy-145",
+      "title": "Reported workout cases in release checks",
+      "area": "Step 5 — Fix the referees",
+      "status": "history",
+      "assignee": "Unassigned",
+      "summary": "Earlier work retained reported workout cases as regression tests.",
+      "nextStep": "Retain this earlier record. Reopen a new report separately if the behavior recurs.",
+      "updated": "2026-08-31"
+    },
+    {
+      "id": "sets-legacy-146",
+      "title": "Volume-matching experiment",
+      "area": "Step 6 — New coaching (last, on solid ground)",
+      "status": "history",
+      "assignee": "Unassigned",
+      "summary": "An earlier experiment compared two ways to rebuild after an unsuccessful weight increase.",
+      "nextStep": "Retain this earlier record. Reopen a new report separately if the behavior recurs.",
+      "updated": "2026-08-31"
+    }
+  ]
+}
