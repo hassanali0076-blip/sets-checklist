@@ -1,12 +1,12 @@
 {
   "schemaVersion": 1,
   "title": "SETS — shared checklist",
-  "updatedAt": "2026-09-05T03:58:18.534Z",
+  "updatedAt": "2026-09-05T04:02:07.641Z",
   "reviewedThrough": "2026-09-05",
   "release": {
-    "web": "Live app checked 5 September: still the 4 September build. Settings, the newer progression candidate, copy and GEN-28 are not live.",
+    "web": "The live app includes Progression Engine V2 as an opt-in setting. Additional V2 fixes for stalled exercises and later-set targets, Settings changes, app wording updates and GEN-28 are not released.",
     "backend": "Development testing is available under the existing model. Verify the connection and test-account separation; installed deletion and retention behavior still needs checking.",
-    "next": "Integrate reviewed fixes in small groups, starting with data protection. Keep V2 and GEN-28 opt-in until their remaining checks are complete."
+    "next": "Integrate reviewed fixes in small groups, starting with data protection. Keep V2 opt-in; introduce GEN-28 behind an opt-in control after its remaining checks."
   },
   "notes": [
     "Reviewed through 5 September 2026. 65 current tasks and 124 archived records. These are work items, not a completion percentage or a count of confirmed bugs.",
@@ -18,6 +18,10 @@
     "This update publishes checklist summaries only. It does not change the SETS app, PowerSync, task schedules or release permissions."
   ],
   "changes": [
+    {
+      "date": "2026-09-05",
+      "text": "Clarified that the released Progression Engine V2 is already available in the live app as an opt-in setting. The latest additional V2 fixes remain unreleased. Replaced ambiguous copy terminology with app wording updates."
+    },
     {
       "date": "2026-09-05",
       "text": "Clarified that the existing Development instance is available for coordinated testing under its current data model. Removed the unresolved ownership/permission blocker; connection and test-data separation checks remain."
@@ -372,11 +376,11 @@
     },
     {
       "id": "sets-legacy-034",
-      "title": "V2 stalled-lifter recovery",
+      "title": "Additional V2 stalled-lifter recovery fixes",
       "area": "Progression",
       "status": "testing",
       "assignee": "You",
-      "summary": "The remaining stall changes are implemented in a local V2 candidate. The independent comparison passed all 25 focused cases. The candidate is not pushed, integrated or live.",
+      "summary": "The released V2 engine is already in the app as an opt-in setting. This task covers additional stall-recovery fixes in a local candidate: 25 focused comparison cases passed, but these extra fixes are not pushed, integrated or live.",
       "nextStep": "Integrate the reviewed V2-only changes and verify the complete save/reload flow. Keep V2 opt-in until remaining coverage and acceptance are complete.",
       "updated": "2026-09-05"
     },
@@ -1795,7 +1799,7 @@
       "title": "Finish and integrate the reviewed app wording",
       "area": "Copy, exercise content and exports",
       "status": "testing",
-      "summary": "The copy candidate records 904 reviewed entries and 104 rewrites. It is not accepted or released; 281 entries have overlapping blockers. Its saved full test run also had three failures.",
+      "summary": "The app wording-update branch records 904 reviewed entries and 104 rewrites. It is not accepted or released; 281 entries have overlapping blockers. Its saved full test run also had three failures.",
       "nextStep": "Reconcile copy with the final screens, resolve blocked entries and explain the saved failures before integration. Preserve the paused task until its existing owner resumes it.",
       "updated": "2026-09-05",
       "assignee": "Unassigned"

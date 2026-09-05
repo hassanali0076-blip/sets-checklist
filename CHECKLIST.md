@@ -1,10 +1,10 @@
 # SETS — shared checklist
 
-Updated: 2026-09-05T03:58:18.534Z · Reviewed through 2026-09-05
+Updated: 2026-09-05T04:02:07.641Z · Reviewed through 2026-09-05
 
-- web: Live app checked 5 September: still the 4 September build. Settings, the newer progression candidate, copy and GEN-28 are not live.
+- web: The live app includes Progression Engine V2 as an opt-in setting. Additional V2 fixes for stalled exercises and later-set targets, Settings changes, app wording updates and GEN-28 are not released.
 - backend: Development testing is available under the existing model. Verify the connection and test-account separation; installed deletion and retention behavior still needs checking.
-- next: Integrate reviewed fixes in small groups, starting with data protection. Keep V2 and GEN-28 opt-in until their remaining checks are complete.
+- next: Integrate reviewed fixes in small groups, starting with data protection. Keep V2 opt-in; introduce GEN-28 behind an opt-in control after its remaining checks.
 
 > Reviewed through 5 September 2026. 65 current tasks and 124 archived records. These are work items, not a completion percentage or a count of confirmed bugs.
 
@@ -259,11 +259,11 @@ The Settings candidate improves PowerSync account boundaries. It does not comple
 
 Next: Reuse the candidate account protections, finish the legacy worker fix, then test two accounts with pending offline work.
 
-### V2 stalled-lifter recovery
+### Additional V2 stalled-lifter recovery fixes
 
 ID: sets-legacy-034 · Progression · Assigned to You · Record updated 2026-09-05
 
-The remaining stall changes are implemented in a local V2 candidate. The independent comparison passed all 25 focused cases. The candidate is not pushed, integrated or live.
+The released V2 engine is already in the app as an opt-in setting. This task covers additional stall-recovery fixes in a local candidate: 25 focused comparison cases passed, but these extra fixes are not pushed, integrated or live.
 
 Next: Integrate the reviewed V2-only changes and verify the complete save/reload flow. Keep V2 opt-in until remaining coverage and acceptance are complete.
 
@@ -391,7 +391,7 @@ Next: Read the installed backend and sync rules, then verify old and new clients
 
 ID: sets-20260905-app-copy-candidate · Copy, exercise content and exports · Assigned to Unassigned · Record updated 2026-09-05
 
-The copy candidate records 904 reviewed entries and 104 rewrites. It is not accepted or released; 281 entries have overlapping blockers. Its saved full test run also had three failures.
+The app wording-update branch records 904 reviewed entries and 104 rewrites. It is not accepted or released; 281 entries have overlapping blockers. Its saved full test run also had three failures.
 
 Next: Reconcile copy with the final screens, resolve blocked entries and explain the saved failures before integration. Preserve the paused task until its existing owner resumes it.
 
