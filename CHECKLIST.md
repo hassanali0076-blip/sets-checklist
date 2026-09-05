@@ -1,10 +1,10 @@
 # SETS — shared checklist
 
-Updated: 2026-09-05T18:49:19.515Z · Reviewed through 2026-09-05
+Updated: 2026-09-05T18:56:50.731Z · Reviewed through 2026-09-05
 
 - web: The served web build now includes the newer V2 beta code, still opt-in. The default-on candidate is blocked by the latest review. Other implementation and release states remain task-specific.
 - backend: Development testing is available under the existing model. Verify the connection and test-account separation; installed deletion and retention behavior still needs checking.
-- next: Complete the eight progression repairs before V2 default rollout; the ceiling-rule question is resolved by existing founder instructions. The previous data-protection build passed 12 phone checks. Its quiet automatic-recovery successor passes source and 14 compiled-browser checks, with new phone and real-service acceptance pending. Address the separate legacy database reset risk. GEN-28 app integration remains pending.
+- next: Complete the eight progression repairs before V2 default rollout; the ceiling-rule question is resolved by existing founder instructions. Quiet automatic recovery now passes all 14 controlled physical-iPhone and compiled-browser checks. Its real-service verification and app integration remain pending. Address the separate legacy database reset risk. GEN-28 app integration remains pending.
 
 > Reviewed through 5 September 2026. 88 current tasks and 123 archived records. These are work items, not a completion percentage or a count of confirmed bugs.
 
@@ -247,9 +247,9 @@ Next: Integrate cleanup only with protection for unsent work. Test sign-out, sig
 
 ID: sets-legacy-009 · Data protection and sync · Assigned to Josh · Record updated 2026-09-05
 
-Local repairs preserve upload-before-download ordering and retained failed payloads. The preceding build passed all 12 physical-iPhone checks. A new quiet successor retains those barriers and passes 61 sync tests plus the shared 14-case compiled browser run; temporary uploads retry without another action. Its phone and real-service checks remain pending. Nothing is released; PowerSync coverage remains separate.
+The quiet local repair now passes all 14 controlled physical-iPhone checks as well as the compiled browser run and 61 sync tests. Temporary uploads retry without another action, exact failed payloads are retained, and downloads wait for acknowledged uploads. Real-service verification and integration remain pending. Nothing is released; PowerSync coverage remains separate.
 
-Next: Confirm the quiet successor on the phone, then verify real service boundaries before proposing integration and release.
+Next: Prepare bounded integration and verify real service boundaries before release, preserving upload ordering and failed-payload protection.
 
 ### Avoid partially completed category deletion
 
@@ -327,17 +327,17 @@ Next: Integrate the reviewed V2-only changes and verify the complete save/reload
 
 ID: sets-legacy-071 · Data protection and sync · Assigned to Unassigned · Record updated 2026-09-05
 
-The local quiet successor keeps saved sets intact, retains exact attempted values and retries rejected completion or edits automatically. It avoids technical error prompts and manual retry instructions; completion still waits for a confirmed save. Row ownership checks protect newer edits and preserve unrelated pending edits. The 482 logger/recovery tests and 14 compiled cases pass. New phone acceptance remains pending; nothing is released.
+The quiet local repair now passes all 14 controlled physical-iPhone checks. Rejected completion and completed-set edits recover automatically, retain exact values, save once and survive reopening. Technical prompts and manual retry instructions are removed; completion still waits for a confirmed save. The 482 logger/recovery tests also pass. Nothing is released.
 
-Next: Confirm automatic recovery on the physical phone, then verify service behavior and prepare bounded integration without regressing existing fixes.
+Next: Prepare bounded integration, verify real-service behavior and obtain release approval without regressing existing fixes.
 
 ### Protect older workouts when device storage is full
 
 ID: sets-20260905-offline-history · Data protection and sync · Assigned to Unassigned · Record updated 2026-09-05
 
-The preceding repair passed all 12 physical-iPhone cases. The new quiet successor passes 14 compiled browser cases, preserving all 500 synthetic older workouts and the previous active save. Rejected sets remain incomplete until automatic retry saves once and survives reopening. New successor phone acceptance remains pending. Nothing is released.
+The quiet local repair passes all 14 controlled physical-iPhone and compiled browser checks. All 500 synthetic older workouts and the previous active save survive temporary full storage. Rejected sets remain incomplete until automatic retry saves once and survives reopening. Real-service verification and integration remain pending; nothing is released.
 
-Next: Confirm the quiet successor on the phone, preserve the history policy, and address the separate database-open reset risk before release.
+Next: Preserve the history policy during integration and address the separate database-open reset risk before release.
 
 ### Review information collected in automatic reports
 
@@ -663,9 +663,9 @@ Next: Test week transitions near midnight, time-zone changes and daylight-saving
 
 ID: sets-20260905-workout-recovery-resilience · Data protection and sync · Assigned to Codex · Record updated 2026-09-05
 
-The local quiet successor retries temporary draft and recovery failures automatically, preserves input and keyboard focus, and uses passive saving status instead of error prompts or Retry save instructions. It retains verified fallback storage, safe startup navigation, durable draft cleanup and new-start guards. All 482 logger/recovery tests and 14 compiled browser cases pass. Its phone acceptance remains pending; the previous build passed 12 phone cases. Permanent storage exhaustion and other legacy readers remain separate.
+The quiet local repair passes all 14 controlled physical-iPhone checks and 482 logger/recovery tests. Temporary draft and recovery failures retry automatically with passive saving status, retaining exact input, safe startup navigation, fallback storage, durable cleanup and new-start guards. No technical error or Retry save prompt is required for these temporary failures. Permanent storage exhaustion and other legacy readers remain separate.
 
-Next: Confirm quiet recovery on the phone. Keep total-storage-failure limits explicit and complete the remaining database-open, source-deletion and damaged-data checks.
+Next: Prepare bounded integration and real-service checks. Keep total-storage-failure limits explicit and complete the remaining database-open, source-deletion and damaged-data checks.
 
 ### Check whether linking a superset adds unintended sets
 
