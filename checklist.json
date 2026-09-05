@@ -1,12 +1,12 @@
 {
   "schemaVersion": 1,
   "title": "SETS — shared checklist",
-  "updatedAt": "2026-09-05T07:09:18.978Z",
+  "updatedAt": "2026-09-05T07:15:23.564Z",
   "reviewedThrough": "2026-09-05",
   "release": {
     "web": "The live app includes Progression Engine V2 as an opt-in setting. Additional V2 fixes for stalled exercises and later-set targets, Settings changes, storage-history and Sync Now fixes, app wording updates and GEN-28 are not released.",
     "backend": "Development testing is available under the existing model. Verify the connection and test-account separation; installed deletion and retention behavior still needs checking.",
-    "next": "Finish phone acceptance for the locally repaired data-protection batch, then integration and release approval. Complete isolated cloud checks and make Sync Now cover both upload queues. Keep V2 opt-in; GEN-28 still needs acceptance and integration."
+    "next": "The repaired data-protection batch passes controlled desktop and physical-iPhone checks. Next: integration, remaining isolated service checks and release approval. Make Sync Now cover both upload queues. Keep V2 opt-in; GEN-28 still needs acceptance and integration."
   },
   "notes": [
     "Reviewed through 5 September 2026. 84 current tasks and 123 archived records. These are work items, not a completion percentage or a count of confirmed bugs.",
@@ -18,6 +18,10 @@
     "This update publishes checklist summaries only. It does not change the SETS app, PowerSync, task schedules or release permissions."
   ],
   "changes": [
+    {
+      "date": "2026-09-05",
+      "text": "The repaired test build now passes all three controlled checks on the physical iPhone, including storage-full truthfulness and save-once retry after reopening. The repeated failure came from the older build; old test links now open the repaired build. App integration/release and real cloud/PowerSync checks remain separate."
+    },
     {
       "date": "2026-09-05",
       "text": "Implemented and reviewed the failed-save logger repair locally. Seven new failure/retry cases pass, the full suite passes, and the updated compiled browser test preserves history, avoids false completion and saves the retry exactly once. Repaired-build phone acceptance is pending. No app release or PowerSync model change."
@@ -774,8 +778,8 @@
       "area": "Data protection and sync",
       "status": "testing",
       "assignee": "Unassigned",
-      "summary": "A local repair now leaves a set unticked when saving fails, preserves the entered values and allows retry. Single-set, warm-up and complete-all failure/retry checks pass. The updated compiled browser test also confirms retry saves once and survives reopening. The earlier phone failure is preserved as evidence; the repaired build still needs its phone run. Not released.",
-      "nextStep": "Run the repaired test build on the physical iPhone, then complete integration and release approval. Verify the released app before closing this task.",
+      "summary": "The local repair now passes on desktop and a physical iPhone: failed saves leave sets unticked and preserve the entered values; retry saves once and survives reopening. Single-set, warm-up and complete-all source failure/retry checks also pass. Existing workouts remain protected. This is verified in the isolated test build, not released.",
+      "nextStep": "Integrate the tested repair, finish the data batch’s separately scoped service checks and obtain release approval. Verify the released app before closing this task.",
       "updated": "2026-09-05"
     },
     {
@@ -1533,8 +1537,8 @@
       "title": "Protect older workouts when device storage is full",
       "area": "Data protection and sync",
       "status": "testing",
-      "summary": "The preservation fix keeps all 500 synthetic older workouts and the previous active-workout save under full storage. A follow-up logger repair now prevents false completion; the updated compiled browser test passes storage failure, retry and reopening. The earlier build preserved history on the physical iPhone; the repaired build awaits its own phone result. Not released.",
-      "nextStep": "Finish the repaired-build phone check, then integrate and release after approval. Keep automatic history cleanup disabled unless cloud saving is reliably confirmed.",
+      "summary": "The repaired compiled build passes controlled desktop and physical-iPhone checks: all 500 synthetic older workouts and the previous active save survive full storage; unsaved sets stay unticked; retry saves once and survives reopening. Nothing is released.",
+      "nextStep": "Integrate the tested data-protection batch and release after the remaining service checks and approval. Keep automatic history cleanup disabled unless cloud saving is reliably confirmed.",
       "updated": "2026-09-05",
       "assignee": "Unassigned"
     },

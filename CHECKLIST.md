@@ -1,10 +1,10 @@
 # SETS — shared checklist
 
-Updated: 2026-09-05T07:09:18.978Z · Reviewed through 2026-09-05
+Updated: 2026-09-05T07:15:23.564Z · Reviewed through 2026-09-05
 
 - web: The live app includes Progression Engine V2 as an opt-in setting. Additional V2 fixes for stalled exercises and later-set targets, Settings changes, storage-history and Sync Now fixes, app wording updates and GEN-28 are not released.
 - backend: Development testing is available under the existing model. Verify the connection and test-account separation; installed deletion and retention behavior still needs checking.
-- next: Finish phone acceptance for the locally repaired data-protection batch, then integration and release approval. Complete isolated cloud checks and make Sync Now cover both upload queues. Keep V2 opt-in; GEN-28 still needs acceptance and integration.
+- next: The repaired data-protection batch passes controlled desktop and physical-iPhone checks. Next: integration, remaining isolated service checks and release approval. Make Sync Now cover both upload queues. Keep V2 opt-in; GEN-28 still needs acceptance and integration.
 
 > Reviewed through 5 September 2026. 84 current tasks and 123 archived records. These are work items, not a completion percentage or a count of confirmed bugs.
 
@@ -255,17 +255,17 @@ Next: Integrate the reviewed V2-only changes and verify the complete save/reload
 
 ID: sets-legacy-071 · Data protection and sync · Assigned to Unassigned · Record updated 2026-09-05
 
-A local repair now leaves a set unticked when saving fails, preserves the entered values and allows retry. Single-set, warm-up and complete-all failure/retry checks pass. The updated compiled browser test also confirms retry saves once and survives reopening. The earlier phone failure is preserved as evidence; the repaired build still needs its phone run. Not released.
+The local repair now passes on desktop and a physical iPhone: failed saves leave sets unticked and preserve the entered values; retry saves once and survives reopening. Single-set, warm-up and complete-all source failure/retry checks also pass. Existing workouts remain protected. This is verified in the isolated test build, not released.
 
-Next: Run the repaired test build on the physical iPhone, then complete integration and release approval. Verify the released app before closing this task.
+Next: Integrate the tested repair, finish the data batch’s separately scoped service checks and obtain release approval. Verify the released app before closing this task.
 
 ### Protect older workouts when device storage is full
 
 ID: sets-20260905-offline-history · Data protection and sync · Assigned to Unassigned · Record updated 2026-09-05
 
-The preservation fix keeps all 500 synthetic older workouts and the previous active-workout save under full storage. A follow-up logger repair now prevents false completion; the updated compiled browser test passes storage failure, retry and reopening. The earlier build preserved history on the physical iPhone; the repaired build awaits its own phone result. Not released.
+The repaired compiled build passes controlled desktop and physical-iPhone checks: all 500 synthetic older workouts and the previous active save survive full storage; unsaved sets stay unticked; retry saves once and survives reopening. Nothing is released.
 
-Next: Finish the repaired-build phone check, then integrate and release after approval. Keep automatic history cleanup disabled unless cloud saving is reliably confirmed.
+Next: Integrate the tested data-protection batch and release after the remaining service checks and approval. Keep automatic history cleanup disabled unless cloud saving is reliably confirmed.
 
 ### Review information collected in automatic reports
 
