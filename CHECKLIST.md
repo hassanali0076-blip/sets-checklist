@@ -130,9 +130,9 @@ Next: Balance estimated time across days and explain unavoidable limits; rerun t
 
 ID: sets-20260905-gen28-review-gaps · Program generator · Assigned to Codex · Record updated 2026-09-05
 
-Round 2 passed 32 focused checks and repaired a nearly empty leg day. Independent review still found that the checker accepts incorrect effort targets and rep bands.
+Round 2 passed 32 focused checks and repaired a nearly empty leg day. Review still found outdated powerbuilding rep targets and a checker that accepts incorrect effort targets and rep bands.
 
-Next: Check exact allowed targets, resolve the written powerbuilding rep-rule mismatch, add deliberately invalid examples, and include these tests in normal automated checks.
+Next: Apply the approved main and second-compound rep bands, check exact allowed rep and effort targets, add deliberately invalid examples, and include these tests in normal automated checks.
 
 ### Match equipment pictures to their labels
 
@@ -539,7 +539,7 @@ ID: sets-20260905-gen28-app-integration · Program generator · Assigned to Unas
 
 Fable’s prototype and Codex’s Round 2 are separate from the app. Neither is a deployed replacement generator.
 
-Next: Finish the review gaps, map gym, injury and training options, and integrate behind an opt-in control. Preserve saved programs and compare real app outputs before rollout.
+Next: Finish the review gaps and approve the changed control-program outputs. Map gym, injury and training options, then integrate behind an opt-in control. Preserve saved programs and compare real app outputs before rollout.
 
 ### Decide which public prototype pages should remain available
 

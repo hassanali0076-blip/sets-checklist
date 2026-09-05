@@ -20,7 +20,7 @@
   "changes": [
     {
       "date": "2026-09-05",
-      "text": "Reconciled current production and candidate evidence; added missing findings, split the watch list, archived stale reminders and duplicates, reopened the default rep-range issue, and recorded remaining GEN-28 checker gaps. Existing assignments are preserved."
+      "text": "Reconciled production and candidate evidence; added missing findings, split the watch list, archived stale reminders and duplicates, reopened the default rep-range issue, and confirmed remaining GEN-28 prescription and checker defects with its agent. Existing assignments are preserved."
     },
     {
       "date": "2026-08-31",
@@ -1701,8 +1701,8 @@
       "title": "GEN-28: close the remaining prescription and checker gaps",
       "area": "Program generator",
       "status": "issue",
-      "summary": "Round 2 passed 32 focused checks and repaired a nearly empty leg day. Independent review still found that the checker accepts incorrect effort targets and rep bands.",
-      "nextStep": "Check exact allowed targets, resolve the written powerbuilding rep-rule mismatch, add deliberately invalid examples, and include these tests in normal automated checks.",
+      "summary": "Round 2 passed 32 focused checks and repaired a nearly empty leg day. Review still found outdated powerbuilding rep targets and a checker that accepts incorrect effort targets and rep bands.",
+      "nextStep": "Apply the approved main and second-compound rep bands, check exact allowed rep and effort targets, add deliberately invalid examples, and include these tests in normal automated checks.",
       "updated": "2026-09-05",
       "assignee": "Codex"
     },
@@ -1712,7 +1712,7 @@
       "area": "Program generator",
       "status": "planned",
       "summary": "Fable’s prototype and Codex’s Round 2 are separate from the app. Neither is a deployed replacement generator.",
-      "nextStep": "Finish the review gaps, map gym, injury and training options, and integrate behind an opt-in control. Preserve saved programs and compare real app outputs before rollout.",
+      "nextStep": "Finish the review gaps and approve the changed control-program outputs. Map gym, injury and training options, then integrate behind an opt-in control. Preserve saved programs and compare real app outputs before rollout.",
       "updated": "2026-09-05",
       "assignee": "Unassigned"
     },
