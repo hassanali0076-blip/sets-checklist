@@ -1,10 +1,10 @@
 # SETS — shared checklist
 
-Updated: 2026-09-05T18:56:50.731Z · Reviewed through 2026-09-05
+Updated: 2026-09-05T19:23:11.546Z · Reviewed through 2026-09-05
 
-- web: The served web build now includes the newer V2 beta code, still opt-in. The default-on candidate is blocked by the latest review. Other implementation and release states remain task-specific.
+- web: The served build still contains the earlier opt-in V2 beta. Re-review blocks both the newer repaired opt-in candidate and its default-on candidate. Neither reviewed candidate is the served build; other release states remain task-specific.
 - backend: Development testing is available under the existing model. Verify the connection and test-account separation; installed deletion and retention behavior still needs checking.
-- next: Complete the eight progression repairs before V2 default rollout; the ceiling-rule question is resolved by existing founder instructions. Quiet automatic recovery now passes all 14 controlled physical-iPhone and compiled-browser checks. Its real-service verification and app integration remain pending. Address the separate legacy database reset risk. GEN-28 app integration remains pending.
+- next: Repair five remaining progression interaction groups, preserve the original acceptance checks and incorporate missing production changes before either V2 candidate is released. The original eight repair examples now pass. Quiet automatic recovery passes 14 controlled physical-iPhone and compiled-browser checks; its real-service verification and app integration remain pending. The separate database reset risk and GEN-28 integration remain open.
 
 > Reviewed through 5 September 2026. 88 current tasks and 123 archived records. These are work items, not a completion percentage or a count of confirmed bugs.
 
@@ -110,21 +110,13 @@ The served V2 engine can recommend an unrealistic equipment jump when effort rat
 
 Next: Estimate achievable reps at the actual next equipment weight. Keep the current weight and build reps when the next step is too large; preserve already approved small-step behavior.
 
-### Check progression at the equipment’s maximum weight
-
-ID: sets-20260905-maximum-weight-progression · Progression · Assigned to Unassigned · Record updated 2026-09-05
-
-The dated founder rules removed the old rep ceiling, including when effort ratings are off. The solver and a stale test still enforce the old limit and can prescribe fewer reps than were achieved. The decision is resolved; the implementation still needs repair.
-
-Next: Allow continued rep progression at the highest available weight. Replace only the superseded ceiling assertions with a dated explanation, preserve all unrelated approvals and verify repeated sessions. No new founder decision is needed.
-
 ### Complete V2 coverage before making it the default
 
 ID: sets-20260905-v2-coverage-rollout · Progression · Assigned to Unassigned · Record updated 2026-09-05
 
-Eight progression repairs now block default rollout. The ceiling rule is settled, and its code/test alignment is one of those repairs. Certain single-arm, bodyweight, plus-set and effort-rating-off combinations still use the older engine and violate the approved V2 rules. The existing 158 checks pass and all 1,008 audited persona calls use V2, but neither covers these failures.
+Both the repaired opt-in and default-on candidates remain blocked. The original eight repairs pass their 17-entry review harness, but eight new assertions expose five interaction groups: extra weight increases after equipment adjustment, unavailable weights in plus or recovery paths, missing planned sets, ascending loads after a recovery hold, and repeated targets when the next weight is too large. The opt-in candidate passes its full 8,100-test suite, which excludes these new cases. Candidate source also omits newer production changes.
 
-Next: Repair the confirmed cases before default rollout. Combine exercise mode, set type and arm ownership correctly; preserve existing approval tests, then verify finish/reload, the compiled app and phone behavior.
+Next: Use one Fable implementation owner to preserve current production and original approval checks, repair the five groups, and rerun both frozen harnesses plus the compiled app. Restore removed passing progression limits and preserve legacy expectations separately. Rendered-app, phone and cloud acceptance remain required before release.
 
 ### Give priority muscles the promised extra work
 
@@ -410,6 +402,14 @@ ID: sets-20260905-v2-later-set-target · Progression · Assigned to Unassigned �
 A narrow V2 repair exists locally, with a regression case that fails on the current app source. This is separate from the broader fatigue-model work.
 
 Next: Integrate that focused repair and check later-set recommendations before and after save/reload.
+
+### Check progression at the equipment’s maximum weight
+
+ID: sets-20260905-maximum-weight-progression · Progression · Assigned to Unassigned · Record updated 2026-09-05
+
+The reviewed unreleased candidates now pass the original maximum-weight rule: achieved reps can continue beyond the withdrawn ceiling. This specific repair has evidence, but the currently served build still has the older behavior. Five other progression interaction groups and integration checks block the candidates from release.
+
+Next: Preserve the repaired ceiling rule and its unchanged acceptance case while fixing the remaining interactions. Verify repeated-session and released-app behavior before marking this resolved live.
 
 ### GEN-28 Round 4: verify the repaired generator
 
