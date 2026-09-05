@@ -1,21 +1,27 @@
 {
   "schemaVersion": 1,
   "title": "SETS — shared checklist",
-  "updatedAt": "2026-08-31T03:20:11.753Z",
-  "reviewedThrough": "2026-08-31",
+  "updatedAt": "2026-09-05T03:33:28.564Z",
+  "reviewedThrough": "2026-09-05",
   "release": {
-    "web": "The SETS app is unchanged by this checklist publication.",
-    "backend": "Staging is prepared; isolated sync and deployment approval remain open.",
-    "next": "Gym Environments, Scanner 2.0, sharing and Settings: local candidate, not released."
+    "web": "Live app checked 5 September: still the 4 September build. Settings, the newer progression candidate, copy and GEN-28 are not live.",
+    "backend": "Installed database functions, retention jobs and staging sync isolation still need direct verification. A source review is not cloud acceptance.",
+    "next": "Integrate reviewed fixes in small groups, starting with data protection. Keep V2 and GEN-28 opt-in until their remaining checks are complete."
   },
   "notes": [
-    "All 146 private checklist records are represented by public-safe summaries. Internal diagnostics, account examples and release access details are not published.",
-    "Assigned to is the current owner. Codex owns former Grok and Claude assignments; Josh assignments are unchanged. You means Aadam. Unassigned preserves a missing owner.",
-    "Earlier sign-offs are historical coverage, not a fresh audit or confirmation that an old symptom is impossible today.",
-    "Next release means a local candidate that may still need integration and approval. Needs checking does not mean implemented or released.",
-    "Viewing needs no login. Updating the shared source requires repository write permission or an approved pull request."
+    "Reviewed through 5 September 2026. 65 current tasks and 124 archived records. These are work items, not a completion percentage or a count of confirmed bugs.",
+    "All 146 original IDs are retained. Stale reminders and duplicates are archived; missing findings and the seven individual watch checks have been added.",
+    "Known issue means the stated source or candidate defect has evidence. Needs checking also includes unreleased repairs and unconfirmed reports; read each summary for the distinction.",
+    "Local tests, a pushed branch, integration, deployment and real-device acceptance are separate. Earlier sign-offs have not all been rerun in this review.",
+    "Existing assignments are unchanged, including all 14 Josh assignments. Unassigned means no implementation owner has been chosen. Historical author credits do not assign new work.",
+    "Local reproductions, candidate preparation and code review can proceed independently. Shared account/sync contracts and installed service configuration must be coordinated before integration or release.",
+    "This update publishes checklist summaries only. It does not change the SETS app, PowerSync, task schedules or release permissions."
   ],
   "changes": [
+    {
+      "date": "2026-09-05",
+      "text": "Reconciled current production and candidate evidence; added missing findings, split the watch list, archived stale reminders and duplicates, reopened the default rep-range issue, and recorded remaining GEN-28 checker gaps. Existing assignments are preserved."
+    },
     {
       "date": "2026-08-31",
       "text": "Published the shared SETS checklist with all 146 task records, prominent assignee badges and search/status/area/owner filters."
@@ -42,93 +48,93 @@
     },
     {
       "id": "sets-legacy-002",
-      "title": "Feedback retention during account deletion",
-      "area": "Critical — fix before release",
+      "title": "Remove report content during account deletion",
+      "area": "Data protection and sync",
       "status": "issue",
       "assignee": "Josh",
-      "summary": "Account deletion needs a clear, verified policy for feedback and bug-report content.",
-      "nextStep": "Remains assigned to Josh. Confirm the current implementation and validation needs before any release.",
-      "updated": "2026-08-31"
+      "summary": "Account deletion can leave feedback and report content behind in the current schema. Production retention has not been independently checked.",
+      "nextStep": "Remove or anonymise associated content and attachments, and verify the installed deletion path.",
+      "updated": "2026-09-05"
     },
     {
       "id": "sets-legacy-003",
-      "title": "Account deletion sync completeness",
-      "area": "Critical — fix before release",
-      "status": "testing",
+      "title": "Delete every current copy of account data",
+      "area": "Data protection and sync",
+      "status": "issue",
       "assignee": "Josh",
-      "summary": "Deletion must remain complete after the app reconnects and receives synced data.",
-      "nextStep": "Remains assigned to Josh. Confirm the current implementation and validation needs before any release.",
-      "updated": "2026-08-31"
+      "summary": "Deletion code does not cover all newer stored copies. Installed backend behavior has not been verified in this review.",
+      "nextStep": "Inventory every database, settings and device copy; extend deletion coverage and verify data stays deleted after reconnecting.",
+      "updated": "2026-09-05"
     },
     {
       "id": "sets-legacy-004",
-      "title": "Selective deletion data protection",
-      "area": "High — fix before release",
+      "title": "Deleting settings must preserve pending workouts",
+      "area": "Data protection and sync",
       "status": "testing",
       "assignee": "Josh",
-      "summary": "Deleting selected data must preserve unrelated workouts that have not finished syncing.",
-      "nextStep": "Remains assigned to Josh. Confirm the current implementation and validation needs before any release.",
-      "updated": "2026-08-31"
+      "summary": "The current app source can discard an unrelated pending workout when a category deletion fails. A scoped repair exists in the unreleased Settings candidate.",
+      "nextStep": "Integrate the scoped repair; verify failed deletion preserves pending workouts and reconnect saves them once.",
+      "updated": "2026-09-05"
     },
     {
       "id": "sets-legacy-005",
-      "title": "“Different gym per day” is ignored",
-      "area": "High — fix before release",
+      "title": "Use the correct gym for each workout",
+      "area": "Settings and gym equipment",
       "status": "testing",
       "assignee": "Josh",
-      "summary": "Each training day should use the equipment available at its assigned gym.",
-      "nextStep": "Remains assigned to Josh. Confirm the current implementation and validation needs before any release.",
-      "updated": "2026-08-31"
+      "summary": "Current app behavior can ignore a day gym. The approved replacement is Main Gym for generation, followed by explicit per-day gym changes and exercise refitting.",
+      "nextStep": "Integrate the candidate gym identity and refitting flow. Verify each workout uses its chosen gym after save and reload.",
+      "updated": "2026-09-05"
     },
     {
       "id": "sets-legacy-006",
-      "title": "Changing equipment can leave incompatible exercises unchanged",
-      "area": "High — fix before release",
+      "title": "Replace exercises when available equipment changes",
+      "area": "Settings and gym equipment",
       "status": "testing",
       "assignee": "Josh",
-      "summary": "Equipment changes should update exercises that no longer fit the available setup.",
-      "nextStep": "Remains assigned to Josh. Confirm the current implementation and validation needs before any release.",
-      "updated": "2026-08-31"
+      "summary": "The live-source comparison left incompatible exercises unchanged. A substantial repair exists in the Settings candidate.",
+      "nextStep": "Reuse the refitting repair and verify switching gyms, disabling equipment and removing the last usable weight.",
+      "updated": "2026-09-05"
     },
     {
       "id": "sets-legacy-007",
-      "title": "Superset / Myo-Reps / periodisation / intensity choices are ignored",
-      "area": "High — fix before release",
-      "status": "testing",
+      "title": "Honor the training options shown in the generator",
+      "area": "Program generator",
+      "status": "issue",
       "assignee": "Josh",
-      "summary": "Saved training-method choices need to be honored when generating a program.",
-      "nextStep": "Remains assigned to Josh. Confirm the current implementation and validation needs before any release.",
-      "updated": "2026-08-31"
+      "summary": "A controlled live-source case confirmed some saved training-method choices do not affect generation. GEN-28 does not automatically solve every option.",
+      "nextStep": "Connect each supported option to the shipping generator, or make an explicit product decision about inactive controls. Local analysis can proceed before sync work.",
+      "updated": "2026-09-05"
     },
     {
       "id": "sets-legacy-008",
-      "title": "Signed-out device data cleanup",
-      "area": "High — fix before release",
+      "title": "Clear account data safely on sign-out",
+      "area": "Data protection and sync",
       "status": "testing",
       "assignee": "Josh",
-      "summary": "Signing out must clear account-specific device data safely.",
-      "nextStep": "Remains assigned to Josh. Confirm the current implementation and validation needs before any release.",
-      "updated": "2026-08-31"
+      "summary": "Current source leaves account-specific PowerSync data on the device. The unreleased Settings candidate adds account cleanup.",
+      "nextStep": "Integrate cleanup only with protection for unsent work. Test sign-out, sign-in and switching between two accounts.",
+      "updated": "2026-09-05"
     },
     {
       "id": "sets-legacy-009",
-      "title": "Manual sync recovery correctness",
-      "area": "High — fix before release",
-      "status": "testing",
+      "title": "Sync Now must wait for uploads",
+      "area": "Data protection and sync",
+      "status": "issue",
       "assignee": "Josh",
-      "summary": "Manual recovery should preserve recent edits while syncing is underway.",
-      "nextStep": "Remains assigned to Josh. Confirm the current implementation and validation needs before any release.",
-      "updated": "2026-08-31"
+      "summary": "A second sync request can finish while an earlier upload is still running. The source-level race was reproduced.",
+      "nextStep": "Make concurrent requests wait for the same upload before downloading and merging changes. Verify recent edits survive.",
+      "updated": "2026-09-05"
     },
     {
       "id": "sets-legacy-010",
-      "title": "Fatigue model: the writer and readers disagree",
-      "area": "Medium — fix next",
-      "status": "next_release",
+      "title": "Make fatigue estimates mean the same thing everywhere",
+      "area": "Progression",
+      "status": "issue",
       "assignee": "Codex",
-      "summary": "An existing fatigue-model candidate needs careful integration; it is not a ready-to-release fix.",
-      "nextStep": "Reconcile the existing candidate, run the relevant checks and obtain release approval.",
-      "updated": "2026-08-31"
+      "summary": "The legacy writer and readers still disagree. The preserved experiment is unfinished and is not a release-ready fix.",
+      "nextStep": "Measure the effect, agree one shared quantity, reconcile readers and writer, and handle saved estimates explicitly.",
+      "updated": "2026-09-05"
     },
     {
       "id": "sets-legacy-011",
@@ -142,33 +148,33 @@
     },
     {
       "id": "sets-legacy-012",
-      "title": "Multi-category deletion consistency",
-      "area": "Medium — fix next",
-      "status": "issue",
+      "title": "Avoid partially completed category deletion",
+      "area": "Data protection and sync",
+      "status": "testing",
       "assignee": "Josh",
-      "summary": "Deleting several categories needs a clear outcome if part of the operation fails.",
-      "nextStep": "Remains assigned to Josh. Confirm the current implementation and validation needs before any release.",
-      "updated": "2026-08-31"
+      "summary": "Deleting several categories can partly succeed. The Settings candidate limits granular deletion to one category at a time.",
+      "nextStep": "Reuse the single-category restriction until reliable all-or-nothing deletion is implemented; make failed cleanup retryable.",
+      "updated": "2026-09-05"
     },
     {
       "id": "sets-legacy-013",
-      "title": "Session renewal and sync coordination",
-      "area": "Medium — fix next",
-      "status": "testing",
+      "title": "Stop the old sync worker when the session changes",
+      "area": "Data protection and sync",
+      "status": "issue",
       "assignee": "Josh",
-      "summary": "Authentication renewal and syncing need consistent coordination.",
-      "nextStep": "Remains assigned to Josh. Confirm the current implementation and validation needs before any release.",
-      "updated": "2026-08-31"
+      "summary": "The current legacy sync worker is not safely stopped across all session changes. A synthetic account-switch case reproduced work continuing under the new account.",
+      "nextStep": "Bind queued saves to their original account and stop the old worker before starting another. Coordinate the account contract with the PowerSync candidate.",
+      "updated": "2026-09-05"
     },
     {
       "id": "sets-legacy-014",
-      "title": "Scanner photos are kept with no stated age limit",
-      "area": "Medium — fix next",
-      "status": "issue",
+      "title": "Verify scanner photo retention and expiry",
+      "area": "Data protection and sync",
+      "status": "testing",
       "assignee": "You",
-      "summary": "Scanner photo retention still needs a product decision and verified enforcement.",
-      "nextStep": "The founder’s decision or acceptance is needed. No release action is authorized by this task.",
-      "updated": "2026-08-31"
+      "summary": "No enforced photo expiry was established from the repository. An external cleanup job may exist and still needs checking.",
+      "nextStep": "Inspect actual retention and cleanup first, then implement the agreed expiry and account-deletion coverage.",
+      "updated": "2026-09-05"
     },
     {
       "id": "sets-legacy-015",
@@ -242,13 +248,13 @@
     },
     {
       "id": "sets-legacy-022",
-      "title": "Single-arm next-set target asks a rep too few",
-      "area": "Being worked on & next up",
-      "status": "issue",
+      "title": "Check single-arm targets and remaining ATLAS cases",
+      "area": "Progression",
+      "status": "testing",
       "assignee": "Codex",
-      "summary": "Single-arm next-set recommendations remain lower than expected; the cause still needs investigation.",
-      "nextStep": "Investigate the recorded behavior and validate the next change before release.",
-      "updated": "2026-08-31"
+      "summary": "The old single-arm report and related engine cases need fresh comparison in default and V2 modes. Existing history does not prove each remains broken.",
+      "nextStep": "Replay the named cases with correctly paired arms and sets; classify each as fixed, V2-only, default-only or still open before patching.",
+      "updated": "2026-09-05"
     },
     {
       "id": "sets-legacy-023",
@@ -283,52 +289,52 @@
     {
       "id": "sets-legacy-026",
       "title": "Share a gym with another SETS user",
-      "area": "Being worked on & next up",
-      "status": "active",
+      "area": "Settings and gym equipment",
+      "status": "testing",
       "assignee": "You",
-      "summary": "Gym sharing is implemented in the local release candidate. Staging and real-device acceptance remain open.",
-      "nextStep": "Complete separately approved staging, cloud-sync and real-device acceptance before release.",
-      "updated": "2026-08-31"
+      "summary": "The share and import flow is implemented in the unreleased candidate. Real cloud permissions and device acceptance remain unverified.",
+      "nextStep": "Verify permissions, imported equipment identity and independence from the sender after import.",
+      "updated": "2026-09-05"
     },
     {
       "id": "consolidated-settings-set-46",
-      "title": "SET-46: Consolidated Settings and workout controls",
-      "area": "Being worked on & next up",
+      "title": "Consolidated Settings and workout controls",
+      "area": "Settings and gym equipment",
       "status": "testing",
       "assignee": "Unassigned",
-      "summary": "The Settings candidate includes equipment-limit explanations and rest after the final warm-up. Cloud-sync and device checks remain open.",
-      "nextStep": "Complete separately approved staging, cloud-sync and real-device acceptance before release.",
-      "updated": "2026-08-31"
+      "summary": "The preserved Settings candidate includes workout preferences, warm-ups, rest controls and equipment explanations. It is pushed but not integrated or live.",
+      "nextStep": "Reconcile newer progression preferences, integrate only compatible changes, then complete staging and phone acceptance.",
+      "updated": "2026-09-05"
     },
     {
       "id": "powersync-instance-confirmation",
-      "title": "Resolve safe PowerSync use for the already prepared staging app",
-      "area": "Being worked on & next up",
+      "title": "Confirm an isolated sync connection for staging",
+      "area": "Integration and release",
       "status": "testing",
       "assignee": "Unassigned",
-      "summary": "The staging implementation already exists. A safe isolated sync connection is still needed before its deployment can proceed.",
-      "nextStep": "Inspect the existing sync services and staging resources read-only. Resolve any remaining ownership question before requesting approval for a specific change.",
-      "updated": "2026-08-31"
+      "summary": "The staging implementation already exists. The remaining dependency is a verified isolated connection and clear ownership of the shared data setup.",
+      "nextStep": "Read the existing service configuration and prepare an exact staging proposal. Local testing and candidate preparation can proceed while access or configuration questions are resolved.",
+      "updated": "2026-09-05"
     },
     {
       "id": "sets-legacy-029",
-      "title": "Editing a gym doesn't update your existing programs",
-      "area": "Being worked on & next up",
-      "status": "planned",
+      "title": "Apply gym edits to affected existing programs",
+      "area": "Settings and gym equipment",
+      "status": "testing",
       "assignee": "Josh",
-      "summary": "Editing equipment at the current gym should update affected programs, not only switching gyms.",
-      "nextStep": "Remains assigned to Josh. Confirm the current implementation and validation needs before any release.",
-      "updated": "2026-08-31"
+      "summary": "Gym-edit refitting now has candidate code, so the old planned-only label is stale. It still needs integration and complete flow checks.",
+      "nextStep": "Verify edits to the existing gym update affected programs and preserve unrelated days and logged history.",
+      "updated": "2026-09-05"
     },
     {
       "id": "sets-legacy-030",
       "title": "Generation and the workout screen disagree about which gym",
       "area": "Being worked on & next up",
-      "status": "planned",
+      "status": "history",
       "assignee": "Josh",
-      "summary": "Program generation and the workout screen need to use the same assigned gym.",
-      "nextStep": "Remains assigned to Josh. Confirm the current implementation and validation needs before any release.",
-      "updated": "2026-08-31"
+      "summary": "Archived duplicate: gym identity during generation and workouts is tracked under Use the correct gym for each workout. The old generation-time design has been superseded.",
+      "nextStep": "Follow sets-legacy-005 for the approved Main Gym and per-day refitting behavior.",
+      "updated": "2026-09-05"
     },
     {
       "id": "sets-legacy-031",
@@ -342,73 +348,73 @@
     },
     {
       "id": "sets-legacy-032",
-      "title": "Account-switching safety",
-      "area": "Reviewed — ready to ship",
-      "status": "next_release",
+      "title": "Account switching: reconcile both sync systems",
+      "area": "Data protection and sync",
+      "status": "testing",
       "assignee": "Josh",
-      "summary": "A reviewed candidate improves account-switching safety. It has not been accepted as a completed release here.",
-      "nextStep": "Reconcile the existing candidate, run the relevant checks and obtain release approval.",
-      "updated": "2026-08-31"
+      "summary": "The Settings candidate improves PowerSync account boundaries. It does not complete the separate legacy sync-worker repair. Nothing in this candidate is live.",
+      "nextStep": "Reuse the candidate account protections, finish the legacy worker fix, then test two accounts with pending offline work.",
+      "updated": "2026-09-05"
     },
     {
       "id": "sets-legacy-033",
-      "title": "Folders, workout templates & custom exercises could get messy across two devices",
-      "area": "Reviewed — ready to ship",
-      "status": "next_release",
+      "title": "Keep deleted folders, templates and exercises deleted",
+      "area": "Data protection and sync",
+      "status": "issue",
       "assignee": "Josh",
-      "summary": "A reviewed candidate improves consistency when folders, templates and custom exercises change across devices.",
-      "nextStep": "Reconcile the existing candidate, run the relevant checks and obtain release approval.",
-      "updated": "2026-08-31"
+      "summary": "The earlier candidate label overstated completeness. The current source still lacks a complete protection against an older device restoring these deleted items.",
+      "nextStep": "Keep durable deletion records and reject outdated writes. Test deleting on one device and reconnecting another.",
+      "updated": "2026-09-05"
     },
     {
       "id": "sets-legacy-034",
-      "title": "Stall-Breaker",
-      "area": "Waiting on you",
-      "status": "planned",
+      "title": "V2 stalled-lifter recovery",
+      "area": "Progression",
+      "status": "testing",
       "assignee": "You",
-      "summary": "A progression strategy for genuinely stalled exercises awaits the founder’s remaining decisions.",
-      "nextStep": "The founder’s decision or acceptance is needed. No release action is authorized by this task.",
-      "updated": "2026-08-31"
+      "summary": "The remaining stall changes are implemented in a local V2 candidate. The independent comparison passed all 25 focused cases. The candidate is not pushed, integrated or live.",
+      "nextStep": "Integrate the reviewed V2-only changes and verify the complete save/reload flow. Keep V2 opt-in until remaining coverage and acceptance are complete.",
+      "updated": "2026-09-05"
     },
     {
       "id": "sets-legacy-035",
-      "title": "Release approval check",
-      "area": "Waiting on you",
+      "title": "Accept the exact integrated release before publishing it",
+      "area": "Integration and release",
       "status": "planned",
       "assignee": "You",
-      "summary": "The release approval step remains with the founder. Internal release controls are not published.",
-      "nextStep": "The founder’s decision or acceptance is needed. No release action is authorized by this task.",
-      "updated": "2026-08-31"
+      "summary": "Old release reminders do not approve the current candidates. No app release is authorized by this checklist update.",
+      "nextStep": "Combine only reviewed compatible fixes, record the exact build, complete staging and phone checks, then obtain approval for that release.",
+      "updated": "2026-09-05"
     },
     {
       "id": "sets-legacy-036",
       "title": "Open the app once before your next workout",
       "area": "Waiting on you",
-      "status": "planned",
+      "status": "history",
       "assignee": "You",
-      "summary": "A recorded follow-up asks the founder to open the app so the updated program behavior can be checked.",
-      "nextStep": "The founder’s decision or acceptance is needed. No release action is authorized by this task.",
-      "updated": "2026-08-31"
+      "summary": "Archived stale reminder: opening the app once was tied to an earlier release and does not validate today’s candidates.",
+      "nextStep": "Use the current integrated-release acceptance task when a new build is available.",
+      "updated": "2026-09-05"
     },
     {
       "id": "sets-legacy-037",
       "title": "Stall-Breaker rulings (7 decisions) + solo \"@0\" ruling",
       "area": "Waiting on you",
-      "status": "planned",
+      "status": "history",
       "assignee": "You",
-      "summary": "Remaining decisions cover stalled progression and effort targets for separately logged arms.",
-      "nextStep": "The founder’s decision or acceptance is needed. No release action is authorized by this task.",
-      "updated": "2026-08-31"
+      "summary": "Archived superseded decision list: the earlier stall and effort rulings have been replaced by the current V2 decisions. V2 coverage remains a separate open task.",
+      "nextStep": "Follow V2 stalled-lifter recovery and V2 coverage before default rollout.",
+      "updated": "2026-09-05"
     },
     {
       "id": "sets-legacy-038",
       "title": "Smaller items under watch",
       "area": "Watching",
-      "status": "planned",
+      "status": "history",
       "assignee": "You",
-      "summary": "Several smaller behavior and device checks remain on the watch list.",
-      "nextStep": "The founder’s decision or acceptance is needed. No release action is authorized by this task.",
-      "updated": "2026-08-31"
+      "summary": "Archived umbrella: all seven watch items are now separate tasks with their own evidence limits and next steps. This does not mark them fixed.",
+      "nextStep": "Use the individual cycle, microcycle, easier-week, plus-set, gym-data, weight-sync and keyboard checks.",
+      "updated": "2026-09-05"
     },
     {
       "id": "sets-legacy-039",
@@ -652,13 +658,13 @@
     },
     {
       "id": "sets-legacy-063",
-      "title": "Targets land inside your written rep range (engine audit phase 0)",
-      "area": "Shipped — Fixed & live this campaign",
-      "status": "history",
+      "title": "Keep default progression targets inside the rep range",
+      "area": "Progression",
+      "status": "issue",
       "assignee": "Unassigned",
-      "summary": "Earlier engine work kept recommendations within the user’s written rep range.",
-      "nextStep": "Retain this earlier record. Reopen a new report separately if the behavior recurs.",
-      "updated": "2026-08-31"
+      "summary": "Reopened: an exact current-source case still asks below the written range. The opt-in V2 handles that case, but V2 is off by default.",
+      "nextStep": "Apply a narrow correction to the default paths using the approved capacity rule; preserve effort targets and real available weights.",
+      "updated": "2026-09-05"
     },
     {
       "id": "sets-legacy-064",
@@ -686,9 +692,9 @@
       "area": "Step 1 — Map everything",
       "status": "history",
       "assignee": "Unassigned",
-      "summary": "The original checklist organized work and preserved historical completion records.",
-      "nextStep": "Retain this earlier record. Reopen a new report separately if the behavior recurs.",
-      "updated": "2026-08-31"
+      "summary": "Historical checklist completion label. The board was reconciled again on 5 September; earlier completion totals are not a current app-completion percentage.",
+      "nextStep": "Use the current board statuses and per-task evidence.",
+      "updated": "2026-09-05"
     },
     {
       "id": "sets-legacy-067",
@@ -696,9 +702,9 @@
       "area": "Step 1 — Map everything",
       "status": "history",
       "assignee": "Unassigned",
-      "summary": "An earlier app-wide review looked for issues outside the initially reported cases.",
-      "nextStep": "Retain this earlier record. Reopen a new report separately if the behavior recurs.",
-      "updated": "2026-08-31"
+      "summary": "Historical blind-spot audit sign-off. It is retained as history and does not mean the app has no remaining bugs.",
+      "nextStep": "Use the current findings and checks from the latest review.",
+      "updated": "2026-09-05"
     },
     {
       "id": "sets-legacy-068",
@@ -1086,9 +1092,9 @@
       "area": "Step 3 — Safe, correct coaching",
       "status": "history",
       "assignee": "Unassigned",
-      "summary": "Earlier work tested a strategy for moving beyond a sustained plateau.",
-      "nextStep": "Retain this earlier record. Reopen a new report separately if the behavior recurs.",
-      "updated": "2026-08-31"
+      "summary": "Historical Stall-Breaker sign-off, superseded by the current V2 specification and local candidate. The new candidate is not live.",
+      "nextStep": "Follow sets-legacy-034 for current implementation and acceptance.",
+      "updated": "2026-09-05"
     },
     {
       "id": "sets-legacy-107",
@@ -1216,9 +1222,9 @@
       "area": "Step 3 — Safe, correct coaching",
       "status": "history",
       "assignee": "Unassigned",
-      "summary": "Earlier work brought rep-range handling into within-workout weight adjustments.",
-      "nextStep": "Retain this earlier record. Reopen a new report separately if the behavior recurs.",
-      "updated": "2026-08-31"
+      "summary": "Historical range-fix sign-off, not proof that the current default engine always stays in range. The current reproduced defect is tracked under sets-legacy-063.",
+      "nextStep": "Follow the reopened default rep-range task.",
+      "updated": "2026-09-05"
     },
     {
       "id": "sets-legacy-120",
@@ -1489,6 +1495,436 @@
       "summary": "An earlier experiment compared two ways to rebuild after an unsuccessful weight increase.",
       "nextStep": "Retain this earlier record. Reopen a new report separately if the behavior recurs.",
       "updated": "2026-08-31"
+    },
+    {
+      "id": "sets-20260905-offline-history",
+      "title": "Protect older workouts when device storage is full",
+      "area": "Data protection and sync",
+      "status": "issue",
+      "summary": "The current source can remove older local history without confirming it reached the cloud. This was reproduced with synthetic offline records.",
+      "nextStep": "Only remove records confirmed saved to the cloud. Preserve unsent history and give a recoverable storage-full message.",
+      "updated": "2026-09-05",
+      "assignee": "Unassigned"
+    },
+    {
+      "id": "sets-20260905-diagnostic-retention",
+      "title": "Review information collected in automatic reports",
+      "area": "Data protection and sync",
+      "status": "testing",
+      "summary": "Automatic generator reports include detailed programme and profile information. This is a collection and retention review, not evidence of a leak.",
+      "nextStep": "Keep only the information needed for diagnosis and verify access, expiry and deletion against the product policy.",
+      "updated": "2026-09-05",
+      "assignee": "Unassigned"
+    },
+    {
+      "id": "sets-20260905-build-asset-identity",
+      "title": "Give changed app files unique download addresses",
+      "area": "Integration and release",
+      "status": "issue",
+      "summary": "A source-level build issue can give different file contents the same supposedly permanent address. The older preview repair is incomplete.",
+      "nextStep": "Give distinct contents distinct addresses, detect collisions after building, and retain assets needed by older app versions.",
+      "updated": "2026-09-05",
+      "assignee": "Unassigned"
+    },
+    {
+      "id": "sets-20260905-asset-verification-retry",
+      "title": "Retry a temporary asset-verification interruption",
+      "area": "Integration and release",
+      "status": "planned",
+      "summary": "The release verification workflow can require a manual retry after a temporary download interruption. This is a tooling gap.",
+      "nextStep": "Add one bounded retry while keeping integrity checks and a clear final failure.",
+      "updated": "2026-09-05",
+      "assignee": "Unassigned"
+    },
+    {
+      "id": "sets-20260905-gym-management",
+      "title": "Gym management and Main Gym",
+      "area": "Settings and gym equipment",
+      "status": "testing",
+      "summary": "Create, edit, copy, delete and Main Gym screens exist in the preserved candidate. They are not in the live app.",
+      "nextStep": "Reuse the candidate and verify existing gyms migrate without losing equipment or available weights.",
+      "updated": "2026-09-05",
+      "assignee": "Unassigned"
+    },
+    {
+      "id": "sets-20260905-workout-equipment-owner",
+      "title": "Edit equipment in the workout’s own gym",
+      "area": "Settings and gym equipment",
+      "status": "testing",
+      "summary": "The live-source equipment editor can use the active gym instead of the workout gym. The Settings candidate contains a repair.",
+      "nextStep": "Carry the workout gym and exact equipment identity into every editor; fail safely if the owner is missing.",
+      "updated": "2026-09-05",
+      "assignee": "Unassigned"
+    },
+    {
+      "id": "sets-20260905-equipment-display-units",
+      "title": "Show pounds correctly in equipment summaries",
+      "area": "Settings and gym equipment",
+      "status": "issue",
+      "summary": "Some equipment summaries still display kilograms for pounds users. This remains open in the reviewed candidates.",
+      "nextStep": "Use the shared unit conversion and formatting in equipment pickers and gym summaries; check both units.",
+      "updated": "2026-09-05",
+      "assignee": "Unassigned"
+    },
+    {
+      "id": "sets-20260905-preset-usable-weights",
+      "title": "Make selected equipment presets immediately usable",
+      "area": "Settings and gym equipment",
+      "status": "testing",
+      "summary": "Some checked weight-based presets do not supply usable weights. Candidate pieces exist, but the full preset range remains unchecked.",
+      "nextStep": "Ensure every selected station has valid available weights, while preserving the user’s actual choices.",
+      "updated": "2026-09-05",
+      "assignee": "Unassigned"
+    },
+    {
+      "id": "sets-20260905-machine-load-math",
+      "title": "Calculate machine and warm-up weights consistently",
+      "area": "Settings and gym equipment",
+      "status": "testing",
+      "summary": "Starting load and single versus paired loading points are not handled consistently across all equipment paths. Candidate repairs cover part of the work.",
+      "nextStep": "Use each station’s real starting load, loading points and limits for both working sets and warm-ups.",
+      "updated": "2026-09-05",
+      "assignee": "Unassigned"
+    },
+    {
+      "id": "sets-20260905-weighted-bodyweight-loads",
+      "title": "Use real available weights for weighted bodyweight exercises",
+      "area": "Settings and gym equipment",
+      "status": "testing",
+      "summary": "A candidate improves added-weight handling, but the complete equipment and bodyweight rules still need verification.",
+      "nextStep": "Use configured belt and plate equipment consistently, then test supported movements and both units.",
+      "updated": "2026-09-05",
+      "assignee": "Unassigned"
+    },
+    {
+      "id": "sets-20260905-weighted-movement-labels",
+      "title": "Correct weighted exercise names and Bench Dip handling",
+      "area": "Settings and gym equipment",
+      "status": "testing",
+      "summary": "Candidate changes cover naming and Bench Dip classification. They are not live.",
+      "nextStep": "Apply the approved labels and optional added-weight behavior while preserving exercise identities and history.",
+      "updated": "2026-09-05",
+      "assignee": "Unassigned"
+    },
+    {
+      "id": "sets-20260905-scanner-equipment-instances",
+      "title": "Scanner 2.0 and separate equipment instances",
+      "area": "Settings and gym equipment",
+      "status": "testing",
+      "summary": "Scanner routing and separate equipment ownership exist in the preserved candidate. Integration, cloud and device acceptance remain open.",
+      "nextStep": "Reuse the candidate after the compatible account and equipment schema is ready; verify fallbacks and keep its experimental controls.",
+      "updated": "2026-09-05",
+      "assignee": "Unassigned"
+    },
+    {
+      "id": "sets-20260905-v2-later-set-target",
+      "title": "Prevent an adjusted later set asking for more unexpectedly",
+      "area": "Progression",
+      "status": "testing",
+      "summary": "A narrow V2 repair exists locally, with a regression case that fails on the current app source. This is separate from the broader fatigue-model work.",
+      "nextStep": "Integrate that focused repair and check later-set recommendations before and after save/reload.",
+      "updated": "2026-09-05",
+      "assignee": "Unassigned"
+    },
+    {
+      "id": "sets-20260905-v2-repeated-fumbles",
+      "title": "Treat repeated failed weights differently from one bad day",
+      "area": "Progression",
+      "status": "planned",
+      "summary": "The rule is approved, but this part of V2 has not been implemented. The completed stall work does not cover it.",
+      "nextStep": "Use the recent session window to distinguish an isolated miss from repeated misses; require success at the lower step before retrying when appropriate.",
+      "updated": "2026-09-05",
+      "assignee": "Unassigned"
+    },
+    {
+      "id": "sets-20260905-coarse-weight-jumps",
+      "title": "Check progression where equipment has large weight jumps",
+      "area": "Progression",
+      "status": "testing",
+      "summary": "Older candidates contain partial repairs. Current default and V2 paths need the same approved cases replayed before deciding what remains broken.",
+      "nextStep": "Keep only missing compatible fixes; preserve safe rep ranges, effort targets and actual equipment steps.",
+      "updated": "2026-09-05",
+      "assignee": "Unassigned"
+    },
+    {
+      "id": "sets-20260905-maximum-weight-progression",
+      "title": "Check progression at the equipment’s maximum weight",
+      "area": "Progression",
+      "status": "testing",
+      "summary": "Older candidate fixes need comparison against current default and V2 behavior, including persistence. This is not newly confirmed as a live defect.",
+      "nextStep": "Replay earned maximum-weight progression and save/reload, then integrate only general repairs that are still needed.",
+      "updated": "2026-09-05",
+      "assignee": "Unassigned"
+    },
+    {
+      "id": "sets-20260905-v2-coverage-rollout",
+      "title": "Complete V2 coverage before making it the default",
+      "area": "Progression",
+      "status": "planned",
+      "summary": "V2 remains deliberately opt-in. Special set types, effort tracking off and other excluded cases still need decisions and acceptance.",
+      "nextStep": "Finish the approved recovery work, settle the remaining coverage rules, and test the complete supported paths before proposing default rollout.",
+      "updated": "2026-09-05",
+      "assignee": "Unassigned"
+    },
+    {
+      "id": "sets-20260905-priority-direct-work",
+      "title": "Give priority muscles the promised extra work",
+      "area": "Program generator",
+      "status": "issue",
+      "summary": "A controlled current-source case gave the priority muscle no extra direct work. GEN-28 contains improvements but is not connected to the app.",
+      "nextStep": "Reserve the agreed priority work and independently check the result. Explain when equipment or time makes the target impossible.",
+      "updated": "2026-09-05",
+      "assignee": "Unassigned"
+    },
+    {
+      "id": "sets-20260905-balanced-day-duration",
+      "title": "Reduce large differences in workout length",
+      "area": "Program generator",
+      "status": "issue",
+      "summary": "The earlier source comparison found a greater-than-ten-minute spread in 29 of 72 synthetic profiles. The new allocator remains a separate prototype.",
+      "nextStep": "Balance estimated time across days and explain unavoidable limits; rerun the same profiles on the integration candidate.",
+      "updated": "2026-09-05",
+      "assignee": "Unassigned"
+    },
+    {
+      "id": "sets-20260905-primary-lift-effort",
+      "title": "Use the approved effort band for primary lifts",
+      "area": "Program generator",
+      "status": "planned",
+      "summary": "The approved new-program rule is one to three reps in reserve for primary lifts. It is not yet integrated into the shipping generator.",
+      "nextStep": "Apply the rule once in the generator that ships. If GEN-28 is not ready by 30 September, land the narrow current-generator change first; preserve saved programs.",
+      "updated": "2026-09-05",
+      "assignee": "Unassigned"
+    },
+    {
+      "id": "sets-20260905-gen28-review-gaps",
+      "title": "GEN-28: close the remaining prescription and checker gaps",
+      "area": "Program generator",
+      "status": "issue",
+      "summary": "Round 2 passed 32 focused checks and repaired a nearly empty leg day. Independent review still found that the checker accepts incorrect effort targets and rep bands.",
+      "nextStep": "Check exact allowed targets, resolve the written powerbuilding rep-rule mismatch, add deliberately invalid examples, and include these tests in normal automated checks.",
+      "updated": "2026-09-05",
+      "assignee": "Codex"
+    },
+    {
+      "id": "sets-20260905-gen28-app-integration",
+      "title": "Connect the validated GEN-28 generator to SETS",
+      "area": "Program generator",
+      "status": "planned",
+      "summary": "Fable’s prototype and Codex’s Round 2 are separate from the app. Neither is a deployed replacement generator.",
+      "nextStep": "Finish the review gaps, map gym, injury and training options, and integrate behind an opt-in control. Preserve saved programs and compare real app outputs before rollout.",
+      "updated": "2026-09-05",
+      "assignee": "Unassigned"
+    },
+    {
+      "id": "sets-20260905-redo-cycle-identity",
+      "title": "Preserve workout history and cycle identity during Redo",
+      "area": "Workout screens and history",
+      "status": "testing",
+      "summary": "A separate candidate creates a new Redo workout while preserving original history. It is not fully integrated or live.",
+      "nextStep": "Carry Redo and cycle identity through every save and sync path; verify Redo does not advance the program cycle.",
+      "updated": "2026-09-05",
+      "assignee": "Unassigned"
+    },
+    {
+      "id": "sets-20260905-complete-workout-flow",
+      "title": "Complete Workout and unfinished-session confirmation",
+      "area": "Workout screens and history",
+      "status": "testing",
+      "summary": "Candidate screens contain the revised completion action, summary navigation and confirmation sheets. They still need integration and phone acceptance.",
+      "nextStep": "Reuse compatible screens and verify completed, unfinished and Redo flows while preserving bulk tick and swipe delete.",
+      "updated": "2026-09-05",
+      "assignee": "Unassigned"
+    },
+    {
+      "id": "sets-20260905-orbit-availability",
+      "title": "Show unavailable-target explanations only when useful",
+      "area": "Workout screens and history",
+      "status": "testing",
+      "summary": "Candidate UI exists, but the complete behavior contract has not been accepted in the live app.",
+      "nextStep": "Show the actual fixable cause for affected unfinished sets; hide the next-target prompt when the exercise is complete and clear it after correction.",
+      "updated": "2026-09-05",
+      "assignee": "Unassigned"
+    },
+    {
+      "id": "sets-20260905-sync-workout-provenance",
+      "title": "Verify workout identity through app, sync and database",
+      "area": "Data protection and sync",
+      "status": "testing",
+      "summary": "Some app-side protection is already integrated. The installed database function and sync rules have not been verified end to end.",
+      "nextStep": "Read the installed backend and sync rules, then verify old and new clients preserve workout and cycle identity. Local adapter checks can proceed now.",
+      "updated": "2026-09-05",
+      "assignee": "Unassigned"
+    },
+    {
+      "id": "sets-20260905-equipment-illustrations",
+      "title": "Match equipment pictures to their labels",
+      "area": "Copy, exercise content and exports",
+      "status": "issue",
+      "summary": "The current source contains confirmed picture-to-label mismatches. The wider station illustration set needs review.",
+      "nextStep": "Inspect all station illustrations and correct mismatched assets while keeping station identities and labels intact.",
+      "updated": "2026-09-05",
+      "assignee": "Unassigned"
+    },
+    {
+      "id": "sets-20260905-unknown-exercise-muscle",
+      "title": "Do not silently label an unknown exercise as Chest",
+      "area": "Copy, exercise content and exports",
+      "status": "issue",
+      "summary": "A helper-level reproduction confirmed that an unknown exercise can fall back to Chest. The frequency in real accounts is unmeasured.",
+      "nextStep": "Preserve known exercise metadata and represent unknown identity honestly; check muscle totals and progression callers.",
+      "updated": "2026-09-05",
+      "assignee": "Unassigned"
+    },
+    {
+      "id": "sets-20260905-csv-text-cells",
+      "title": "Keep exported exercise names as spreadsheet text",
+      "area": "Copy, exercise content and exports",
+      "status": "issue",
+      "summary": "Formula-shaped text is currently written unchanged into CSV cells. The raw export was reproduced; spreadsheet execution was not tested.",
+      "nextStep": "Escape formula-like text safely while preserving numeric values and normal CSV formatting.",
+      "updated": "2026-09-05",
+      "assignee": "Unassigned"
+    },
+    {
+      "id": "sets-20260905-app-copy-candidate",
+      "title": "Finish and integrate the reviewed app wording",
+      "area": "Copy, exercise content and exports",
+      "status": "testing",
+      "summary": "The copy candidate records 904 reviewed entries and 104 rewrites. It is not accepted or released; 281 entries have overlapping blockers. Its saved full test run also had three failures.",
+      "nextStep": "Reconcile copy with the final screens, resolve blocked entries and explain the saved failures before integration. Preserve the paused task until its existing owner resumes it.",
+      "updated": "2026-09-05",
+      "assignee": "Unassigned"
+    },
+    {
+      "id": "sets-20260905-exercise-guide-contracts",
+      "title": "Make exercise guides match videos and logging",
+      "area": "Copy, exercise content and exports",
+      "status": "testing",
+      "summary": "The saved copy review has 62 blocked guide entries. Current hosted overrides and the exact remaining count still need checking.",
+      "nextStep": "Resolve video, duration-versus-reps and single-arm tracking disagreements, then finish the affected guides.",
+      "updated": "2026-09-05",
+      "assignee": "Unassigned"
+    },
+    {
+      "id": "sets-20260905-hosted-platform-copy",
+      "title": "Review wording outside the app repository",
+      "area": "Copy, exercise content and exports",
+      "status": "testing",
+      "summary": "Hosted login messages and platform wording were outside the repository-only copy audit. They are not signed off.",
+      "nextStep": "Inspect the current hosted templates and platform screens, then draft any needed corrections for those exact surfaces.",
+      "updated": "2026-09-05",
+      "assignee": "Unassigned"
+    },
+    {
+      "id": "sets-20260905-public-prototype-pages",
+      "title": "Decide which public prototype pages should remain available",
+      "area": "Copy, exercise content and exports",
+      "status": "planned",
+      "summary": "Prototype-page publication needs an explicit keep, label, archive or remove decision. Availability alone is not proof of a bug.",
+      "nextStep": "Inventory shipped pages and links and make a recommendation for each before changing publication.",
+      "updated": "2026-09-05",
+      "assignee": "Unassigned"
+    },
+    {
+      "id": "sets-20260905-adaptive-duration",
+      "title": "Check the adaptive workout-duration path",
+      "area": "Checks still needed",
+      "status": "testing",
+      "summary": "An older candidate review questioned how adaptive duration reaches generation. It has not been reproduced against the current app in this review.",
+      "nextStep": "Exercise the current onboarding-to-generation flow and change behavior only if it contradicts the approved adaptive intent.",
+      "updated": "2026-09-05",
+      "assignee": "Unassigned"
+    },
+    {
+      "id": "sets-20260905-comparison-help-entry",
+      "title": "Check whether comparison help is reachable",
+      "area": "Checks still needed",
+      "status": "testing",
+      "summary": "An older review found a possibly unreachable help entry. Current UI behavior still needs checking.",
+      "nextStep": "Follow the actual help entry in the current app, then connect or retire it according to the approved design.",
+      "updated": "2026-09-05",
+      "assignee": "Unassigned"
+    },
+    {
+      "id": "sets-20260905-watch-cycle-merge",
+      "title": "Check stale cycle data arriving from the cloud",
+      "area": "Checks still needed",
+      "status": "testing",
+      "summary": "Watch item only: there is no fresh reproduction of a remaining cycle-merge defect.",
+      "nextStep": "Replay older and newer cycle state arriving in different orders; fix only a reproduced conflict.",
+      "updated": "2026-09-05",
+      "assignee": "Unassigned"
+    },
+    {
+      "id": "sets-20260905-watch-edit-microcycle",
+      "title": "Check that Edit Microcycle changes the actual plan",
+      "area": "Checks still needed",
+      "status": "testing",
+      "summary": "The earlier watch list questioned whether editing changed only a label. The current behavior is unverified.",
+      "nextStep": "Edit a saved program and verify the resulting plan and history mapping, not only the screen label.",
+      "updated": "2026-09-05",
+      "assignee": "Unassigned"
+    },
+    {
+      "id": "sets-20260905-watch-double-deload",
+      "title": "Check that two easier-week systems do not stack",
+      "area": "Checks still needed",
+      "status": "testing",
+      "summary": "The interaction between manual and automatic easier-week adjustments remains a watch item.",
+      "nextStep": "Replay their overlap and verify the user receives one intended adjustment.",
+      "updated": "2026-09-05",
+      "assignee": "Unassigned"
+    },
+    {
+      "id": "sets-20260905-watch-plus-drop-cap",
+      "title": "Recheck the plus-set weight-drop limit",
+      "area": "Checks still needed",
+      "status": "testing",
+      "summary": "The old report predates newer set-type changes. It must be replayed before being treated as a current bug.",
+      "nextStep": "Test the original case in current default and V2 modes and repair only a remaining incorrect limit.",
+      "updated": "2026-09-05",
+      "assignee": "Unassigned"
+    },
+    {
+      "id": "sets-20260905-watch-gym-wipe",
+      "title": "Recheck the historical gym-data loss route",
+      "area": "Checks still needed",
+      "status": "testing",
+      "summary": "Protection was reported in earlier work, but that does not establish the root cause is closed for every reconnect path.",
+      "nextStep": "Use synthetic old and new account state to verify existing guards and investigate any remaining destructive route.",
+      "updated": "2026-09-05",
+      "assignee": "Unassigned"
+    },
+    {
+      "id": "sets-20260905-watch-off-grid-echo",
+      "title": "Check whether an unavailable weight returns after sync",
+      "area": "Checks still needed",
+      "status": "testing",
+      "summary": "This remains an unconfirmed watch item for editing, saving and receiving the value from the cloud.",
+      "nextStep": "Replay the flow with configured weight steps and both units; correct any stale value that returns.",
+      "updated": "2026-09-05",
+      "assignee": "Unassigned"
+    },
+    {
+      "id": "sets-20260905-watch-custom-keyboard",
+      "title": "Confirm the custom-exercise keyboard behavior on iPhone",
+      "area": "Checks still needed",
+      "status": "testing",
+      "summary": "Earlier work may already have fixed this. Current phone acceptance is missing.",
+      "nextStep": "Check create and edit flows in the current iPhone app without changing real user records.",
+      "updated": "2026-09-05",
+      "assignee": "Unassigned"
+    },
+    {
+      "id": "sets-20260905-novice-weight-jump",
+      "title": "Review the size of an early weight increase",
+      "area": "Checks still needed",
+      "status": "testing",
+      "summary": "The saved example follows the approved rule. It is a founder acceptance question, not a newly proven engine defect.",
+      "nextStep": "Replay the actual training-history example; propose a more conservative limit only if the current behavior is rejected.",
+      "updated": "2026-09-05",
+      "assignee": "Unassigned"
     }
   ]
 }

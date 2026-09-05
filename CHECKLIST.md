@@ -1,230 +1,556 @@
 # SETS — shared checklist
 
-Updated: 2026-08-31T03:20:11.753Z · Reviewed through 2026-08-31
+Updated: 2026-09-05T03:33:28.564Z · Reviewed through 2026-09-05
 
-- web: The SETS app is unchanged by this checklist publication.
-- backend: Staging is prepared; isolated sync and deployment approval remain open.
-- next: Gym Environments, Scanner 2.0, sharing and Settings: local candidate, not released.
+- web: Live app checked 5 September: still the 4 September build. Settings, the newer progression candidate, copy and GEN-28 are not live.
+- backend: Installed database functions, retention jobs and staging sync isolation still need direct verification. A source review is not cloud acceptance.
+- next: Integrate reviewed fixes in small groups, starting with data protection. Keep V2 and GEN-28 opt-in until their remaining checks are complete.
 
-> All 146 private checklist records are represented by public-safe summaries. Internal diagnostics, account examples and release access details are not published.
+> Reviewed through 5 September 2026. 65 current tasks and 124 archived records. These are work items, not a completion percentage or a count of confirmed bugs.
 
-> Assigned to is the current owner. Codex owns former Grok and Claude assignments; Josh assignments are unchanged. You means Aadam. Unassigned preserves a missing owner.
+> All 146 original IDs are retained. Stale reminders and duplicates are archived; missing findings and the seven individual watch checks have been added.
 
-> Earlier sign-offs are historical coverage, not a fresh audit or confirmation that an old symptom is impossible today.
+> Known issue means the stated source or candidate defect has evidence. Needs checking also includes unreleased repairs and unconfirmed reports; read each summary for the distinction.
 
-> Next release means a local candidate that may still need integration and approval. Needs checking does not mean implemented or released.
+> Local tests, a pushed branch, integration, deployment and real-device acceptance are separate. Earlier sign-offs have not all been rerun in this review.
 
-> Viewing needs no login. Updating the shared source requires repository write permission or an approved pull request.
+> Existing assignments are unchanged, including all 14 Josh assignments. Unassigned means no implementation owner has been chosen. Historical author credits do not assign new work.
+
+> Local reproductions, candidate preparation and code review can proceed independently. Shared account/sync contracts and installed service configuration must be coordinated before integration or release.
+
+> This update publishes checklist summaries only. It does not change the SETS app, PowerSync, task schedules or release permissions.
 
 ## Known issue
 
-### Feedback retention during account deletion
+### Remove report content during account deletion
 
-ID: sets-legacy-002 · Critical — fix before release · Assigned to Josh · Record updated 2026-08-31
+ID: sets-legacy-002 · Data protection and sync · Assigned to Josh · Record updated 2026-09-05
 
-Account deletion needs a clear, verified policy for feedback and bug-report content.
+Account deletion can leave feedback and report content behind in the current schema. Production retention has not been independently checked.
 
-Next: Remains assigned to Josh. Confirm the current implementation and validation needs before any release.
+Next: Remove or anonymise associated content and attachments, and verify the installed deletion path.
 
-### Multi-category deletion consistency
+### Delete every current copy of account data
 
-ID: sets-legacy-012 · Medium — fix next · Assigned to Josh · Record updated 2026-08-31
+ID: sets-legacy-003 · Data protection and sync · Assigned to Josh · Record updated 2026-09-05
 
-Deleting several categories needs a clear outcome if part of the operation fails.
+Deletion code does not cover all newer stored copies. Installed backend behavior has not been verified in this review.
 
-Next: Remains assigned to Josh. Confirm the current implementation and validation needs before any release.
+Next: Inventory every database, settings and device copy; extend deletion coverage and verify data stays deleted after reconnecting.
 
-### Scanner photos are kept with no stated age limit
+### Honor the training options shown in the generator
 
-ID: sets-legacy-014 · Medium — fix next · Assigned to You · Record updated 2026-08-31
+ID: sets-legacy-007 · Program generator · Assigned to Josh · Record updated 2026-09-05
 
-Scanner photo retention still needs a product decision and verified enforcement.
+A controlled live-source case confirmed some saved training-method choices do not affect generation. GEN-28 does not automatically solve every option.
 
-Next: The founder’s decision or acceptance is needed. No release action is authorized by this task.
+Next: Connect each supported option to the shipping generator, or make an explicit product decision about inactive controls. Local analysis can proceed before sync work.
 
-### Single-arm next-set target asks a rep too few
+### Sync Now must wait for uploads
 
-ID: sets-legacy-022 · Being worked on & next up · Assigned to Codex · Record updated 2026-08-31
+ID: sets-legacy-009 · Data protection and sync · Assigned to Josh · Record updated 2026-09-05
 
-Single-arm next-set recommendations remain lower than expected; the cause still needs investigation.
+A second sync request can finish while an earlier upload is still running. The source-level race was reproduced.
 
-Next: Investigate the recorded behavior and validate the next change before release.
+Next: Make concurrent requests wait for the same upload before downloading and merging changes. Verify recent edits survive.
+
+### Make fatigue estimates mean the same thing everywhere
+
+ID: sets-legacy-010 · Progression · Assigned to Codex · Record updated 2026-09-05
+
+The legacy writer and readers still disagree. The preserved experiment is unfinished and is not a release-ready fix.
+
+Next: Measure the effect, agree one shared quantity, reconcile readers and writer, and handle saved estimates explicitly.
+
+### Stop the old sync worker when the session changes
+
+ID: sets-legacy-013 · Data protection and sync · Assigned to Josh · Record updated 2026-09-05
+
+The current legacy sync worker is not safely stopped across all session changes. A synthetic account-switch case reproduced work continuing under the new account.
+
+Next: Bind queued saves to their original account and stop the old worker before starting another. Coordinate the account contract with the PowerSync candidate.
+
+### Keep deleted folders, templates and exercises deleted
+
+ID: sets-legacy-033 · Data protection and sync · Assigned to Josh · Record updated 2026-09-05
+
+The earlier candidate label overstated completeness. The current source still lacks a complete protection against an older device restoring these deleted items.
+
+Next: Keep durable deletion records and reject outdated writes. Test deleting on one device and reconnecting another.
+
+### Keep default progression targets inside the rep range
+
+ID: sets-legacy-063 · Progression · Assigned to Unassigned · Record updated 2026-09-05
+
+Reopened: an exact current-source case still asks below the written range. The opt-in V2 handles that case, but V2 is off by default.
+
+Next: Apply a narrow correction to the default paths using the approved capacity rule; preserve effort targets and real available weights.
+
+### Protect older workouts when device storage is full
+
+ID: sets-20260905-offline-history · Data protection and sync · Assigned to Unassigned · Record updated 2026-09-05
+
+The current source can remove older local history without confirming it reached the cloud. This was reproduced with synthetic offline records.
+
+Next: Only remove records confirmed saved to the cloud. Preserve unsent history and give a recoverable storage-full message.
+
+### Give changed app files unique download addresses
+
+ID: sets-20260905-build-asset-identity · Integration and release · Assigned to Unassigned · Record updated 2026-09-05
+
+A source-level build issue can give different file contents the same supposedly permanent address. The older preview repair is incomplete.
+
+Next: Give distinct contents distinct addresses, detect collisions after building, and retain assets needed by older app versions.
+
+### Show pounds correctly in equipment summaries
+
+ID: sets-20260905-equipment-display-units · Settings and gym equipment · Assigned to Unassigned · Record updated 2026-09-05
+
+Some equipment summaries still display kilograms for pounds users. This remains open in the reviewed candidates.
+
+Next: Use the shared unit conversion and formatting in equipment pickers and gym summaries; check both units.
+
+### Give priority muscles the promised extra work
+
+ID: sets-20260905-priority-direct-work · Program generator · Assigned to Unassigned · Record updated 2026-09-05
+
+A controlled current-source case gave the priority muscle no extra direct work. GEN-28 contains improvements but is not connected to the app.
+
+Next: Reserve the agreed priority work and independently check the result. Explain when equipment or time makes the target impossible.
+
+### Reduce large differences in workout length
+
+ID: sets-20260905-balanced-day-duration · Program generator · Assigned to Unassigned · Record updated 2026-09-05
+
+The earlier source comparison found a greater-than-ten-minute spread in 29 of 72 synthetic profiles. The new allocator remains a separate prototype.
+
+Next: Balance estimated time across days and explain unavoidable limits; rerun the same profiles on the integration candidate.
+
+### GEN-28: close the remaining prescription and checker gaps
+
+ID: sets-20260905-gen28-review-gaps · Program generator · Assigned to Codex · Record updated 2026-09-05
+
+Round 2 passed 32 focused checks and repaired a nearly empty leg day. Independent review still found that the checker accepts incorrect effort targets and rep bands.
+
+Next: Check exact allowed targets, resolve the written powerbuilding rep-rule mismatch, add deliberately invalid examples, and include these tests in normal automated checks.
+
+### Match equipment pictures to their labels
+
+ID: sets-20260905-equipment-illustrations · Copy, exercise content and exports · Assigned to Unassigned · Record updated 2026-09-05
+
+The current source contains confirmed picture-to-label mismatches. The wider station illustration set needs review.
+
+Next: Inspect all station illustrations and correct mismatched assets while keeping station identities and labels intact.
+
+### Do not silently label an unknown exercise as Chest
+
+ID: sets-20260905-unknown-exercise-muscle · Copy, exercise content and exports · Assigned to Unassigned · Record updated 2026-09-05
+
+A helper-level reproduction confirmed that an unknown exercise can fall back to Chest. The frequency in real accounts is unmeasured.
+
+Next: Preserve known exercise metadata and represent unknown identity honestly; check muscle totals and progression callers.
+
+### Keep exported exercise names as spreadsheet text
+
+ID: sets-20260905-csv-text-cells · Copy, exercise content and exports · Assigned to Unassigned · Record updated 2026-09-05
+
+Formula-shaped text is currently written unchanged into CSV cells. The raw export was reproduced; spreadsheet execution was not tested.
+
+Next: Escape formula-like text safely while preserving numeric values and normal CSV formatting.
 
 ## Next release
 
-### Fatigue model: the writer and readers disagree
-
-ID: sets-legacy-010 · Medium — fix next · Assigned to Codex · Record updated 2026-08-31
-
-An existing fatigue-model candidate needs careful integration; it is not a ready-to-release fix.
-
-Next: Reconcile the existing candidate, run the relevant checks and obtain release approval.
-
-### Account-switching safety
-
-ID: sets-legacy-032 · Reviewed — ready to ship · Assigned to Josh · Record updated 2026-08-31
-
-A reviewed candidate improves account-switching safety. It has not been accepted as a completed release here.
-
-Next: Reconcile the existing candidate, run the relevant checks and obtain release approval.
-
-### Folders, workout templates & custom exercises could get messy across two devices
-
-ID: sets-legacy-033 · Reviewed — ready to ship · Assigned to Josh · Record updated 2026-08-31
-
-A reviewed candidate improves consistency when folders, templates and custom exercises change across devices.
-
-Next: Reconcile the existing candidate, run the relevant checks and obtain release approval.
 
 ## Needs checking
 
-### Account deletion sync completeness
+### Deleting settings must preserve pending workouts
 
-ID: sets-legacy-003 · Critical — fix before release · Assigned to Josh · Record updated 2026-08-31
+ID: sets-legacy-004 · Data protection and sync · Assigned to Josh · Record updated 2026-09-05
 
-Deletion must remain complete after the app reconnects and receives synced data.
+The current app source can discard an unrelated pending workout when a category deletion fails. A scoped repair exists in the unreleased Settings candidate.
 
-Next: Remains assigned to Josh. Confirm the current implementation and validation needs before any release.
+Next: Integrate the scoped repair; verify failed deletion preserves pending workouts and reconnect saves them once.
 
-### Selective deletion data protection
+### Use the correct gym for each workout
 
-ID: sets-legacy-004 · High — fix before release · Assigned to Josh · Record updated 2026-08-31
+ID: sets-legacy-005 · Settings and gym equipment · Assigned to Josh · Record updated 2026-09-05
 
-Deleting selected data must preserve unrelated workouts that have not finished syncing.
+Current app behavior can ignore a day gym. The approved replacement is Main Gym for generation, followed by explicit per-day gym changes and exercise refitting.
 
-Next: Remains assigned to Josh. Confirm the current implementation and validation needs before any release.
+Next: Integrate the candidate gym identity and refitting flow. Verify each workout uses its chosen gym after save and reload.
 
-### “Different gym per day” is ignored
+### Replace exercises when available equipment changes
 
-ID: sets-legacy-005 · High — fix before release · Assigned to Josh · Record updated 2026-08-31
+ID: sets-legacy-006 · Settings and gym equipment · Assigned to Josh · Record updated 2026-09-05
 
-Each training day should use the equipment available at its assigned gym.
+The live-source comparison left incompatible exercises unchanged. A substantial repair exists in the Settings candidate.
 
-Next: Remains assigned to Josh. Confirm the current implementation and validation needs before any release.
+Next: Reuse the refitting repair and verify switching gyms, disabling equipment and removing the last usable weight.
 
-### Changing equipment can leave incompatible exercises unchanged
+### Clear account data safely on sign-out
 
-ID: sets-legacy-006 · High — fix before release · Assigned to Josh · Record updated 2026-08-31
+ID: sets-legacy-008 · Data protection and sync · Assigned to Josh · Record updated 2026-09-05
 
-Equipment changes should update exercises that no longer fit the available setup.
+Current source leaves account-specific PowerSync data on the device. The unreleased Settings candidate adds account cleanup.
 
-Next: Remains assigned to Josh. Confirm the current implementation and validation needs before any release.
+Next: Integrate cleanup only with protection for unsent work. Test sign-out, sign-in and switching between two accounts.
 
-### Superset / Myo-Reps / periodisation / intensity choices are ignored
+### Avoid partially completed category deletion
 
-ID: sets-legacy-007 · High — fix before release · Assigned to Josh · Record updated 2026-08-31
+ID: sets-legacy-012 · Data protection and sync · Assigned to Josh · Record updated 2026-09-05
 
-Saved training-method choices need to be honored when generating a program.
+Deleting several categories can partly succeed. The Settings candidate limits granular deletion to one category at a time.
 
-Next: Remains assigned to Josh. Confirm the current implementation and validation needs before any release.
+Next: Reuse the single-category restriction until reliable all-or-nothing deletion is implemented; make failed cleanup retryable.
 
-### Signed-out device data cleanup
+### Verify scanner photo retention and expiry
 
-ID: sets-legacy-008 · High — fix before release · Assigned to Josh · Record updated 2026-08-31
+ID: sets-legacy-014 · Data protection and sync · Assigned to You · Record updated 2026-09-05
 
-Signing out must clear account-specific device data safely.
+No enforced photo expiry was established from the repository. An external cleanup job may exist and still needs checking.
 
-Next: Remains assigned to Josh. Confirm the current implementation and validation needs before any release.
+Next: Inspect actual retention and cleanup first, then implement the agreed expiry and account-deletion coverage.
 
-### Manual sync recovery correctness
+### Check single-arm targets and remaining ATLAS cases
 
-ID: sets-legacy-009 · High — fix before release · Assigned to Josh · Record updated 2026-08-31
+ID: sets-legacy-022 · Progression · Assigned to Codex · Record updated 2026-09-05
 
-Manual recovery should preserve recent edits while syncing is underway.
+The old single-arm report and related engine cases need fresh comparison in default and V2 modes. Existing history does not prove each remains broken.
 
-Next: Remains assigned to Josh. Confirm the current implementation and validation needs before any release.
-
-### Session renewal and sync coordination
-
-ID: sets-legacy-013 · Medium — fix next · Assigned to Josh · Record updated 2026-08-31
-
-Authentication renewal and syncing need consistent coordination.
-
-Next: Remains assigned to Josh. Confirm the current implementation and validation needs before any release.
-
-### SET-46: Consolidated Settings and workout controls
-
-ID: consolidated-settings-set-46 · Being worked on & next up · Assigned to Unassigned · Record updated 2026-08-31
-
-The Settings candidate includes equipment-limit explanations and rest after the final warm-up. Cloud-sync and device checks remain open.
-
-Next: Complete separately approved staging, cloud-sync and real-device acceptance before release.
-
-### Resolve safe PowerSync use for the already prepared staging app
-
-ID: powersync-instance-confirmation · Being worked on & next up · Assigned to Unassigned · Record updated 2026-08-31
-
-The staging implementation already exists. A safe isolated sync connection is still needed before its deployment can proceed.
-
-Next: Inspect the existing sync services and staging resources read-only. Resolve any remaining ownership question before requesting approval for a specific change.
-
-## Planned
-
-### Editing a gym doesn't update your existing programs
-
-ID: sets-legacy-029 · Being worked on & next up · Assigned to Josh · Record updated 2026-08-31
-
-Editing equipment at the current gym should update affected programs, not only switching gyms.
-
-Next: Remains assigned to Josh. Confirm the current implementation and validation needs before any release.
-
-### Generation and the workout screen disagree about which gym
-
-ID: sets-legacy-030 · Being worked on & next up · Assigned to Josh · Record updated 2026-08-31
-
-Program generation and the workout screen need to use the same assigned gym.
-
-Next: Remains assigned to Josh. Confirm the current implementation and validation needs before any release.
-
-### Stall-Breaker
-
-ID: sets-legacy-034 · Waiting on you · Assigned to You · Record updated 2026-08-31
-
-A progression strategy for genuinely stalled exercises awaits the founder’s remaining decisions.
-
-Next: The founder’s decision or acceptance is needed. No release action is authorized by this task.
-
-### Release approval check
-
-ID: sets-legacy-035 · Waiting on you · Assigned to You · Record updated 2026-08-31
-
-The release approval step remains with the founder. Internal release controls are not published.
-
-Next: The founder’s decision or acceptance is needed. No release action is authorized by this task.
-
-### Open the app once before your next workout
-
-ID: sets-legacy-036 · Waiting on you · Assigned to You · Record updated 2026-08-31
-
-A recorded follow-up asks the founder to open the app so the updated program behavior can be checked.
-
-Next: The founder’s decision or acceptance is needed. No release action is authorized by this task.
-
-### Stall-Breaker rulings (7 decisions) + solo "@0" ruling
-
-ID: sets-legacy-037 · Waiting on you · Assigned to You · Record updated 2026-08-31
-
-Remaining decisions cover stalled progression and effort targets for separately logged arms.
-
-Next: The founder’s decision or acceptance is needed. No release action is authorized by this task.
-
-### Smaller items under watch
-
-ID: sets-legacy-038 · Watching · Assigned to You · Record updated 2026-08-31
-
-Several smaller behavior and device checks remain on the watch list.
-
-Next: The founder’s decision or acceptance is needed. No release action is authorized by this task.
-
-## In progress
+Next: Replay the named cases with correctly paired arms and sets; classify each as fixed, V2-only, default-only or still open before patching.
 
 ### Share a gym with another SETS user
 
-ID: sets-legacy-026 · Being worked on & next up · Assigned to You · Record updated 2026-08-31
+ID: sets-legacy-026 · Settings and gym equipment · Assigned to You · Record updated 2026-09-05
 
-Gym sharing is implemented in the local release candidate. Staging and real-device acceptance remain open.
+The share and import flow is implemented in the unreleased candidate. Real cloud permissions and device acceptance remain unverified.
 
-Next: Complete separately approved staging, cloud-sync and real-device acceptance before release.
+Next: Verify permissions, imported equipment identity and independence from the sender after import.
+
+### Consolidated Settings and workout controls
+
+ID: consolidated-settings-set-46 · Settings and gym equipment · Assigned to Unassigned · Record updated 2026-09-05
+
+The preserved Settings candidate includes workout preferences, warm-ups, rest controls and equipment explanations. It is pushed but not integrated or live.
+
+Next: Reconcile newer progression preferences, integrate only compatible changes, then complete staging and phone acceptance.
+
+### Confirm an isolated sync connection for staging
+
+ID: powersync-instance-confirmation · Integration and release · Assigned to Unassigned · Record updated 2026-09-05
+
+The staging implementation already exists. The remaining dependency is a verified isolated connection and clear ownership of the shared data setup.
+
+Next: Read the existing service configuration and prepare an exact staging proposal. Local testing and candidate preparation can proceed while access or configuration questions are resolved.
+
+### Apply gym edits to affected existing programs
+
+ID: sets-legacy-029 · Settings and gym equipment · Assigned to Josh · Record updated 2026-09-05
+
+Gym-edit refitting now has candidate code, so the old planned-only label is stale. It still needs integration and complete flow checks.
+
+Next: Verify edits to the existing gym update affected programs and preserve unrelated days and logged history.
+
+### Account switching: reconcile both sync systems
+
+ID: sets-legacy-032 · Data protection and sync · Assigned to Josh · Record updated 2026-09-05
+
+The Settings candidate improves PowerSync account boundaries. It does not complete the separate legacy sync-worker repair. Nothing in this candidate is live.
+
+Next: Reuse the candidate account protections, finish the legacy worker fix, then test two accounts with pending offline work.
+
+### V2 stalled-lifter recovery
+
+ID: sets-legacy-034 · Progression · Assigned to You · Record updated 2026-09-05
+
+The remaining stall changes are implemented in a local V2 candidate. The independent comparison passed all 25 focused cases. The candidate is not pushed, integrated or live.
+
+Next: Integrate the reviewed V2-only changes and verify the complete save/reload flow. Keep V2 opt-in until remaining coverage and acceptance are complete.
+
+### Review information collected in automatic reports
+
+ID: sets-20260905-diagnostic-retention · Data protection and sync · Assigned to Unassigned · Record updated 2026-09-05
+
+Automatic generator reports include detailed programme and profile information. This is a collection and retention review, not evidence of a leak.
+
+Next: Keep only the information needed for diagnosis and verify access, expiry and deletion against the product policy.
+
+### Gym management and Main Gym
+
+ID: sets-20260905-gym-management · Settings and gym equipment · Assigned to Unassigned · Record updated 2026-09-05
+
+Create, edit, copy, delete and Main Gym screens exist in the preserved candidate. They are not in the live app.
+
+Next: Reuse the candidate and verify existing gyms migrate without losing equipment or available weights.
+
+### Edit equipment in the workout’s own gym
+
+ID: sets-20260905-workout-equipment-owner · Settings and gym equipment · Assigned to Unassigned · Record updated 2026-09-05
+
+The live-source equipment editor can use the active gym instead of the workout gym. The Settings candidate contains a repair.
+
+Next: Carry the workout gym and exact equipment identity into every editor; fail safely if the owner is missing.
+
+### Make selected equipment presets immediately usable
+
+ID: sets-20260905-preset-usable-weights · Settings and gym equipment · Assigned to Unassigned · Record updated 2026-09-05
+
+Some checked weight-based presets do not supply usable weights. Candidate pieces exist, but the full preset range remains unchecked.
+
+Next: Ensure every selected station has valid available weights, while preserving the user’s actual choices.
+
+### Calculate machine and warm-up weights consistently
+
+ID: sets-20260905-machine-load-math · Settings and gym equipment · Assigned to Unassigned · Record updated 2026-09-05
+
+Starting load and single versus paired loading points are not handled consistently across all equipment paths. Candidate repairs cover part of the work.
+
+Next: Use each station’s real starting load, loading points and limits for both working sets and warm-ups.
+
+### Use real available weights for weighted bodyweight exercises
+
+ID: sets-20260905-weighted-bodyweight-loads · Settings and gym equipment · Assigned to Unassigned · Record updated 2026-09-05
+
+A candidate improves added-weight handling, but the complete equipment and bodyweight rules still need verification.
+
+Next: Use configured belt and plate equipment consistently, then test supported movements and both units.
+
+### Correct weighted exercise names and Bench Dip handling
+
+ID: sets-20260905-weighted-movement-labels · Settings and gym equipment · Assigned to Unassigned · Record updated 2026-09-05
+
+Candidate changes cover naming and Bench Dip classification. They are not live.
+
+Next: Apply the approved labels and optional added-weight behavior while preserving exercise identities and history.
+
+### Scanner 2.0 and separate equipment instances
+
+ID: sets-20260905-scanner-equipment-instances · Settings and gym equipment · Assigned to Unassigned · Record updated 2026-09-05
+
+Scanner routing and separate equipment ownership exist in the preserved candidate. Integration, cloud and device acceptance remain open.
+
+Next: Reuse the candidate after the compatible account and equipment schema is ready; verify fallbacks and keep its experimental controls.
+
+### Prevent an adjusted later set asking for more unexpectedly
+
+ID: sets-20260905-v2-later-set-target · Progression · Assigned to Unassigned · Record updated 2026-09-05
+
+A narrow V2 repair exists locally, with a regression case that fails on the current app source. This is separate from the broader fatigue-model work.
+
+Next: Integrate that focused repair and check later-set recommendations before and after save/reload.
+
+### Check progression where equipment has large weight jumps
+
+ID: sets-20260905-coarse-weight-jumps · Progression · Assigned to Unassigned · Record updated 2026-09-05
+
+Older candidates contain partial repairs. Current default and V2 paths need the same approved cases replayed before deciding what remains broken.
+
+Next: Keep only missing compatible fixes; preserve safe rep ranges, effort targets and actual equipment steps.
+
+### Check progression at the equipment’s maximum weight
+
+ID: sets-20260905-maximum-weight-progression · Progression · Assigned to Unassigned · Record updated 2026-09-05
+
+Older candidate fixes need comparison against current default and V2 behavior, including persistence. This is not newly confirmed as a live defect.
+
+Next: Replay earned maximum-weight progression and save/reload, then integrate only general repairs that are still needed.
+
+### Preserve workout history and cycle identity during Redo
+
+ID: sets-20260905-redo-cycle-identity · Workout screens and history · Assigned to Unassigned · Record updated 2026-09-05
+
+A separate candidate creates a new Redo workout while preserving original history. It is not fully integrated or live.
+
+Next: Carry Redo and cycle identity through every save and sync path; verify Redo does not advance the program cycle.
+
+### Complete Workout and unfinished-session confirmation
+
+ID: sets-20260905-complete-workout-flow · Workout screens and history · Assigned to Unassigned · Record updated 2026-09-05
+
+Candidate screens contain the revised completion action, summary navigation and confirmation sheets. They still need integration and phone acceptance.
+
+Next: Reuse compatible screens and verify completed, unfinished and Redo flows while preserving bulk tick and swipe delete.
+
+### Show unavailable-target explanations only when useful
+
+ID: sets-20260905-orbit-availability · Workout screens and history · Assigned to Unassigned · Record updated 2026-09-05
+
+Candidate UI exists, but the complete behavior contract has not been accepted in the live app.
+
+Next: Show the actual fixable cause for affected unfinished sets; hide the next-target prompt when the exercise is complete and clear it after correction.
+
+### Verify workout identity through app, sync and database
+
+ID: sets-20260905-sync-workout-provenance · Data protection and sync · Assigned to Unassigned · Record updated 2026-09-05
+
+Some app-side protection is already integrated. The installed database function and sync rules have not been verified end to end.
+
+Next: Read the installed backend and sync rules, then verify old and new clients preserve workout and cycle identity. Local adapter checks can proceed now.
+
+### Finish and integrate the reviewed app wording
+
+ID: sets-20260905-app-copy-candidate · Copy, exercise content and exports · Assigned to Unassigned · Record updated 2026-09-05
+
+The copy candidate records 904 reviewed entries and 104 rewrites. It is not accepted or released; 281 entries have overlapping blockers. Its saved full test run also had three failures.
+
+Next: Reconcile copy with the final screens, resolve blocked entries and explain the saved failures before integration. Preserve the paused task until its existing owner resumes it.
+
+### Make exercise guides match videos and logging
+
+ID: sets-20260905-exercise-guide-contracts · Copy, exercise content and exports · Assigned to Unassigned · Record updated 2026-09-05
+
+The saved copy review has 62 blocked guide entries. Current hosted overrides and the exact remaining count still need checking.
+
+Next: Resolve video, duration-versus-reps and single-arm tracking disagreements, then finish the affected guides.
+
+### Review wording outside the app repository
+
+ID: sets-20260905-hosted-platform-copy · Copy, exercise content and exports · Assigned to Unassigned · Record updated 2026-09-05
+
+Hosted login messages and platform wording were outside the repository-only copy audit. They are not signed off.
+
+Next: Inspect the current hosted templates and platform screens, then draft any needed corrections for those exact surfaces.
+
+### Check the adaptive workout-duration path
+
+ID: sets-20260905-adaptive-duration · Checks still needed · Assigned to Unassigned · Record updated 2026-09-05
+
+An older candidate review questioned how adaptive duration reaches generation. It has not been reproduced against the current app in this review.
+
+Next: Exercise the current onboarding-to-generation flow and change behavior only if it contradicts the approved adaptive intent.
+
+### Check whether comparison help is reachable
+
+ID: sets-20260905-comparison-help-entry · Checks still needed · Assigned to Unassigned · Record updated 2026-09-05
+
+An older review found a possibly unreachable help entry. Current UI behavior still needs checking.
+
+Next: Follow the actual help entry in the current app, then connect or retire it according to the approved design.
+
+### Check stale cycle data arriving from the cloud
+
+ID: sets-20260905-watch-cycle-merge · Checks still needed · Assigned to Unassigned · Record updated 2026-09-05
+
+Watch item only: there is no fresh reproduction of a remaining cycle-merge defect.
+
+Next: Replay older and newer cycle state arriving in different orders; fix only a reproduced conflict.
+
+### Check that Edit Microcycle changes the actual plan
+
+ID: sets-20260905-watch-edit-microcycle · Checks still needed · Assigned to Unassigned · Record updated 2026-09-05
+
+The earlier watch list questioned whether editing changed only a label. The current behavior is unverified.
+
+Next: Edit a saved program and verify the resulting plan and history mapping, not only the screen label.
+
+### Check that two easier-week systems do not stack
+
+ID: sets-20260905-watch-double-deload · Checks still needed · Assigned to Unassigned · Record updated 2026-09-05
+
+The interaction between manual and automatic easier-week adjustments remains a watch item.
+
+Next: Replay their overlap and verify the user receives one intended adjustment.
+
+### Recheck the plus-set weight-drop limit
+
+ID: sets-20260905-watch-plus-drop-cap · Checks still needed · Assigned to Unassigned · Record updated 2026-09-05
+
+The old report predates newer set-type changes. It must be replayed before being treated as a current bug.
+
+Next: Test the original case in current default and V2 modes and repair only a remaining incorrect limit.
+
+### Recheck the historical gym-data loss route
+
+ID: sets-20260905-watch-gym-wipe · Checks still needed · Assigned to Unassigned · Record updated 2026-09-05
+
+Protection was reported in earlier work, but that does not establish the root cause is closed for every reconnect path.
+
+Next: Use synthetic old and new account state to verify existing guards and investigate any remaining destructive route.
+
+### Check whether an unavailable weight returns after sync
+
+ID: sets-20260905-watch-off-grid-echo · Checks still needed · Assigned to Unassigned · Record updated 2026-09-05
+
+This remains an unconfirmed watch item for editing, saving and receiving the value from the cloud.
+
+Next: Replay the flow with configured weight steps and both units; correct any stale value that returns.
+
+### Confirm the custom-exercise keyboard behavior on iPhone
+
+ID: sets-20260905-watch-custom-keyboard · Checks still needed · Assigned to Unassigned · Record updated 2026-09-05
+
+Earlier work may already have fixed this. Current phone acceptance is missing.
+
+Next: Check create and edit flows in the current iPhone app without changing real user records.
+
+### Review the size of an early weight increase
+
+ID: sets-20260905-novice-weight-jump · Checks still needed · Assigned to Unassigned · Record updated 2026-09-05
+
+The saved example follows the approved rule. It is a founder acceptance question, not a newly proven engine defect.
+
+Next: Replay the actual training-history example; propose a more conservative limit only if the current behavior is rejected.
+
+## Planned
+
+### Accept the exact integrated release before publishing it
+
+ID: sets-legacy-035 · Integration and release · Assigned to You · Record updated 2026-09-05
+
+Old release reminders do not approve the current candidates. No app release is authorized by this checklist update.
+
+Next: Combine only reviewed compatible fixes, record the exact build, complete staging and phone checks, then obtain approval for that release.
+
+### Retry a temporary asset-verification interruption
+
+ID: sets-20260905-asset-verification-retry · Integration and release · Assigned to Unassigned · Record updated 2026-09-05
+
+The release verification workflow can require a manual retry after a temporary download interruption. This is a tooling gap.
+
+Next: Add one bounded retry while keeping integrity checks and a clear final failure.
+
+### Treat repeated failed weights differently from one bad day
+
+ID: sets-20260905-v2-repeated-fumbles · Progression · Assigned to Unassigned · Record updated 2026-09-05
+
+The rule is approved, but this part of V2 has not been implemented. The completed stall work does not cover it.
+
+Next: Use the recent session window to distinguish an isolated miss from repeated misses; require success at the lower step before retrying when appropriate.
+
+### Complete V2 coverage before making it the default
+
+ID: sets-20260905-v2-coverage-rollout · Progression · Assigned to Unassigned · Record updated 2026-09-05
+
+V2 remains deliberately opt-in. Special set types, effort tracking off and other excluded cases still need decisions and acceptance.
+
+Next: Finish the approved recovery work, settle the remaining coverage rules, and test the complete supported paths before proposing default rollout.
+
+### Use the approved effort band for primary lifts
+
+ID: sets-20260905-primary-lift-effort · Program generator · Assigned to Unassigned · Record updated 2026-09-05
+
+The approved new-program rule is one to three reps in reserve for primary lifts. It is not yet integrated into the shipping generator.
+
+Next: Apply the rule once in the generator that ships. If GEN-28 is not ready by 30 September, land the narrow current-generator change first; preserve saved programs.
+
+### Connect the validated GEN-28 generator to SETS
+
+ID: sets-20260905-gen28-app-integration · Program generator · Assigned to Unassigned · Record updated 2026-09-05
+
+Fable’s prototype and Codex’s Round 2 are separate from the app. Neither is a deployed replacement generator.
+
+Next: Finish the review gaps, map gym, injury and training options, and integrate behind an opt-in control. Preserve saved programs and compare real app outputs before rollout.
+
+### Decide which public prototype pages should remain available
+
+ID: sets-20260905-public-prototype-pages · Copy, exercise content and exports · Assigned to Unassigned · Record updated 2026-09-05
+
+Prototype-page publication needs an explicit keep, label, archive or remove decision. Availability alone is not proof of a bug.
+
+Next: Inventory shipped pages and links and make a recommendation for each before changing publication.
+
+## In progress
+
 
 ## Resolved live
 
@@ -327,6 +653,14 @@ Earlier work improved how the engine learns the difficulty of equipment weight c
 
 Next: Retain this earlier record. Reopen a new report separately if the behavior recurs.
 
+### Generation and the workout screen disagree about which gym
+
+ID: sets-legacy-030 · Being worked on & next up · Assigned to Josh · Record updated 2026-09-05
+
+Archived duplicate: gym identity during generation and workouts is tracked under Use the correct gym for each workout. The old generation-time design has been superseded.
+
+Next: Follow sets-legacy-005 for the approved Main Gym and per-day refitting behavior.
+
 ### The swap "no match" message can't say why
 
 ID: sets-legacy-031 · Being worked on & next up · Assigned to Codex · Record updated 2026-08-31
@@ -334,6 +668,30 @@ ID: sets-legacy-031 · Being worked on & next up · Assigned to Codex · Record 
 Earlier work made exercise-swap messages distinguish a missing gym from incomplete equipment setup.
 
 Next: Retain this earlier record. Reopen a new report separately if the behavior recurs.
+
+### Open the app once before your next workout
+
+ID: sets-legacy-036 · Waiting on you · Assigned to You · Record updated 2026-09-05
+
+Archived stale reminder: opening the app once was tied to an earlier release and does not validate today’s candidates.
+
+Next: Use the current integrated-release acceptance task when a new build is available.
+
+### Stall-Breaker rulings (7 decisions) + solo "@0" ruling
+
+ID: sets-legacy-037 · Waiting on you · Assigned to You · Record updated 2026-09-05
+
+Archived superseded decision list: the earlier stall and effort rulings have been replaced by the current V2 decisions. V2 coverage remains a separate open task.
+
+Next: Follow V2 stalled-lifter recovery and V2 coverage before default rollout.
+
+### Smaller items under watch
+
+ID: sets-legacy-038 · Watching · Assigned to You · Record updated 2026-09-05
+
+Archived umbrella: all seven watch items are now separate tasks with their own evidence limits and next steps. This does not mark them fixed.
+
+Next: Use the individual cycle, microcycle, easier-week, plus-set, gym-data, weight-sync and keyboard checks.
 
 ### Loads bounce between two weights for weeks
 
@@ -527,14 +885,6 @@ Earlier engine work clarified the policy for building reps before increasing wei
 
 Next: Retain this earlier record. Reopen a new report separately if the behavior recurs.
 
-### Targets land inside your written rep range (engine audit phase 0)
-
-ID: sets-legacy-063 · Shipped — Fixed & live this campaign · Assigned to Unassigned · Record updated 2026-08-31
-
-Earlier engine work kept recommendations within the user’s written rep range.
-
-Next: Retain this earlier record. Reopen a new report separately if the behavior recurs.
-
 ### Workout regression cases in the release gate
 
 ID: sets-legacy-064 · Shipped — Fixed & live this campaign · Assigned to Unassigned · Record updated 2026-08-31
@@ -553,19 +903,19 @@ Next: Retain this earlier record. Reopen a new report separately if the behavior
 
 ### This master checklist, ranked and complete
 
-ID: sets-legacy-066 · Step 1 — Map everything · Assigned to Unassigned · Record updated 2026-08-31
+ID: sets-legacy-066 · Step 1 — Map everything · Assigned to Unassigned · Record updated 2026-09-05
 
-The original checklist organized work and preserved historical completion records.
+Historical checklist completion label. The board was reconciled again on 5 September; earlier completion totals are not a current app-completion percentage.
 
-Next: Retain this earlier record. Reopen a new report separately if the behavior recurs.
+Next: Use the current board statuses and per-task evidence.
 
 ### Blind-spot sweep of the whole app
 
-ID: sets-legacy-067 · Step 1 — Map everything · Assigned to Unassigned · Record updated 2026-08-31
+ID: sets-legacy-067 · Step 1 — Map everything · Assigned to Unassigned · Record updated 2026-09-05
 
-An earlier app-wide review looked for issues outside the initially reported cases.
+Historical blind-spot audit sign-off. It is retained as history and does not mean the app has no remaining bugs.
 
-Next: Retain this earlier record. Reopen a new report separately if the behavior recurs.
+Next: Use the current findings and checks from the latest review.
 
 ### Competitor complaint research
 
@@ -873,11 +1223,11 @@ Next: Retain this earlier record. Reopen a new report separately if the behavior
 
 ### Stall-breaker — breaks you through a plateau instead of the endless "one more rep" grind
 
-ID: sets-legacy-106 · Step 3 — Safe, correct coaching · Assigned to Unassigned · Record updated 2026-08-31
+ID: sets-legacy-106 · Step 3 — Safe, correct coaching · Assigned to Unassigned · Record updated 2026-09-05
 
-Earlier work tested a strategy for moving beyond a sustained plateau.
+Historical Stall-Breaker sign-off, superseded by the current V2 specification and local candidate. The new candidate is not live.
 
-Next: Retain this earlier record. Reopen a new report separately if the behavior recurs.
+Next: Follow sets-legacy-034 for current implementation and acceptance.
 
 ### Finishing set 2 rewrites set 1's plan
 
@@ -977,11 +1327,11 @@ Next: Retain this earlier record. Reopen a new report separately if the behavior
 
 ### Mid-workout weight adjustments (the live version of the range fix)
 
-ID: sets-legacy-119 · Step 3 — Safe, correct coaching · Assigned to Unassigned · Record updated 2026-08-31
+ID: sets-legacy-119 · Step 3 — Safe, correct coaching · Assigned to Unassigned · Record updated 2026-09-05
 
-Earlier work brought rep-range handling into within-workout weight adjustments.
+Historical range-fix sign-off, not proof that the current default engine always stays in range. The current reproduced defect is tracked under sets-legacy-063.
 
-Next: Retain this earlier record. Reopen a new report separately if the behavior recurs.
+Next: Follow the reopened default rep-range task.
 
 ### Warm-up weights solved on the wrong plate rack for lb users
 
