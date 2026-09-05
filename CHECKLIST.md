@@ -1,12 +1,12 @@
 # SETS — shared checklist
 
-Updated: 2026-09-05T11:43:48.889Z · Reviewed through 2026-09-05
+Updated: 2026-09-05T16:42:55.671Z · Reviewed through 2026-09-05
 
-- web: The live app includes Progression Engine V2 as an opt-in setting. Additional V2 fixes for stalled exercises and later-set targets, Settings changes, storage-history and Sync Now fixes, app wording updates and GEN-28 are not released.
+- web: The served web build now includes the newer V2 beta code, still opt-in. The default-on candidate is blocked by the latest review. Other implementation and release states remain task-specific.
 - backend: Development testing is available under the existing model. Verify the connection and test-account separation; installed deletion and retention behavior still needs checking.
-- next: The local data-protection repairs pass source review, 7,906 full-suite tests and 11 compiled browser cases. Complete new-phone and real-service checks. Address the separately recorded legacy database reset risk before release. GEN-28 has a reviewed local prototype with full checks reported passing; app integration remains pending. V2 stays opt-in.
+- next: Repair the seven confirmed progression gaps and resolve the ceiling rule/test conflict before V2 default rollout. Local data-protection repairs retain their passing source and compiled-browser evidence; phone and real-service checks remain pending. Address the separate legacy database reset risk. GEN-28 app integration remains pending.
 
-> Reviewed through 5 September 2026. 85 current tasks and 123 archived records. These are work items, not a completion percentage or a count of confirmed bugs.
+> Reviewed through 5 September 2026. 88 current tasks and 123 archived records. These are work items, not a completion percentage or a count of confirmed bugs.
 
 > All 146 original IDs are retained. Stale reminders and duplicates are archived; missing findings and the seven individual watch checks have been added.
 
@@ -94,6 +94,30 @@ Some equipment summaries still display kilograms for pounds users. This remains 
 
 Next: Use the shared unit conversion and formatting in equipment pickers and gym summaries; check both units.
 
+### Treat repeated failed weights differently from one bad day
+
+ID: sets-20260905-v2-repeated-fumbles · Progression · Assigned to Unassigned · Record updated 2026-09-05
+
+With effort ratings off, the current V2 planner recommends a recently failed weight again without using the required history. This mode needs the approved history and consolidation checks.
+
+Next: Use the same recent-history and consolidation rules in the effort-rating-off mode, without inventing effort ratings. Check failed-history controls, expiry and earned return to the heavier weight.
+
+### Check progression where equipment has large weight jumps
+
+ID: sets-20260905-coarse-weight-jumps · Progression · Assigned to Unassigned · Record updated 2026-09-05
+
+The served V2 engine can recommend an unrealistic equipment jump when effort ratings are off. Its check uses the written target reps rather than whether the available next weight is achievable. The default engine also fails the reviewed case.
+
+Next: Estimate achievable reps at the actual next equipment weight. Keep the current weight and build reps when the next step is too large; preserve already approved small-step behavior.
+
+### Complete V2 coverage before making it the default
+
+ID: sets-20260905-v2-coverage-rollout · Progression · Assigned to Unassigned · Record updated 2026-09-05
+
+Default rollout is blocked by seven implementation gaps and one rule/test conflict in the latest review. Certain single-arm, bodyweight, plus-set and effort-rating-off combinations still use the older engine and violate the approved V2 rules. The existing 158 checks pass and all 1,008 audited persona calls use V2, but neither covers these failures.
+
+Next: Repair the confirmed cases before default rollout. Combine exercise mode, set type and arm ownership correctly; preserve existing approval tests, then verify finish/reload, the compiled app and phone behavior.
+
 ### Give priority muscles the promised extra work
 
 ID: sets-20260905-priority-direct-work · Program generator · Assigned to Unassigned · Record updated 2026-09-05
@@ -134,6 +158,14 @@ Formula-shaped text is currently written unchanged into CSV cells. The raw expor
 
 Next: Escape formula-like text safely while preserving numeric values and normal CSV formatting.
 
+### Keep workout targets usable after equipment changes
+
+ID: sets-20260905-equipment-edit-blank-plan · Progression · Assigned to Codex · Record updated 2026-09-05
+
+The latest review reproduces blank V2 targets after equipment changes when effort ratings are off. The engine keeps a weight that is unavailable or above the new maximum, and the display rejects the plan. The corresponding default-engine cases now produce valid targets.
+
+Next: Choose a valid current equipment weight before V2 calculates the next plan, preserve the recorded history, and verify finish, reload and single-arm targets.
+
 ### Keep offline data when the local database cannot open
 
 ID: sets-20260905-indexeddb-open-failure · Data protection and sync · Assigned to Codex · Record updated 2026-09-05
@@ -141,6 +173,30 @@ ID: sets-20260905-indexeddb-open-failure · Data protection and sync · Assigned
 A pre-existing shared database helper can delete and recreate the local database after two failed open attempts. Temporary failures can therefore endanger offline history and pending uploads. The new strict workout-recovery reader avoids that policy; other legacy callers still use it.
 
 Next: Remove automatic deletion from the shared open-failure path. Preserve the database, offer retry or explicit recovery, and test affected loading, saving and pending-upload paths before release.
+
+### Keep next-workout targets after a shortened session
+
+ID: sets-20260905-v2-shortened-workout-plan · Progression · Assigned to Codex · Record updated 2026-09-05
+
+When only some planned sets are completed, V2 can return too few next-workout targets in effort-rating-off and bodyweight modes. The display then rejects the plan and shows no recommendation.
+
+Next: Plan every authored set while preserving the completed sets as the only observed evidence. Test one and two completed sets out of three through finish and reload.
+
+### Do not increase a badly missed set after another set progresses
+
+ID: sets-20260905-v2-cap-hit-cascade · Progression · Assigned to Codex · Record updated 2026-09-05
+
+A reproduced V2 case raises the weight of a later set that managed only one rep, after an earlier set earns progression. It also makes the later set heavier than the first. The previous and current default engine handle the tested case correctly.
+
+Next: Apply the same session progression and descending-weight rules to this path. Keep the failed set from receiving its own automatic increase and preserve existing progression approvals.
+
+### Recheck gym equipment before restoring a plan after a deload
+
+ID: sets-20260905-deload-gym-plan-carry · Progression · Assigned to Codex · Record updated 2026-09-05
+
+The finish logic can restore a pre-deload plan from another gym, including a weight above the current equipment maximum. This source-level failure affects the new carry path with either engine setting; the final phone display has not been verified.
+
+Next: Validate gym, station, available weights and workout prescription before reusing the old plan. Use matching normal-session evidence or a safe starting plan when they differ, while preserving unchanged-gym carry behavior.
 
 ## Next release
 
@@ -347,21 +403,13 @@ A narrow V2 repair exists locally, with a regression case that fails on the curr
 
 Next: Integrate that focused repair and check later-set recommendations before and after save/reload.
 
-### Check progression where equipment has large weight jumps
-
-ID: sets-20260905-coarse-weight-jumps · Progression · Assigned to Unassigned · Record updated 2026-09-05
-
-Older candidates contain partial repairs. Current default and V2 paths need the same approved cases replayed before deciding what remains broken.
-
-Next: Keep only missing compatible fixes; preserve safe rep ranges, effort targets and actual equipment steps.
-
 ### Check progression at the equipment’s maximum weight
 
 ID: sets-20260905-maximum-weight-progression · Progression · Assigned to Unassigned · Record updated 2026-09-05
 
-Older candidate fixes need comparison against current default and V2 behavior, including persistence. This is not newly confirmed as a live defect. The supplied review adds a V2 equipment-ceiling case exceeding the stated rep-reliability limit. Its larger reported overshoots were not independently rerun by that reviewer.
+A confirmed rule/test conflict remains: the current specification withdraws the rep ceiling, but the effort-rating-off test and solver still enforce it and can prescribe fewer reps than were achieved. This is not yet an undisputed bug requiring a guessed policy change.
 
-Next: Replay earned maximum-weight progression and save/reload, then integrate only general repairs that are still needed. Reproduce the reported ceiling case, confirm the intended limit for that exercise class, and cover it in save/reload and ceiling checks.
+Next: Check the dated founder approvals for an explicit exception. Align the rule, solver and test with the controlling decision; document any superseded approval before changing it.
 
 ### GEN-28 Round 4: verify the repaired generator
 
@@ -515,14 +563,6 @@ The supplied review reports that the default engine changes a later set’s reps
 
 Next: Reproduce the same saved workout through finish, reload and plan rebuilding. Make repeated validation leave the plan unchanged, then lock that behavior in regression checks.
 
-### Keep workout targets usable after equipment changes
-
-ID: sets-20260905-equipment-edit-blank-plan · Progression · Assigned to Codex · Record updated 2026-09-05
-
-The supplied review reports blank plans when an old logged weight exceeds the current equipment maximum in either engine, or no longer exists among the available weights in the default engine. Awaiting lead reproduction.
-
-Next: Adapt every prescribed set to the current available weights while preserving the intended effort and rep rules. If a valid plan cannot be produced, show a useful explanation instead of a silent blank.
-
 ### Keep the current workout stable when the engine setting changes
 
 ID: sets-20260905-engine-toggle-session-plan · Progression · Assigned to Codex · Record updated 2026-09-05
@@ -551,9 +591,9 @@ Next: Identify inconsistent evidence without silently editing the athlete’s hi
 
 ID: sets-20260905-band-progression-policy · Progression · Assigned to Codex · Record updated 2026-09-05
 
-The supplied review reports that band exercises can receive no next-workout plan from either engine. This appears to be a coverage gap needing a product decision, rather than a proven regression.
+The beta now defines rep-based progression for bands and bodyweight exercises, so a blanket request for a new product decision is stale. Some combinations still bypass V2 in the latest review. Complete band-specific app acceptance remains open.
 
-Next: Agree how band resistance and rep progression should be represented, then provide supported targets or an explicit explanation. Keep valid bodyweight and zero-added-load cases working.
+Next: Apply the approved rep-based policy and verify ordinary, plus, single-arm and shortened band sessions through the real app wiring. Coordinate shared repairs with the V2 coverage task.
 
 ### Make engine checks reject unusable plans and unexplained stagnation
 
@@ -668,22 +708,6 @@ ID: sets-20260905-asset-verification-retry · Integration and release · Assigne
 The release verification workflow can require a manual retry after a temporary download interruption. This is a tooling gap.
 
 Next: Add one bounded retry while keeping integrity checks and a clear final failure.
-
-### Treat repeated failed weights differently from one bad day
-
-ID: sets-20260905-v2-repeated-fumbles · Progression · Assigned to Unassigned · Record updated 2026-09-05
-
-The rule is approved, but this part of V2 has not been implemented. The completed stall work does not cover it.
-
-Next: Use the recent session window to distinguish an isolated miss from repeated misses; require success at the lower step before retrying when appropriate.
-
-### Complete V2 coverage before making it the default
-
-ID: sets-20260905-v2-coverage-rollout · Progression · Assigned to Unassigned · Record updated 2026-09-05
-
-V2 remains deliberately opt-in. Special set types, effort tracking off and other excluded cases still need decisions and acceptance. The supplied progression review adds checks for equipment changes, invalid evidence, per-set targets, bands, single-arm scoring and realistic logger actions.
-
-Next: Finish the approved recovery work, settle the remaining coverage rules, and test the complete supported paths before proposing default rollout. Resolve the relevant reproduced findings and strengthen the evaluator before treating its results as support for wider V2 rollout.
 
 ### Use the approved effort band for primary lifts
 

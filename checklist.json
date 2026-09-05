@@ -1,15 +1,15 @@
 {
   "schemaVersion": 1,
   "title": "SETS — shared checklist",
-  "updatedAt": "2026-09-05T11:43:48.889Z",
+  "updatedAt": "2026-09-05T16:42:55.671Z",
   "reviewedThrough": "2026-09-05",
   "release": {
-    "web": "The live app includes Progression Engine V2 as an opt-in setting. Additional V2 fixes for stalled exercises and later-set targets, Settings changes, storage-history and Sync Now fixes, app wording updates and GEN-28 are not released.",
+    "web": "The served web build now includes the newer V2 beta code, still opt-in. The default-on candidate is blocked by the latest review. Other implementation and release states remain task-specific.",
     "backend": "Development testing is available under the existing model. Verify the connection and test-account separation; installed deletion and retention behavior still needs checking.",
-    "next": "The local data-protection repairs pass source review, 7,906 full-suite tests and 11 compiled browser cases. Complete new-phone and real-service checks. Address the separately recorded legacy database reset risk before release. GEN-28 has a reviewed local prototype with full checks reported passing; app integration remains pending. V2 stays opt-in."
+    "next": "Repair the seven confirmed progression gaps and resolve the ceiling rule/test conflict before V2 default rollout. Local data-protection repairs retain their passing source and compiled-browser evidence; phone and real-service checks remain pending. Address the separate legacy database reset risk. GEN-28 app integration remains pending."
   },
   "notes": [
-    "Reviewed through 5 September 2026. 85 current tasks and 123 archived records. These are work items, not a completion percentage or a count of confirmed bugs.",
+    "Reviewed through 5 September 2026. 88 current tasks and 123 archived records. These are work items, not a completion percentage or a count of confirmed bugs.",
     "All 146 original IDs are retained. Stale reminders and duplicates are archived; missing findings and the seven individual watch checks have been added.",
     "Known issue means the stated source or candidate defect has evidence. Needs checking also includes unreleased repairs and unconfirmed reports; read each summary for the distinction.",
     "Local tests, a pushed branch, integration, deployment and real-device acceptance are separate. Earlier sign-offs have not all been rerun in this review.",
@@ -18,6 +18,10 @@
     "This update publishes checklist summaries only. It does not change the SETS app, PowerSync, task schedules or release permissions."
   ],
   "changes": [
+    {
+      "date": "2026-09-05",
+      "text": "Recorded the completed V2 beta adversarial review: seven implementation gaps and one rule/test conflict block default rollout. Reused existing tasks, added three distinct defects, removed stale blanket coverage claims and supplied a repair for each. Selected engine failures reproduce in the served bundle; full phone behavior remains unverified. This publishes checklist status only."
+    },
     {
       "date": "2026-09-05",
       "text": "Implemented and independently reviewed the four data-protection repairs locally. The final full suite passes 7,906 tests with the same two skips; the built browser test passes 11 scenarios, preserving the earlier fixes. New phone and service acceptance remain pending. Added the separate legacy database reset risk and its solution. GEN-28 Round 4 is reviewed locally and its owner reports the full automated check passing; app integration remains pending. No app release or PowerSync/model change."
@@ -1674,9 +1678,9 @@
       "id": "sets-20260905-v2-repeated-fumbles",
       "title": "Treat repeated failed weights differently from one bad day",
       "area": "Progression",
-      "status": "planned",
-      "summary": "The rule is approved, but this part of V2 has not been implemented. The completed stall work does not cover it.",
-      "nextStep": "Use the recent session window to distinguish an isolated miss from repeated misses; require success at the lower step before retrying when appropriate.",
+      "status": "issue",
+      "summary": "With effort ratings off, the current V2 planner recommends a recently failed weight again without using the required history. This mode needs the approved history and consolidation checks.",
+      "nextStep": "Use the same recent-history and consolidation rules in the effort-rating-off mode, without inventing effort ratings. Check failed-history controls, expiry and earned return to the heavier weight.",
       "updated": "2026-09-05",
       "assignee": "Unassigned"
     },
@@ -1684,9 +1688,9 @@
       "id": "sets-20260905-coarse-weight-jumps",
       "title": "Check progression where equipment has large weight jumps",
       "area": "Progression",
-      "status": "testing",
-      "summary": "Older candidates contain partial repairs. Current default and V2 paths need the same approved cases replayed before deciding what remains broken.",
-      "nextStep": "Keep only missing compatible fixes; preserve safe rep ranges, effort targets and actual equipment steps.",
+      "status": "issue",
+      "summary": "The served V2 engine can recommend an unrealistic equipment jump when effort ratings are off. Its check uses the written target reps rather than whether the available next weight is achievable. The default engine also fails the reviewed case.",
+      "nextStep": "Estimate achievable reps at the actual next equipment weight. Keep the current weight and build reps when the next step is too large; preserve already approved small-step behavior.",
       "updated": "2026-09-05",
       "assignee": "Unassigned"
     },
@@ -1695,8 +1699,8 @@
       "title": "Check progression at the equipment’s maximum weight",
       "area": "Progression",
       "status": "testing",
-      "summary": "Older candidate fixes need comparison against current default and V2 behavior, including persistence. This is not newly confirmed as a live defect. The supplied review adds a V2 equipment-ceiling case exceeding the stated rep-reliability limit. Its larger reported overshoots were not independently rerun by that reviewer.",
-      "nextStep": "Replay earned maximum-weight progression and save/reload, then integrate only general repairs that are still needed. Reproduce the reported ceiling case, confirm the intended limit for that exercise class, and cover it in save/reload and ceiling checks.",
+      "summary": "A confirmed rule/test conflict remains: the current specification withdraws the rep ceiling, but the effort-rating-off test and solver still enforce it and can prescribe fewer reps than were achieved. This is not yet an undisputed bug requiring a guessed policy change.",
+      "nextStep": "Check the dated founder approvals for an explicit exception. Align the rule, solver and test with the controlling decision; document any superseded approval before changing it.",
       "updated": "2026-09-05",
       "assignee": "Unassigned"
     },
@@ -1704,9 +1708,9 @@
       "id": "sets-20260905-v2-coverage-rollout",
       "title": "Complete V2 coverage before making it the default",
       "area": "Progression",
-      "status": "planned",
-      "summary": "V2 remains deliberately opt-in. Special set types, effort tracking off and other excluded cases still need decisions and acceptance. The supplied progression review adds checks for equipment changes, invalid evidence, per-set targets, bands, single-arm scoring and realistic logger actions.",
-      "nextStep": "Finish the approved recovery work, settle the remaining coverage rules, and test the complete supported paths before proposing default rollout. Resolve the relevant reproduced findings and strengthen the evaluator before treating its results as support for wider V2 rollout.",
+      "status": "issue",
+      "summary": "Default rollout is blocked by seven implementation gaps and one rule/test conflict in the latest review. Certain single-arm, bodyweight, plus-set and effort-rating-off combinations still use the older engine and violate the approved V2 rules. The existing 158 checks pass and all 1,008 audited persona calls use V2, but neither covers these failures.",
+      "nextStep": "Repair the confirmed cases before default rollout. Combine exercise mode, set type and arm ownership correctly; preserve existing approval tests, then verify finish/reload, the compiled app and phone behavior.",
       "updated": "2026-09-05",
       "assignee": "Unassigned"
     },
@@ -1984,10 +1988,10 @@
       "id": "sets-20260905-equipment-edit-blank-plan",
       "title": "Keep workout targets usable after equipment changes",
       "area": "Progression",
-      "status": "testing",
+      "status": "issue",
       "assignee": "Codex",
-      "summary": "The supplied review reports blank plans when an old logged weight exceeds the current equipment maximum in either engine, or no longer exists among the available weights in the default engine. Awaiting lead reproduction.",
-      "nextStep": "Adapt every prescribed set to the current available weights while preserving the intended effort and rep rules. If a valid plan cannot be produced, show a useful explanation instead of a silent blank.",
+      "summary": "The latest review reproduces blank V2 targets after equipment changes when effort ratings are off. The engine keeps a weight that is unavailable or above the new maximum, and the display rejects the plan. The corresponding default-engine cases now produce valid targets.",
+      "nextStep": "Choose a valid current equipment weight before V2 calculates the next plan, preserve the recorded history, and verify finish, reload and single-arm targets.",
       "updated": "2026-09-05"
     },
     {
@@ -2026,8 +2030,8 @@
       "area": "Progression",
       "status": "testing",
       "assignee": "Codex",
-      "summary": "The supplied review reports that band exercises can receive no next-workout plan from either engine. This appears to be a coverage gap needing a product decision, rather than a proven regression.",
-      "nextStep": "Agree how band resistance and rep progression should be represented, then provide supported targets or an explicit explanation. Keep valid bodyweight and zero-added-load cases working.",
+      "summary": "The beta now defines rep-based progression for bands and bodyweight exercises, so a blanket request for a new product decision is stale. Some combinations still bypass V2 in the latest review. Complete band-specific app acceptance remains open.",
+      "nextStep": "Apply the approved rep-based policy and verify ordinary, plus, single-arm and shortened band sessions through the real app wiring. Coordinate shared repairs with the V2 coverage task.",
       "updated": "2026-09-05"
     },
     {
@@ -2158,6 +2162,36 @@
       "assignee": "Codex",
       "summary": "A pre-existing shared database helper can delete and recreate the local database after two failed open attempts. Temporary failures can therefore endanger offline history and pending uploads. The new strict workout-recovery reader avoids that policy; other legacy callers still use it.",
       "nextStep": "Remove automatic deletion from the shared open-failure path. Preserve the database, offer retry or explicit recovery, and test affected loading, saving and pending-upload paths before release.",
+      "updated": "2026-09-05"
+    },
+    {
+      "id": "sets-20260905-v2-shortened-workout-plan",
+      "title": "Keep next-workout targets after a shortened session",
+      "summary": "When only some planned sets are completed, V2 can return too few next-workout targets in effort-rating-off and bodyweight modes. The display then rejects the plan and shows no recommendation.",
+      "nextStep": "Plan every authored set while preserving the completed sets as the only observed evidence. Test one and two completed sets out of three through finish and reload.",
+      "area": "Progression",
+      "status": "issue",
+      "assignee": "Codex",
+      "updated": "2026-09-05"
+    },
+    {
+      "id": "sets-20260905-v2-cap-hit-cascade",
+      "title": "Do not increase a badly missed set after another set progresses",
+      "summary": "A reproduced V2 case raises the weight of a later set that managed only one rep, after an earlier set earns progression. It also makes the later set heavier than the first. The previous and current default engine handle the tested case correctly.",
+      "nextStep": "Apply the same session progression and descending-weight rules to this path. Keep the failed set from receiving its own automatic increase and preserve existing progression approvals.",
+      "area": "Progression",
+      "status": "issue",
+      "assignee": "Codex",
+      "updated": "2026-09-05"
+    },
+    {
+      "id": "sets-20260905-deload-gym-plan-carry",
+      "title": "Recheck gym equipment before restoring a plan after a deload",
+      "summary": "The finish logic can restore a pre-deload plan from another gym, including a weight above the current equipment maximum. This source-level failure affects the new carry path with either engine setting; the final phone display has not been verified.",
+      "nextStep": "Validate gym, station, available weights and workout prescription before reusing the old plan. Use matching normal-session evidence or a safe starting plan when they differ, while preserving unchanged-gym carry behavior.",
+      "area": "Progression",
+      "status": "issue",
+      "assignee": "Codex",
       "updated": "2026-09-05"
     }
   ]
