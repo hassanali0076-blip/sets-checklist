@@ -1,12 +1,12 @@
 {
   "schemaVersion": 1,
   "title": "SETS — shared checklist",
-  "updatedAt": "2026-09-05T07:15:23.564Z",
+  "updatedAt": "2026-09-05T08:01:16.436Z",
   "reviewedThrough": "2026-09-05",
   "release": {
     "web": "The live app includes Progression Engine V2 as an opt-in setting. Additional V2 fixes for stalled exercises and later-set targets, Settings changes, storage-history and Sync Now fixes, app wording updates and GEN-28 are not released.",
     "backend": "Development testing is available under the existing model. Verify the connection and test-account separation; installed deletion and retention behavior still needs checking.",
-    "next": "The repaired data-protection batch passes controlled desktop and physical-iPhone checks. Next: integration, remaining isolated service checks and release approval. Make Sync Now cover both upload queues. Keep V2 opt-in; GEN-28 still needs acceptance and integration."
+    "next": "Hold the local data-protection batch. Correct the newly found upload-wait regression, unresolved-failure handling and completed-set edits; address draft recovery limits. Repeat the stronger tests, then complete service checks and obtain release approval. V2 stays opt-in; GEN-28 still needs acceptance and integration."
   },
   "notes": [
     "Reviewed through 5 September 2026. 84 current tasks and 123 archived records. These are work items, not a completion percentage or a count of confirmed bugs.",
@@ -18,6 +18,10 @@
     "This update publishes checklist summaries only. It does not change the SETS app, PowerSync, task schedules or release permissions."
   ],
   "changes": [
+    {
+      "date": "2026-09-05",
+      "text": "Astra Ultra adversarial review holds the local data-protection batch: one new upload-wait regression, an unresolved-failure sync gap, completed-set edit false saving, and a draft recovery limitation. Paired tests distinguish the new regression from existing behavior. Each task now includes its solution. Earlier phone passes remain valid for their narrower inputs; no app code was changed or released during review."
+    },
     {
       "date": "2026-09-05",
       "text": "The repaired test build now passes all three controlled checks on the physical iPhone, including storage-full truthfulness and save-once retry after reopening. The repeated failure came from the older build; old test links now open the repaired build. App integration/release and real cloud/PowerSync checks remain separate."
@@ -156,10 +160,10 @@
       "id": "sets-legacy-009",
       "title": "Sync Now must wait for uploads",
       "area": "Data protection and sync",
-      "status": "testing",
+      "status": "issue",
       "assignee": "Josh",
-      "summary": "The local fix makes the older upload engine wait for delayed and newly queued saves; failed uploads block downloading and remain retryable. Both controlled checks passed in the compiled build on desktop and a physical iPhone. PowerSync has a separate queue that Sync Now still does not await. Nothing is released.",
-      "nextStep": "Make Sync Now account for both upload queues, then verify against the real services with isolated test accounts before release.",
+      "summary": "A deeper review found a regression in the lead agent’s local sync change: reopening can download older cloud data while a newer save is still uploading. A later sync can also forget an unresolved upload failure. Earlier phone tests passed different scenarios. The batch is held from release; PowerSync queue coverage remains separate.",
+      "nextStep": "Lead agent: wait for a confirmed completed upload drain and check the saved queue, keep unresolved failures visible, and block unsafe downloads. Add same-item replacement and offline-restart tests before repeating release checks.",
       "updated": "2026-09-05"
     },
     {
@@ -774,12 +778,12 @@
     },
     {
       "id": "sets-legacy-071",
-      "title": "A set can show completed even when saving fails",
+      "title": "A set or edit can appear saved when saving fails",
       "area": "Data protection and sync",
-      "status": "testing",
+      "status": "issue",
       "assignee": "Unassigned",
-      "summary": "The local repair now passes on desktop and a physical iPhone: failed saves leave sets unticked and preserve the entered values; retry saves once and survives reopening. Single-set, warm-up and complete-all source failure/retry checks also pass. Existing workouts remain protected. This is verified in the isolated test build, not released.",
-      "nextStep": "Integrate the tested repair, finish the data batch’s separately scoped service checks and obtain release approval. Verify the released app before closing this task.",
+      "summary": "New set completion is repaired locally and passes the controlled phone test. The deeper review confirms an existing gap: editing a completed set can still display a changed value that was not saved. Reopening restores the old value. Nothing is released.",
+      "nextStep": "Apply the same save-success check to completed-set editing. Keep rejected edits available for retry and confirm the screen, saved record and reopened workout agree before release.",
       "updated": "2026-09-05"
     },
     {
@@ -1538,7 +1542,7 @@
       "area": "Data protection and sync",
       "status": "testing",
       "summary": "The repaired compiled build passes controlled desktop and physical-iPhone checks: all 500 synthetic older workouts and the previous active save survive full storage; unsaved sets stay unticked; retry saves once and survives reopening. Nothing is released.",
-      "nextStep": "Integrate the tested data-protection batch and release after the remaining service checks and approval. Keep automatic history cleanup disabled unless cloud saving is reliably confirmed.",
+      "nextStep": "Keep the proven history-preservation policy. Resolve the newly found upload-wait and completed-set-edit problems, address the draft recovery limit, then repeat relevant release checks and obtain release approval.",
       "updated": "2026-09-05",
       "assignee": "Unassigned"
     },
@@ -2108,8 +2112,8 @@
       "area": "Data protection and sync",
       "status": "testing",
       "assignee": "Codex",
-      "summary": "The supplied review did not complete checks for recovering a workout after its programme was deleted, damaged saved workout data, or unavailable local database storage. No new failure is claimed.",
-      "nextStep": "Use isolated fixtures to test each recovery route. Preserve recoverable work and give an actionable message when recovery cannot complete; include the existing failed-save completion blocker.",
+      "summary": "Review confirmed a recovery limit: values typed after device storage is already full can remain only in memory and disappear on reopening. The completion warning correctly says saving failed, but draft writes are silent and have no verified recovery copy. Earlier phone checks typed the entry before filling storage. Other source-deletion and damaged-data recovery checks remain open.",
+      "nextStep": "Make draft saving report success or failure, attempt a verified recovery copy where storage permits, and keep an explicit unsaved warning with retry when no copy can be saved. Test full storage before typing and reopening before retry, alongside the remaining recovery cases.",
       "updated": "2026-09-05"
     },
     {
