@@ -1,11 +1,11 @@
 {
   "schemaVersion": 1,
   "title": "SETS — shared checklist",
-  "updatedAt": "2026-09-05T03:33:28.564Z",
+  "updatedAt": "2026-09-05T03:58:18.534Z",
   "reviewedThrough": "2026-09-05",
   "release": {
     "web": "Live app checked 5 September: still the 4 September build. Settings, the newer progression candidate, copy and GEN-28 are not live.",
-    "backend": "Installed database functions, retention jobs and staging sync isolation still need direct verification. A source review is not cloud acceptance.",
+    "backend": "Development testing is available under the existing model. Verify the connection and test-account separation; installed deletion and retention behavior still needs checking.",
     "next": "Integrate reviewed fixes in small groups, starting with data protection. Keep V2 and GEN-28 opt-in until their remaining checks are complete."
   },
   "notes": [
@@ -18,6 +18,10 @@
     "This update publishes checklist summaries only. It does not change the SETS app, PowerSync, task schedules or release permissions."
   ],
   "changes": [
+    {
+      "date": "2026-09-05",
+      "text": "Clarified that the existing Development instance is available for coordinated testing under its current data model. Removed the unresolved ownership/permission blocker; connection and test-data separation checks remain."
+    },
     {
       "date": "2026-09-05",
       "text": "Reconciled production and candidate evidence; added missing findings, split the watch list, archived stale reminders and duplicates, reopened the default rep-range issue, and confirmed remaining GEN-28 prescription and checker defects with its agent. Existing assignments are preserved."
@@ -308,12 +312,12 @@
     },
     {
       "id": "powersync-instance-confirmation",
-      "title": "Confirm an isolated sync connection for staging",
+      "title": "Prepare testing on the existing development instance",
       "area": "Integration and release",
       "status": "testing",
       "assignee": "Unassigned",
-      "summary": "The staging implementation already exists. The remaining dependency is a verified isolated connection and clear ownership of the shared data setup.",
-      "nextStep": "Read the existing service configuration and prepare an exact staging proposal. Local testing and candidate preparation can proceed while access or configuration questions are resolved.",
+      "summary": "Testing on the existing Development instance is permitted with advance coordination and the shared data model kept separate from agent changes. Ownership and permission are no longer unresolved.",
+      "nextStep": "Confirm the connected data and use dedicated test accounts under the existing model. Give an advance heads-up on the test scope. Treat database-structure and sync-rule changes as separate coordinated work; the Development label alone does not prove isolation.",
       "updated": "2026-09-05"
     },
     {

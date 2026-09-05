@@ -1,9 +1,9 @@
 # SETS — shared checklist
 
-Updated: 2026-09-05T03:33:28.564Z · Reviewed through 2026-09-05
+Updated: 2026-09-05T03:58:18.534Z · Reviewed through 2026-09-05
 
 - web: Live app checked 5 September: still the 4 September build. Settings, the newer progression candidate, copy and GEN-28 are not live.
-- backend: Installed database functions, retention jobs and staging sync isolation still need direct verification. A source review is not cloud acceptance.
+- backend: Development testing is available under the existing model. Verify the connection and test-account separation; installed deletion and retention behavior still needs checking.
 - next: Integrate reviewed fixes in small groups, starting with data protection. Keep V2 and GEN-28 opt-in until their remaining checks are complete.
 
 > Reviewed through 5 September 2026. 65 current tasks and 124 archived records. These are work items, not a completion percentage or a count of confirmed bugs.
@@ -235,13 +235,13 @@ The preserved Settings candidate includes workout preferences, warm-ups, rest co
 
 Next: Reconcile newer progression preferences, integrate only compatible changes, then complete staging and phone acceptance.
 
-### Confirm an isolated sync connection for staging
+### Prepare testing on the existing development instance
 
 ID: powersync-instance-confirmation · Integration and release · Assigned to Unassigned · Record updated 2026-09-05
 
-The staging implementation already exists. The remaining dependency is a verified isolated connection and clear ownership of the shared data setup.
+Testing on the existing Development instance is permitted with advance coordination and the shared data model kept separate from agent changes. Ownership and permission are no longer unresolved.
 
-Next: Read the existing service configuration and prepare an exact staging proposal. Local testing and candidate preparation can proceed while access or configuration questions are resolved.
+Next: Confirm the connected data and use dedicated test accounts under the existing model. Give an advance heads-up on the test scope. Treat database-structure and sync-rule changes as separate coordinated work; the Development label alone does not prove isolation.
 
 ### Apply gym edits to affected existing programs
 
