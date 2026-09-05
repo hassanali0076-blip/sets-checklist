@@ -1,12 +1,12 @@
 # SETS — shared checklist
 
-Updated: 2026-09-05T05:34:49.225Z · Reviewed through 2026-09-05
+Updated: 2026-09-05T05:47:29.269Z · Reviewed through 2026-09-05
 
 - web: The live app includes Progression Engine V2 as an opt-in setting. Additional V2 fixes for stalled exercises and later-set targets, Settings changes, storage-history and Sync Now fixes, app wording updates and GEN-28 are not released.
 - backend: Development testing is available under the existing model. Verify the connection and test-account separation; installed deletion and retention behavior still needs checking.
 - next: Fix the failed-save completion blocker before releasing the data-protection batch. Finish phone and isolated cloud checks. Make Sync Now cover both upload queues. Keep V2 opt-in; GEN-28 still needs acceptance and integration.
 
-> Reviewed through 5 September 2026. 66 current tasks and 123 archived records. These are work items, not a completion percentage or a count of confirmed bugs.
+> Reviewed through 5 September 2026. 84 current tasks and 123 archived records. These are work items, not a completion percentage or a count of confirmed bugs.
 
 > All 146 original IDs are retained. Stale reminders and duplicates are archived; missing findings and the seven individual watch checks have been added.
 
@@ -74,9 +74,9 @@ Next: Keep durable deletion records and reject outdated writes. Test deleting on
 
 ID: sets-legacy-063 · Progression · Assigned to Unassigned · Record updated 2026-09-05
 
-Reopened: an exact current-source case still asks below the written range. The opt-in V2 handles that case, but V2 is off by default.
+Reopened: an exact current-source case still asks below the written range. The opt-in V2 handles that case, but V2 is off by default. The supplied review also reports a default-engine set exceeding its own rep ceiling after another set’s progression rule is applied. Whether the builder can author an inverted rep range remains an open question.
 
-Next: Apply a narrow correction to the default paths using the approved capacity rule; preserve effort targets and real available weights.
+Next: Apply a narrow correction to the default paths using the approved capacity rule; preserve effort targets and real available weights. Also reproduce per-set target overrides, preserve each set’s own range, and verify the builder prevents a minimum above its maximum.
 
 ### A set can show completed even when saving fails
 
@@ -247,9 +247,9 @@ Next: Verify edits to the existing gym update affected programs and preserve unr
 
 ID: sets-legacy-032 · Data protection and sync · Assigned to Josh · Record updated 2026-09-05
 
-The Settings candidate improves PowerSync account boundaries. Astra’s separate local sync fix adds worker serialization, but neither completes permanent ownership of pending saves. The combined account-switch flow remains unverified and is not live.
+The Settings candidate improves PowerSync account boundaries. Astra’s separate local sync fix adds worker serialization, but neither completes permanent ownership of pending saves. The combined account-switch flow remains unverified and is not live. The supplied review leaves upload-queue behavior after sign-out unverified; this is part of the existing account-isolation task.
 
-Next: Reuse the candidate account protections, finish the legacy worker fix, then test two accounts with pending offline work.
+Next: Reuse the candidate account protections, finish the legacy worker fix, then test two accounts with pending offline work. Include queued uploads immediately before and after sign-out, restart and a switch to another account.
 
 ### Additional V2 stalled-lifter recovery fixes
 
@@ -351,9 +351,9 @@ Next: Keep only missing compatible fixes; preserve safe rep ranges, effort targe
 
 ID: sets-20260905-maximum-weight-progression · Progression · Assigned to Unassigned · Record updated 2026-09-05
 
-Older candidate fixes need comparison against current default and V2 behavior, including persistence. This is not newly confirmed as a live defect.
+Older candidate fixes need comparison against current default and V2 behavior, including persistence. This is not newly confirmed as a live defect. The supplied review adds a V2 equipment-ceiling case exceeding the stated rep-reliability limit. Its larger reported overshoots were not independently rerun by that reviewer.
 
-Next: Replay earned maximum-weight progression and save/reload, then integrate only general repairs that are still needed.
+Next: Replay earned maximum-weight progression and save/reload, then integrate only general repairs that are still needed. Reproduce the reported ceiling case, confirm the intended limit for that exercise class, and cover it in save/reload and ceiling checks.
 
 ### GEN-28 Round 3: strengthen checks and automated coverage
 
@@ -383,25 +383,25 @@ Next: Reuse compatible screens and verify completed, unfinished and Redo flows w
 
 ID: sets-20260905-orbit-availability · Workout screens and history · Assigned to Unassigned · Record updated 2026-09-05
 
-Candidate UI exists, but the complete behavior contract has not been accepted in the live app.
+Candidate UI exists, but the complete behavior contract has not been accepted in the live app. The supplied review also leaves open whether an empty engine result is ever presented as a valid hold recommendation.
 
-Next: Show the actual fixable cause for affected unfinished sets; hide the next-target prompt when the exercise is complete and clear it after correction.
+Next: Show the actual fixable cause for affected unfinished sets; hide the next-target prompt when the exercise is complete and clear it after correction. Verify that an empty or rejected plan cannot look like an accepted target; show the actual recoverable cause.
 
 ### Verify workout identity through app, sync and database
 
 ID: sets-20260905-sync-workout-provenance · Data protection and sync · Assigned to Unassigned · Record updated 2026-09-05
 
-Some app-side protection is already integrated. The installed database function and sync rules have not been verified end to end.
+Some app-side protection is already integrated. The installed database function and sync rules have not been verified end to end. The supplied review reports local replacement of duplicate workout IDs as sound, but does not verify two devices finishing the same workout through the cloud.
 
-Next: Read the installed backend and sync rules, then verify old and new clients preserve workout and cycle identity. Local adapter checks can proceed now.
+Next: Read the installed backend and sync rules, then verify old and new clients preserve workout and cycle identity. Local adapter checks can proceed now. Include a controlled two-device same-workout-ID collision and verify the final cloud and device records.
 
 ### Finish and integrate the reviewed app wording
 
 ID: sets-20260905-app-copy-candidate · Copy, exercise content and exports · Assigned to Unassigned · Record updated 2026-09-05
 
-The app wording-update branch records 904 reviewed entries and 104 rewrites. It is not accepted or released; 281 entries have overlapping blockers. Its saved full test run also had three failures.
+The app wording-update branch records 904 reviewed entries and 104 rewrites. It is not accepted or released; 281 entries have overlapping blockers. Its saved full test run also had three failures. The supplied review reports that V2 can describe a clearly excessive logged weight as if it were too light. This wording case still needs verification.
 
-Next: Reconcile copy with the final screens, resolve blocked entries and explain the saved failures before integration. Preserve the paused task until its existing owner resumes it.
+Next: Reconcile copy with the final screens, resolve blocked entries and explain the saved failures before integration. Preserve the paused task until its existing owner resumes it. Add the heavy-entry typo explanation to the existing wording review without resuming the paused task.
 
 ### Make exercise guides match videos and logging
 
@@ -499,6 +499,150 @@ The saved example follows the approved rule. It is a founder acceptance question
 
 Next: Replay the actual training-history example; propose a more conservative limit only if the current behavior is rejected.
 
+### Keep the finish screen and next workout on the same plan
+
+ID: sets-20260905-plan-finalization-parity · Progression · Assigned to Codex · Record updated 2026-09-05
+
+The supplied review reports that the default engine changes a later set’s reps when its final check runs twice. The finish screen and a rebuilt next-workout plan can therefore disagree. Awaiting lead reproduction.
+
+Next: Reproduce the same saved workout through finish, reload and plan rebuilding. Make repeated validation leave the plan unchanged, then lock that behavior in regression checks.
+
+### Keep workout targets usable after equipment changes
+
+ID: sets-20260905-equipment-edit-blank-plan · Progression · Assigned to Codex · Record updated 2026-09-05
+
+The supplied review reports blank plans when an old logged weight exceeds the current equipment maximum in either engine, or no longer exists among the available weights in the default engine. Awaiting lead reproduction.
+
+Next: Adapt every prescribed set to the current available weights while preserving the intended effort and rep rules. If a valid plan cannot be produced, show a useful explanation instead of a silent blank.
+
+### Keep the current workout stable when the engine setting changes
+
+ID: sets-20260905-engine-toggle-session-plan · Progression · Assigned to Codex · Record updated 2026-09-05
+
+The supplied review reports that changing the V2 setting, including through profile sync, silently replaces targets for exercises not yet started. Awaiting lead reproduction and confirmation of the session policy.
+
+Next: Preserve which engine created each loaded plan. Keep current-workout targets stable when the setting changes and apply the chosen engine at the agreed next-workout boundary.
+
+### Prevent a wrong device clock from corrupting progression history
+
+ID: sets-20260905-clock-skew-history · Progression · Assigned to Codex · Record updated 2026-09-05
+
+The supplied review reports that a future-dated workout can create a false training break and remain the latest session after the clock is corrected. Awaiting lead reproduction.
+
+Next: Exclude implausible future timestamps from break and recency decisions, preserve the workout itself, and define how affected history recovers. Test a wrong clock followed by correctly dated sessions.
+
+### Recover a useful plan when one logged set is clearly wrong
+
+ID: sets-20260905-v2-single-bad-set · Progression · Assigned to Codex · Record updated 2026-09-05
+
+The supplied review reports that one unusually heavy typo can blank a V2 plan despite other usable sets. The default engine recovers in the reported example. Awaiting lead reproduction.
+
+Next: Identify inconsistent evidence without silently editing the athlete’s history. Use the remaining valid evidence or clearly request a correction, and test both engines.
+
+### Define useful progression for band exercises
+
+ID: sets-20260905-band-progression-policy · Progression · Assigned to Codex · Record updated 2026-09-05
+
+The supplied review reports that band exercises can receive no next-workout plan from either engine. This appears to be a coverage gap needing a product decision, rather than a proven regression.
+
+Next: Agree how band resistance and rep progression should be represented, then provide supported targets or an explicit explanation. Keep valid bodyweight and zero-added-load cases working.
+
+### Make engine checks reject unusable plans and unexplained stagnation
+
+ID: sets-20260905-engine-gate-validity · Integration and release · Assigned to Codex · Record updated 2026-09-05
+
+The supplied review reports that simulated-lifter checks can score unusable targets as successful and miss a lifter who never progresses. Awaiting lead verification of the evaluator.
+
+Next: Check plan presence, sensible reps and effort, and weights valid for the exercise’s equipment. Preserve legitimate zero-added-load exercises. Add progressing-lifter controls and realistic mistakes, edits, skipped sets and equipment limits.
+
+### Make benchmark regressions fail the tests
+
+ID: sets-20260905-benchmark-real-assertions · Integration and release · Assigned to Codex · Record updated 2026-09-05
+
+The supplied review identifies eight benchmark cases that report a regression but only require a non-empty session list. Awaiting lead verification.
+
+Next: Turn each intended behavior into an assertion that fails on the reported regression. Demonstrate that a deliberately broken result is rejected before relying on these tests.
+
+### Score both arms correctly in progression checks
+
+ID: sets-20260905-single-arm-gate-scoring · Integration and release · Assigned to Codex · Record updated 2026-09-05
+
+The supplied review reports that the evaluator can match second-arm rows to the wrong targets. Its current personas do not exercise this case, so the problem is described as latent.
+
+Next: Match each arm to the logical set it belongs to. Add single-arm personas and verify scoring on both layouts and on incomplete pairs before expanding coverage.
+
+### Protect the tests that judge engine quality
+
+ID: sets-20260905-evaluator-change-protection · Integration and release · Assigned to Codex · Record updated 2026-09-05
+
+The supplied review reports that evaluator rules and personas can be weakened without the protected-test review used for engine behavior. Thresholds also lack a consistent change record. Awaiting lead verification.
+
+Next: Include the evaluators in the existing change-protection process. Document justified threshold and persona changes, and prove that an unreviewed weakening is detected.
+
+### Use consistent progression inputs across workout screens
+
+ID: sets-20260905-shared-engine-inputs · Progression · Assigned to Codex · Record updated 2026-09-05
+
+The supplied review found that finish and plan-rebuilding paths supply different history, rest and progression inputs. It did not prove a separate output failure caused by those differences.
+
+Next: Compare equivalent evidence through both paths before changing them. Share the required configuration and review duplicated single-arm merging, preserving explicitly intended differences.
+
+### Clear an unused exercise’s old plan when it is swapped
+
+ID: sets-20260905-swap-orphaned-plan · Workout screens and history · Assigned to Codex · Record updated 2026-09-05
+
+The supplied review reports that swapping an exercise before any sets are logged leaves its saved plan behind because cleanup reads state too late. Existing display repair reduces the immediate impact. Awaiting lead reproduction.
+
+Next: Identify the original exercise before scheduling the swap and clear its unused plan reliably. Preserve the old exercise’s plan when logged work intentionally requires it.
+
+### Explain missing targets after changing single-arm tracking
+
+ID: sets-20260905-laterality-history-mismatch · Progression · Assigned to Codex · Record updated 2026-09-05
+
+A review stream reports blank plans when an exercise’s arm-tracking mode no longer matches its history. The reviewer did not independently rerun this case, and rejection may be intentional.
+
+Next: Reproduce edits made outside an active workout. Define safe handling of incompatible history and show a clear reason when targets cannot be reused.
+
+### Check programme weeks across local-time and UTC boundaries
+
+ID: sets-20260905-week-time-boundary · Workout screens and history · Assigned to Codex · Record updated 2026-09-05
+
+The supplied review left programme-week timing across local-time and UTC boundaries uninvestigated. This is an open check, not a confirmed defect.
+
+Next: Test week transitions near midnight, time-zone changes and daylight-saving changes. Confirm the intended local calendar week is preserved.
+
+### Verify workout recovery when its source or local storage is unavailable
+
+ID: sets-20260905-workout-recovery-resilience · Data protection and sync · Assigned to Codex · Record updated 2026-09-05
+
+The supplied review did not complete checks for recovering a workout after its programme was deleted, damaged saved workout data, or unavailable local database storage. No new failure is claimed.
+
+Next: Use isolated fixtures to test each recovery route. Preserve recoverable work and give an actionable message when recovery cannot complete; include the existing failed-save completion blocker.
+
+### Check whether linking a superset adds unintended sets
+
+ID: sets-20260905-superset-partner-set-count · Workout screens and history · Assigned to Codex · Record updated 2026-09-05
+
+The supplied review checked that linking a superset does not reduce a logged partner’s set count. Whether it unnecessarily increases the shorter partner’s count remains unverified.
+
+Next: Test linking partners with unequal targets and already logged sets. Confirm the intended set-count policy and preserve logged work without silently adding unwanted sets.
+
+### Reconcile old progression bug labels with current evidence
+
+ID: sets-20260905-progression-bug-ledger · Integration and release · Assigned to Codex · Record updated 2026-09-05
+
+The supplied review suggests two old order-dependent advice reports may be fixed and several other bug labels are stale. Those closure claims have not been independently verified by the lead.
+
+Next: Rerun the exact historical cases on the relevant current revisions, then update the bug ledger and existing checklist records. Preserve prior sign-offs until the comparison supports a change.
+
+### Measure how saved workout plans grow on the device
+
+ID: sets-20260905-saved-plan-storage-growth · Data protection and sync · Assigned to Codex · Record updated 2026-09-05
+
+The supplied review notes that saved next-workout plans share a growing device-storage record. Its size and cleanup behavior were not measured, so this is an open capacity check.
+
+Next: Measure realistic long-term growth and cleanup with synthetic histories. Define safe retention that preserves pending work and does not recreate the existing storage-full data-loss risk.
+
 ## Planned
 
 ### Accept the exact integrated release before publishing it
@@ -529,9 +673,9 @@ Next: Use the recent session window to distinguish an isolated miss from repeate
 
 ID: sets-20260905-v2-coverage-rollout · Progression · Assigned to Unassigned · Record updated 2026-09-05
 
-V2 remains deliberately opt-in. Special set types, effort tracking off and other excluded cases still need decisions and acceptance.
+V2 remains deliberately opt-in. Special set types, effort tracking off and other excluded cases still need decisions and acceptance. The supplied progression review adds checks for equipment changes, invalid evidence, per-set targets, bands, single-arm scoring and realistic logger actions.
 
-Next: Finish the approved recovery work, settle the remaining coverage rules, and test the complete supported paths before proposing default rollout.
+Next: Finish the approved recovery work, settle the remaining coverage rules, and test the complete supported paths before proposing default rollout. Resolve the relevant reproduced findings and strengthen the evaluator before treating its results as support for wider V2 rollout.
 
 ### Use the approved effort band for primary lifts
 

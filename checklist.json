@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "title": "SETS — shared checklist",
-  "updatedAt": "2026-09-05T05:34:49.225Z",
+  "updatedAt": "2026-09-05T05:47:29.269Z",
   "reviewedThrough": "2026-09-05",
   "release": {
     "web": "The live app includes Progression Engine V2 as an opt-in setting. Additional V2 fixes for stalled exercises and later-set targets, Settings changes, storage-history and Sync Now fixes, app wording updates and GEN-28 are not released.",
@@ -9,7 +9,7 @@
     "next": "Fix the failed-save completion blocker before releasing the data-protection batch. Finish phone and isolated cloud checks. Make Sync Now cover both upload queues. Keep V2 opt-in; GEN-28 still needs acceptance and integration."
   },
   "notes": [
-    "Reviewed through 5 September 2026. 66 current tasks and 123 archived records. These are work items, not a completion percentage or a count of confirmed bugs.",
+    "Reviewed through 5 September 2026. 84 current tasks and 123 archived records. These are work items, not a completion percentage or a count of confirmed bugs.",
     "All 146 original IDs are retained. Stale reminders and duplicates are archived; missing findings and the seven individual watch checks have been added.",
     "Known issue means the stated source or candidate defect has evidence. Needs checking also includes unreleased repairs and unconfirmed reports; read each summary for the distinction.",
     "Local tests, a pushed branch, integration, deployment and real-device acceptance are separate. Earlier sign-offs have not all been rerun in this review.",
@@ -18,6 +18,10 @@
     "This update publishes checklist summaries only. It does not change the SETS app, PowerSync, task schedules or release permissions."
   ],
   "changes": [
+    {
+      "date": "2026-09-05",
+      "text": "Added the supplied progression/logger review: all 17 findings are mapped, related findings are grouped, and overlaps are attached to existing tasks. Eighteen new lead-owned checks also capture the open questions and audit follow-ups. These reports await lead verification; no app fix, new test pass or release is claimed."
+    },
     {
       "date": "2026-09-05",
       "text": "Compiled test build prepared. Controlled delayed-upload and retry checks passed; old history survived full storage. Reopened the set-completion bug: the logger can show success after a failed save. Release is on hold. Clarified that Sync Now still does not await PowerSync’s separate queue; phone/cloud acceptance remains open."
@@ -372,8 +376,8 @@
       "area": "Data protection and sync",
       "status": "testing",
       "assignee": "Josh",
-      "summary": "The Settings candidate improves PowerSync account boundaries. Astra’s separate local sync fix adds worker serialization, but neither completes permanent ownership of pending saves. The combined account-switch flow remains unverified and is not live.",
-      "nextStep": "Reuse the candidate account protections, finish the legacy worker fix, then test two accounts with pending offline work.",
+      "summary": "The Settings candidate improves PowerSync account boundaries. Astra’s separate local sync fix adds worker serialization, but neither completes permanent ownership of pending saves. The combined account-switch flow remains unverified and is not live. The supplied review leaves upload-queue behavior after sign-out unverified; this is part of the existing account-isolation task.",
+      "nextStep": "Reuse the candidate account protections, finish the legacy worker fix, then test two accounts with pending offline work. Include queued uploads immediately before and after sign-out, restart and a switch to another account.",
       "updated": "2026-09-05"
     },
     {
@@ -682,8 +686,8 @@
       "area": "Progression",
       "status": "issue",
       "assignee": "Unassigned",
-      "summary": "Reopened: an exact current-source case still asks below the written range. The opt-in V2 handles that case, but V2 is off by default.",
-      "nextStep": "Apply a narrow correction to the default paths using the approved capacity rule; preserve effort targets and real available weights.",
+      "summary": "Reopened: an exact current-source case still asks below the written range. The opt-in V2 handles that case, but V2 is off by default. The supplied review also reports a default-engine set exceeding its own rep ceiling after another set’s progression rule is applied. Whether the builder can author an inverted rep range remains an open question.",
+      "nextStep": "Apply a narrow correction to the default paths using the approved capacity rule; preserve effort targets and real available weights. Also reproduce per-set target overrides, preserve each set’s own range, and verify the builder prevents a minimum above its maximum.",
       "updated": "2026-09-05"
     },
     {
@@ -1671,8 +1675,8 @@
       "title": "Check progression at the equipment’s maximum weight",
       "area": "Progression",
       "status": "testing",
-      "summary": "Older candidate fixes need comparison against current default and V2 behavior, including persistence. This is not newly confirmed as a live defect.",
-      "nextStep": "Replay earned maximum-weight progression and save/reload, then integrate only general repairs that are still needed.",
+      "summary": "Older candidate fixes need comparison against current default and V2 behavior, including persistence. This is not newly confirmed as a live defect. The supplied review adds a V2 equipment-ceiling case exceeding the stated rep-reliability limit. Its larger reported overshoots were not independently rerun by that reviewer.",
+      "nextStep": "Replay earned maximum-weight progression and save/reload, then integrate only general repairs that are still needed. Reproduce the reported ceiling case, confirm the intended limit for that exercise class, and cover it in save/reload and ceiling checks.",
       "updated": "2026-09-05",
       "assignee": "Unassigned"
     },
@@ -1681,8 +1685,8 @@
       "title": "Complete V2 coverage before making it the default",
       "area": "Progression",
       "status": "planned",
-      "summary": "V2 remains deliberately opt-in. Special set types, effort tracking off and other excluded cases still need decisions and acceptance.",
-      "nextStep": "Finish the approved recovery work, settle the remaining coverage rules, and test the complete supported paths before proposing default rollout.",
+      "summary": "V2 remains deliberately opt-in. Special set types, effort tracking off and other excluded cases still need decisions and acceptance. The supplied progression review adds checks for equipment changes, invalid evidence, per-set targets, bands, single-arm scoring and realistic logger actions.",
+      "nextStep": "Finish the approved recovery work, settle the remaining coverage rules, and test the complete supported paths before proposing default rollout. Resolve the relevant reproduced findings and strengthen the evaluator before treating its results as support for wider V2 rollout.",
       "updated": "2026-09-05",
       "assignee": "Unassigned"
     },
@@ -1761,8 +1765,8 @@
       "title": "Show unavailable-target explanations only when useful",
       "area": "Workout screens and history",
       "status": "testing",
-      "summary": "Candidate UI exists, but the complete behavior contract has not been accepted in the live app.",
-      "nextStep": "Show the actual fixable cause for affected unfinished sets; hide the next-target prompt when the exercise is complete and clear it after correction.",
+      "summary": "Candidate UI exists, but the complete behavior contract has not been accepted in the live app. The supplied review also leaves open whether an empty engine result is ever presented as a valid hold recommendation.",
+      "nextStep": "Show the actual fixable cause for affected unfinished sets; hide the next-target prompt when the exercise is complete and clear it after correction. Verify that an empty or rejected plan cannot look like an accepted target; show the actual recoverable cause.",
       "updated": "2026-09-05",
       "assignee": "Unassigned"
     },
@@ -1771,8 +1775,8 @@
       "title": "Verify workout identity through app, sync and database",
       "area": "Data protection and sync",
       "status": "testing",
-      "summary": "Some app-side protection is already integrated. The installed database function and sync rules have not been verified end to end.",
-      "nextStep": "Read the installed backend and sync rules, then verify old and new clients preserve workout and cycle identity. Local adapter checks can proceed now.",
+      "summary": "Some app-side protection is already integrated. The installed database function and sync rules have not been verified end to end. The supplied review reports local replacement of duplicate workout IDs as sound, but does not verify two devices finishing the same workout through the cloud.",
+      "nextStep": "Read the installed backend and sync rules, then verify old and new clients preserve workout and cycle identity. Local adapter checks can proceed now. Include a controlled two-device same-workout-ID collision and verify the final cloud and device records.",
       "updated": "2026-09-05",
       "assignee": "Unassigned"
     },
@@ -1811,8 +1815,8 @@
       "title": "Finish and integrate the reviewed app wording",
       "area": "Copy, exercise content and exports",
       "status": "testing",
-      "summary": "The app wording-update branch records 904 reviewed entries and 104 rewrites. It is not accepted or released; 281 entries have overlapping blockers. Its saved full test run also had three failures.",
-      "nextStep": "Reconcile copy with the final screens, resolve blocked entries and explain the saved failures before integration. Preserve the paused task until its existing owner resumes it.",
+      "summary": "The app wording-update branch records 904 reviewed entries and 104 rewrites. It is not accepted or released; 281 entries have overlapping blockers. Its saved full test run also had three failures. The supplied review reports that V2 can describe a clearly excessive logged weight as if it were too light. This wording case still needs verification.",
+      "nextStep": "Reconcile copy with the final screens, resolve blocked entries and explain the saved failures before integration. Preserve the paused task until its existing owner resumes it. Add the heavy-entry typo explanation to the existing wording review without resuming the paused task.",
       "updated": "2026-09-05",
       "assignee": "Unassigned"
     },
@@ -1945,6 +1949,186 @@
       "nextStep": "Replay the actual training-history example; propose a more conservative limit only if the current behavior is rejected.",
       "updated": "2026-09-05",
       "assignee": "Unassigned"
+    },
+    {
+      "id": "sets-20260905-plan-finalization-parity",
+      "title": "Keep the finish screen and next workout on the same plan",
+      "area": "Progression",
+      "status": "testing",
+      "assignee": "Codex",
+      "summary": "The supplied review reports that the default engine changes a later set’s reps when its final check runs twice. The finish screen and a rebuilt next-workout plan can therefore disagree. Awaiting lead reproduction.",
+      "nextStep": "Reproduce the same saved workout through finish, reload and plan rebuilding. Make repeated validation leave the plan unchanged, then lock that behavior in regression checks.",
+      "updated": "2026-09-05"
+    },
+    {
+      "id": "sets-20260905-equipment-edit-blank-plan",
+      "title": "Keep workout targets usable after equipment changes",
+      "area": "Progression",
+      "status": "testing",
+      "assignee": "Codex",
+      "summary": "The supplied review reports blank plans when an old logged weight exceeds the current equipment maximum in either engine, or no longer exists among the available weights in the default engine. Awaiting lead reproduction.",
+      "nextStep": "Adapt every prescribed set to the current available weights while preserving the intended effort and rep rules. If a valid plan cannot be produced, show a useful explanation instead of a silent blank.",
+      "updated": "2026-09-05"
+    },
+    {
+      "id": "sets-20260905-engine-toggle-session-plan",
+      "title": "Keep the current workout stable when the engine setting changes",
+      "area": "Progression",
+      "status": "testing",
+      "assignee": "Codex",
+      "summary": "The supplied review reports that changing the V2 setting, including through profile sync, silently replaces targets for exercises not yet started. Awaiting lead reproduction and confirmation of the session policy.",
+      "nextStep": "Preserve which engine created each loaded plan. Keep current-workout targets stable when the setting changes and apply the chosen engine at the agreed next-workout boundary.",
+      "updated": "2026-09-05"
+    },
+    {
+      "id": "sets-20260905-clock-skew-history",
+      "title": "Prevent a wrong device clock from corrupting progression history",
+      "area": "Progression",
+      "status": "testing",
+      "assignee": "Codex",
+      "summary": "The supplied review reports that a future-dated workout can create a false training break and remain the latest session after the clock is corrected. Awaiting lead reproduction.",
+      "nextStep": "Exclude implausible future timestamps from break and recency decisions, preserve the workout itself, and define how affected history recovers. Test a wrong clock followed by correctly dated sessions.",
+      "updated": "2026-09-05"
+    },
+    {
+      "id": "sets-20260905-v2-single-bad-set",
+      "title": "Recover a useful plan when one logged set is clearly wrong",
+      "area": "Progression",
+      "status": "testing",
+      "assignee": "Codex",
+      "summary": "The supplied review reports that one unusually heavy typo can blank a V2 plan despite other usable sets. The default engine recovers in the reported example. Awaiting lead reproduction.",
+      "nextStep": "Identify inconsistent evidence without silently editing the athlete’s history. Use the remaining valid evidence or clearly request a correction, and test both engines.",
+      "updated": "2026-09-05"
+    },
+    {
+      "id": "sets-20260905-band-progression-policy",
+      "title": "Define useful progression for band exercises",
+      "area": "Progression",
+      "status": "testing",
+      "assignee": "Codex",
+      "summary": "The supplied review reports that band exercises can receive no next-workout plan from either engine. This appears to be a coverage gap needing a product decision, rather than a proven regression.",
+      "nextStep": "Agree how band resistance and rep progression should be represented, then provide supported targets or an explicit explanation. Keep valid bodyweight and zero-added-load cases working.",
+      "updated": "2026-09-05"
+    },
+    {
+      "id": "sets-20260905-engine-gate-validity",
+      "title": "Make engine checks reject unusable plans and unexplained stagnation",
+      "area": "Integration and release",
+      "status": "testing",
+      "assignee": "Codex",
+      "summary": "The supplied review reports that simulated-lifter checks can score unusable targets as successful and miss a lifter who never progresses. Awaiting lead verification of the evaluator.",
+      "nextStep": "Check plan presence, sensible reps and effort, and weights valid for the exercise’s equipment. Preserve legitimate zero-added-load exercises. Add progressing-lifter controls and realistic mistakes, edits, skipped sets and equipment limits.",
+      "updated": "2026-09-05"
+    },
+    {
+      "id": "sets-20260905-benchmark-real-assertions",
+      "title": "Make benchmark regressions fail the tests",
+      "area": "Integration and release",
+      "status": "testing",
+      "assignee": "Codex",
+      "summary": "The supplied review identifies eight benchmark cases that report a regression but only require a non-empty session list. Awaiting lead verification.",
+      "nextStep": "Turn each intended behavior into an assertion that fails on the reported regression. Demonstrate that a deliberately broken result is rejected before relying on these tests.",
+      "updated": "2026-09-05"
+    },
+    {
+      "id": "sets-20260905-single-arm-gate-scoring",
+      "title": "Score both arms correctly in progression checks",
+      "area": "Integration and release",
+      "status": "testing",
+      "assignee": "Codex",
+      "summary": "The supplied review reports that the evaluator can match second-arm rows to the wrong targets. Its current personas do not exercise this case, so the problem is described as latent.",
+      "nextStep": "Match each arm to the logical set it belongs to. Add single-arm personas and verify scoring on both layouts and on incomplete pairs before expanding coverage.",
+      "updated": "2026-09-05"
+    },
+    {
+      "id": "sets-20260905-evaluator-change-protection",
+      "title": "Protect the tests that judge engine quality",
+      "area": "Integration and release",
+      "status": "testing",
+      "assignee": "Codex",
+      "summary": "The supplied review reports that evaluator rules and personas can be weakened without the protected-test review used for engine behavior. Thresholds also lack a consistent change record. Awaiting lead verification.",
+      "nextStep": "Include the evaluators in the existing change-protection process. Document justified threshold and persona changes, and prove that an unreviewed weakening is detected.",
+      "updated": "2026-09-05"
+    },
+    {
+      "id": "sets-20260905-shared-engine-inputs",
+      "title": "Use consistent progression inputs across workout screens",
+      "area": "Progression",
+      "status": "testing",
+      "assignee": "Codex",
+      "summary": "The supplied review found that finish and plan-rebuilding paths supply different history, rest and progression inputs. It did not prove a separate output failure caused by those differences.",
+      "nextStep": "Compare equivalent evidence through both paths before changing them. Share the required configuration and review duplicated single-arm merging, preserving explicitly intended differences.",
+      "updated": "2026-09-05"
+    },
+    {
+      "id": "sets-20260905-swap-orphaned-plan",
+      "title": "Clear an unused exercise’s old plan when it is swapped",
+      "area": "Workout screens and history",
+      "status": "testing",
+      "assignee": "Codex",
+      "summary": "The supplied review reports that swapping an exercise before any sets are logged leaves its saved plan behind because cleanup reads state too late. Existing display repair reduces the immediate impact. Awaiting lead reproduction.",
+      "nextStep": "Identify the original exercise before scheduling the swap and clear its unused plan reliably. Preserve the old exercise’s plan when logged work intentionally requires it.",
+      "updated": "2026-09-05"
+    },
+    {
+      "id": "sets-20260905-laterality-history-mismatch",
+      "title": "Explain missing targets after changing single-arm tracking",
+      "area": "Progression",
+      "status": "testing",
+      "assignee": "Codex",
+      "summary": "A review stream reports blank plans when an exercise’s arm-tracking mode no longer matches its history. The reviewer did not independently rerun this case, and rejection may be intentional.",
+      "nextStep": "Reproduce edits made outside an active workout. Define safe handling of incompatible history and show a clear reason when targets cannot be reused.",
+      "updated": "2026-09-05"
+    },
+    {
+      "id": "sets-20260905-week-time-boundary",
+      "title": "Check programme weeks across local-time and UTC boundaries",
+      "area": "Workout screens and history",
+      "status": "testing",
+      "assignee": "Codex",
+      "summary": "The supplied review left programme-week timing across local-time and UTC boundaries uninvestigated. This is an open check, not a confirmed defect.",
+      "nextStep": "Test week transitions near midnight, time-zone changes and daylight-saving changes. Confirm the intended local calendar week is preserved.",
+      "updated": "2026-09-05"
+    },
+    {
+      "id": "sets-20260905-workout-recovery-resilience",
+      "title": "Verify workout recovery when its source or local storage is unavailable",
+      "area": "Data protection and sync",
+      "status": "testing",
+      "assignee": "Codex",
+      "summary": "The supplied review did not complete checks for recovering a workout after its programme was deleted, damaged saved workout data, or unavailable local database storage. No new failure is claimed.",
+      "nextStep": "Use isolated fixtures to test each recovery route. Preserve recoverable work and give an actionable message when recovery cannot complete; include the existing failed-save completion blocker.",
+      "updated": "2026-09-05"
+    },
+    {
+      "id": "sets-20260905-superset-partner-set-count",
+      "title": "Check whether linking a superset adds unintended sets",
+      "area": "Workout screens and history",
+      "status": "testing",
+      "assignee": "Codex",
+      "summary": "The supplied review checked that linking a superset does not reduce a logged partner’s set count. Whether it unnecessarily increases the shorter partner’s count remains unverified.",
+      "nextStep": "Test linking partners with unequal targets and already logged sets. Confirm the intended set-count policy and preserve logged work without silently adding unwanted sets.",
+      "updated": "2026-09-05"
+    },
+    {
+      "id": "sets-20260905-progression-bug-ledger",
+      "title": "Reconcile old progression bug labels with current evidence",
+      "area": "Integration and release",
+      "status": "testing",
+      "assignee": "Codex",
+      "summary": "The supplied review suggests two old order-dependent advice reports may be fixed and several other bug labels are stale. Those closure claims have not been independently verified by the lead.",
+      "nextStep": "Rerun the exact historical cases on the relevant current revisions, then update the bug ledger and existing checklist records. Preserve prior sign-offs until the comparison supports a change.",
+      "updated": "2026-09-05"
+    },
+    {
+      "id": "sets-20260905-saved-plan-storage-growth",
+      "title": "Measure how saved workout plans grow on the device",
+      "area": "Data protection and sync",
+      "status": "testing",
+      "assignee": "Codex",
+      "summary": "The supplied review notes that saved next-workout plans share a growing device-storage record. Its size and cleanup behavior were not measured, so this is an open capacity check.",
+      "nextStep": "Measure realistic long-term growth and cleanup with synthetic histories. Define safe retention that preserves pending work and does not recreate the existing storage-full data-loss risk.",
+      "updated": "2026-09-05"
     }
   ]
 }
