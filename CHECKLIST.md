@@ -1,6 +1,6 @@
 # SETS — shared checklist
 
-Updated: 2026-09-05T05:47:29.269Z · Reviewed through 2026-09-05
+Updated: 2026-09-05T05:51:22.191Z · Reviewed through 2026-09-05
 
 - web: The live app includes Progression Engine V2 as an opt-in setting. Additional V2 fixes for stalled exercises and later-set targets, Settings changes, storage-history and Sync Now fixes, app wording updates and GEN-28 are not released.
 - backend: Development testing is available under the existing model. Verify the connection and test-account separation; installed deletion and retention behavior still needs checking.
@@ -82,7 +82,7 @@ Next: Apply a narrow correction to the default paths using the approved capacity
 
 ID: sets-legacy-071 · Data protection and sync · Assigned to Unassigned · Record updated 2026-09-05
 
-Reopened after a compiled-build check: when storage is full, the warning appears but the set still shows completed. Reload loses that completion. Existing history survives. Production source contains the same ignored save-result path; this is a release blocker.
+Reopened and reproduced on desktop and a physical iPhone: when storage is full, the warning appears but the set still shows completed. Reload loses that completion. Existing history survives. Production source contains the same ignored save-result path; this is a release blocker.
 
 Next: Confirm saving succeeded before ticking the set, recording completion, starting rest or advancing the workout. Stop single-set, warm-up and bulk completion on failure, then retest storage-full logging and retry.
 
@@ -183,9 +183,9 @@ Next: Integrate cleanup only with protection for unsent work. Test sign-out, sig
 
 ID: sets-legacy-009 · Data protection and sync · Assigned to Josh · Record updated 2026-09-05
 
-The local fix makes the older upload engine wait for delayed and newly queued saves; failed uploads block downloading and remain retryable. Both controlled browser checks passed in a compiled test build. PowerSync has a separate queue that Sync Now still does not await. Nothing is released.
+The local fix makes the older upload engine wait for delayed and newly queued saves; failed uploads block downloading and remain retryable. Both controlled checks passed in the compiled build on desktop and a physical iPhone. PowerSync has a separate queue that Sync Now still does not await. Nothing is released.
 
-Next: Make Sync Now account for both upload queues, then verify with isolated test accounts and a real phone before release.
+Next: Make Sync Now account for both upload queues, then verify against the real services with isolated test accounts before release.
 
 ### Avoid partially completed category deletion
 
@@ -263,9 +263,9 @@ Next: Integrate the reviewed V2-only changes and verify the complete save/reload
 
 ID: sets-20260905-offline-history · Data protection and sync · Assigned to Unassigned · Record updated 2026-09-05
 
-The local preservation fix passed a compiled-browser check: all 500 synthetic older workouts and the previous active-workout save survive full storage. The same check reopened a separate bug: the logger still shows an unsaved set as completed. Nothing is released.
+The local preservation fix passed controlled desktop and physical-iPhone checks: all 500 synthetic older workouts and the previous active-workout save survive full storage. Both also reproduced the logger bug that shows an unsaved set as completed. Nothing is released.
 
-Next: Resolve the failed-save completion blocker, then repeat storage-full and retry checks on the test build and phone. Keep automatic history cleanup disabled unless cloud saving is reliably confirmed.
+Next: Resolve the failed-save completion blocker, then repeat storage-full logging and retry on the candidate build and phone. Keep automatic history cleanup disabled unless cloud saving is reliably confirmed.
 
 ### Review information collected in automatic reports
 
