@@ -1,12 +1,12 @@
 # SETS — shared checklist
 
-Updated: 2026-09-05T04:52:08.931Z · Reviewed through 2026-09-05
+Updated: 2026-09-05T05:34:49.225Z · Reviewed through 2026-09-05
 
 - web: The live app includes Progression Engine V2 as an opt-in setting. Additional V2 fixes for stalled exercises and later-set targets, Settings changes, storage-history and Sync Now fixes, app wording updates and GEN-28 are not released.
 - backend: Development testing is available under the existing model. Verify the connection and test-account separation; installed deletion and retention behavior still needs checking.
-- next: Integrate reviewed fixes in small groups, starting with data protection. Keep V2 opt-in; introduce GEN-28 behind an opt-in control after its remaining checks.
+- next: Fix the failed-save completion blocker before releasing the data-protection batch. Finish phone and isolated cloud checks. Make Sync Now cover both upload queues. Keep V2 opt-in; GEN-28 still needs acceptance and integration.
 
-> Reviewed through 5 September 2026. 65 current tasks and 124 archived records. These are work items, not a completion percentage or a count of confirmed bugs.
+> Reviewed through 5 September 2026. 66 current tasks and 123 archived records. These are work items, not a completion percentage or a count of confirmed bugs.
 
 > All 146 original IDs are retained. Stale reminders and duplicates are archived; missing findings and the seven individual watch checks have been added.
 
@@ -77,6 +77,14 @@ ID: sets-legacy-063 · Progression · Assigned to Unassigned · Record updated 2
 Reopened: an exact current-source case still asks below the written range. The opt-in V2 handles that case, but V2 is off by default.
 
 Next: Apply a narrow correction to the default paths using the approved capacity rule; preserve effort targets and real available weights.
+
+### A set can show completed even when saving fails
+
+ID: sets-legacy-071 · Data protection and sync · Assigned to Unassigned · Record updated 2026-09-05
+
+Reopened after a compiled-build check: when storage is full, the warning appears but the set still shows completed. Reload loses that completion. Existing history survives. Production source contains the same ignored save-result path; this is a release blocker.
+
+Next: Confirm saving succeeded before ticking the set, recording completion, starting rest or advancing the workout. Stop single-set, warm-up and bulk completion on failure, then retest storage-full logging and retry.
 
 ### Give changed app files unique download addresses
 
@@ -175,9 +183,9 @@ Next: Integrate cleanup only with protection for unsent work. Test sign-out, sig
 
 ID: sets-legacy-009 · Data protection and sync · Assigned to Josh · Record updated 2026-09-05
 
-Astra implemented a local fix: concurrent Sync Now requests wait for uploads, including newer queued work. Failed uploads block the follow-up download and remain retryable. Automated checks and peer review passed; this is not live.
+The local fix makes the older upload engine wait for delayed and newly queued saves; failed uploads block downloading and remain retryable. Both controlled browser checks passed in a compiled test build. PowerSync has a separate queue that Sync Now still does not await. Nothing is released.
 
-Next: Prepare a test build, verify delayed and failed uploads with dedicated accounts, then approve release and check the live app.
+Next: Make Sync Now account for both upload queues, then verify with isolated test accounts and a real phone before release.
 
 ### Avoid partially completed category deletion
 
@@ -255,9 +263,9 @@ Next: Integrate the reviewed V2-only changes and verify the complete save/reload
 
 ID: sets-20260905-offline-history · Data protection and sync · Assigned to Unassigned · Record updated 2026-09-05
 
-Astra implemented a local fix that preserves old workouts when storage is full. Without proof of a cloud copy, the app reports the failed save and keeps existing history. Preservation, retry and full-suite checks passed; this is not live.
+The local preservation fix passed a compiled-browser check: all 500 synthetic older workouts and the previous active-workout save survive full storage. The same check reopened a separate bug: the logger still shows an unsaved set as completed. Nothing is released.
 
-Next: Verify the storage-full message and retry in a test build, then approve release. Automatic history cleanup requires reliable cloud confirmation before it can return.
+Next: Resolve the failed-save completion blocker, then repeat storage-full and retry checks on the test build and phone. Keep automatic history cleanup disabled unless cloud saving is reliably confirmed.
 
 ### Review information collected in automatic reports
 
@@ -938,14 +946,6 @@ Next: Retain this earlier record. Reopen a new report separately if the behavior
 ID: sets-legacy-070 · Step 2 — Protect your training record · Assigned to Unassigned · Record updated 2026-08-31
 
 Earlier work kept app updates from interrupting an active workout.
-
-Next: Retain this earlier record. Reopen a new report separately if the behavior recurs.
-
-### Phone storage full → sets silently vanish while the app shows them saved
-
-ID: sets-legacy-071 · Step 2 — Protect your training record · Assigned to Unassigned · Record updated 2026-08-31
-
-Earlier work made storage failures visible instead of reporting unsaved sets as saved.
 
 Next: Retain this earlier record. Reopen a new report separately if the behavior recurs.
 
