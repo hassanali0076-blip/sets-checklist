@@ -1,8 +1,8 @@
 # SETS — shared checklist
 
-Updated: 2026-09-05T04:13:13.420Z · Reviewed through 2026-09-05
+Updated: 2026-09-05T04:52:08.931Z · Reviewed through 2026-09-05
 
-- web: The live app includes Progression Engine V2 as an opt-in setting. Additional V2 fixes for stalled exercises and later-set targets, Settings changes, app wording updates and GEN-28 are not released.
+- web: The live app includes Progression Engine V2 as an opt-in setting. Additional V2 fixes for stalled exercises and later-set targets, Settings changes, storage-history and Sync Now fixes, app wording updates and GEN-28 are not released.
 - backend: Development testing is available under the existing model. Verify the connection and test-account separation; installed deletion and retention behavior still needs checking.
 - next: Integrate reviewed fixes in small groups, starting with data protection. Keep V2 opt-in; introduce GEN-28 behind an opt-in control after its remaining checks.
 
@@ -46,14 +46,6 @@ A controlled live-source case confirmed some saved training-method choices do no
 
 Next: Connect each supported option to the shipping generator, or make an explicit product decision about inactive controls. Local analysis can proceed before sync work.
 
-### Sync Now must wait for uploads
-
-ID: sets-legacy-009 · Data protection and sync · Assigned to Josh · Record updated 2026-09-05
-
-A second sync request can finish while an earlier upload is still running. The source-level race was reproduced.
-
-Next: Make concurrent requests wait for the same upload before downloading and merging changes. Verify recent edits survive.
-
 ### Make fatigue estimates mean the same thing everywhere
 
 ID: sets-legacy-010 · Progression · Assigned to Codex · Record updated 2026-09-05
@@ -66,9 +58,9 @@ Next: Measure the effect, agree one shared quantity, reconcile readers and write
 
 ID: sets-legacy-013 · Data protection and sync · Assigned to Josh · Record updated 2026-09-05
 
-The current legacy sync worker is not safely stopped across all session changes. A synthetic account-switch case reproduced work continuing under the new account.
+The local Sync Now candidate adds a guard against overlapping or obsolete sync workers. Complete account safety is still open: pending saves need permanent account ownership and correctly bound login credentials. The guard is not live.
 
-Next: Bind queued saves to their original account and stop the old worker before starting another. Coordinate the account contract with the PowerSync candidate.
+Next: Finish the account-owned queue and session boundary, then test refresh, offline sign-out and switching between two accounts without moving or losing unsent work.
 
 ### Keep deleted folders, templates and exercises deleted
 
@@ -85,14 +77,6 @@ ID: sets-legacy-063 · Progression · Assigned to Unassigned · Record updated 2
 Reopened: an exact current-source case still asks below the written range. The opt-in V2 handles that case, but V2 is off by default.
 
 Next: Apply a narrow correction to the default paths using the approved capacity rule; preserve effort targets and real available weights.
-
-### Protect older workouts when device storage is full
-
-ID: sets-20260905-offline-history · Data protection and sync · Assigned to Unassigned · Record updated 2026-09-05
-
-The current source can remove older local history without confirming it reached the cloud. This was reproduced with synthetic offline records.
-
-Next: Only remove records confirmed saved to the cloud. Preserve unsent history and give a recoverable storage-full message.
 
 ### Give changed app files unique download addresses
 
@@ -187,6 +171,14 @@ Current source leaves account-specific PowerSync data on the device. The unrelea
 
 Next: Integrate cleanup only with protection for unsent work. Test sign-out, sign-in and switching between two accounts.
 
+### Sync Now must wait for uploads
+
+ID: sets-legacy-009 · Data protection and sync · Assigned to Josh · Record updated 2026-09-05
+
+Astra implemented a local fix: concurrent Sync Now requests wait for uploads, including newer queued work. Failed uploads block the follow-up download and remain retryable. Automated checks and peer review passed; this is not live.
+
+Next: Prepare a test build, verify delayed and failed uploads with dedicated accounts, then approve release and check the live app.
+
 ### Avoid partially completed category deletion
 
 ID: sets-legacy-012 · Data protection and sync · Assigned to Josh · Record updated 2026-09-05
@@ -247,7 +239,7 @@ Next: Verify edits to the existing gym update affected programs and preserve unr
 
 ID: sets-legacy-032 · Data protection and sync · Assigned to Josh · Record updated 2026-09-05
 
-The Settings candidate improves PowerSync account boundaries. It does not complete the separate legacy sync-worker repair. Nothing in this candidate is live.
+The Settings candidate improves PowerSync account boundaries. Astra’s separate local sync fix adds worker serialization, but neither completes permanent ownership of pending saves. The combined account-switch flow remains unverified and is not live.
 
 Next: Reuse the candidate account protections, finish the legacy worker fix, then test two accounts with pending offline work.
 
@@ -258,6 +250,14 @@ ID: sets-legacy-034 · Progression · Assigned to You · Record updated 2026-09-
 The released V2 engine is already in the app as an opt-in setting. This task covers additional stall-recovery fixes in a local candidate: 25 focused comparison cases passed, but these extra fixes are not pushed, integrated or live.
 
 Next: Integrate the reviewed V2-only changes and verify the complete save/reload flow. Keep V2 opt-in until remaining coverage and acceptance are complete.
+
+### Protect older workouts when device storage is full
+
+ID: sets-20260905-offline-history · Data protection and sync · Assigned to Unassigned · Record updated 2026-09-05
+
+Astra implemented a local fix that preserves old workouts when storage is full. Without proof of a cloud copy, the app reports the failed save and keeps existing history. Preservation, retry and full-suite checks passed; this is not live.
+
+Next: Verify the storage-full message and retry in a test build, then approve release. Automatic history cleanup requires reliable cloud confirmation before it can return.
 
 ### Review information collected in automatic reports
 
@@ -346,6 +346,14 @@ ID: sets-20260905-maximum-weight-progression · Progression · Assigned to Unass
 Older candidate fixes need comparison against current default and V2 behavior, including persistence. This is not newly confirmed as a live defect.
 
 Next: Replay earned maximum-weight progression and save/reload, then integrate only general repairs that are still needed.
+
+### GEN-28 Round 3: strengthen checks and automated coverage
+
+ID: sets-20260905-gen28-review-gaps · Program generator · Assigned to Codex · Record updated 2026-09-05
+
+The Round 3 local prototype now has stricter rep and effort checks and normal automated-test coverage. The agent reported passing final checks and unchanged programme outputs during relocation. The app still does not use this generator.
+
+Next: Resolve the remaining founder decision on the two Lower B control programmes, then review a bounded port into the app and test actual generated programmes before release.
 
 ### Preserve workout history and cycle identity during Redo
 
@@ -543,13 +551,6 @@ Next: Inventory shipped pages and links and make a recommendation for each befor
 
 ## In progress
 
-### GEN-28 Round 3: strengthen checks and automated coverage
-
-ID: sets-20260905-gen28-review-gaps · Program generator · Assigned to Codex · Record updated 2026-09-05
-
-Round 3 is in progress. Powerbuilding main lifts at 4–6 reps and secondary compounds at 6–8 are confirmed correct; the earlier rep-rule issue is superseded. Strict rep/effort validation and normal automated-test coverage remain open.
-
-Next: Finish the focused checker repairs, prove invalid prescriptions fail and valid ones pass, preserve programme outputs during the file move, and run the final automated checks. Retain the separate founder decision on changed control programmes; no app integration yet.
 
 ## Resolved live
 

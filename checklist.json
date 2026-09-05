@@ -1,10 +1,10 @@
 {
   "schemaVersion": 1,
   "title": "SETS — shared checklist",
-  "updatedAt": "2026-09-05T04:13:13.420Z",
+  "updatedAt": "2026-09-05T04:52:08.931Z",
   "reviewedThrough": "2026-09-05",
   "release": {
-    "web": "The live app includes Progression Engine V2 as an opt-in setting. Additional V2 fixes for stalled exercises and later-set targets, Settings changes, app wording updates and GEN-28 are not released.",
+    "web": "The live app includes Progression Engine V2 as an opt-in setting. Additional V2 fixes for stalled exercises and later-set targets, Settings changes, storage-history and Sync Now fixes, app wording updates and GEN-28 are not released.",
     "backend": "Development testing is available under the existing model. Verify the connection and test-account separation; installed deletion and retention behavior still needs checking.",
     "next": "Integrate reviewed fixes in small groups, starting with data protection. Keep V2 opt-in; introduce GEN-28 behind an opt-in control after its remaining checks."
   },
@@ -18,6 +18,10 @@
     "This update publishes checklist summaries only. It does not change the SETS app, PowerSync, task schedules or release permissions."
   ],
   "changes": [
+    {
+      "date": "2026-09-05",
+      "text": "Recorded local storage-history and Sync Now fixes with focused tests and peer review, plus the GEN-28 Round 3 final report. These are candidates awaiting app acceptance and release. Account ownership remains open; existing assignees are preserved."
+    },
     {
       "date": "2026-09-05",
       "text": "Recorded GEN-28 Round 3 as in progress. The confirmed powerbuilding rep policy supersedes the earlier documentation conflict; strict checker validation, automated coverage and integration acceptance remain open."
@@ -132,10 +136,10 @@
       "id": "sets-legacy-009",
       "title": "Sync Now must wait for uploads",
       "area": "Data protection and sync",
-      "status": "issue",
+      "status": "testing",
       "assignee": "Josh",
-      "summary": "A second sync request can finish while an earlier upload is still running. The source-level race was reproduced.",
-      "nextStep": "Make concurrent requests wait for the same upload before downloading and merging changes. Verify recent edits survive.",
+      "summary": "Astra implemented a local fix: concurrent Sync Now requests wait for uploads, including newer queued work. Failed uploads block the follow-up download and remain retryable. Automated checks and peer review passed; this is not live.",
+      "nextStep": "Prepare a test build, verify delayed and failed uploads with dedicated accounts, then approve release and check the live app.",
       "updated": "2026-09-05"
     },
     {
@@ -174,8 +178,8 @@
       "area": "Data protection and sync",
       "status": "issue",
       "assignee": "Josh",
-      "summary": "The current legacy sync worker is not safely stopped across all session changes. A synthetic account-switch case reproduced work continuing under the new account.",
-      "nextStep": "Bind queued saves to their original account and stop the old worker before starting another. Coordinate the account contract with the PowerSync candidate.",
+      "summary": "The local Sync Now candidate adds a guard against overlapping or obsolete sync workers. Complete account safety is still open: pending saves need permanent account ownership and correctly bound login credentials. The guard is not live.",
+      "nextStep": "Finish the account-owned queue and session boundary, then test refresh, offline sign-out and switching between two accounts without moving or losing unsent work.",
       "updated": "2026-09-05"
     },
     {
@@ -364,7 +368,7 @@
       "area": "Data protection and sync",
       "status": "testing",
       "assignee": "Josh",
-      "summary": "The Settings candidate improves PowerSync account boundaries. It does not complete the separate legacy sync-worker repair. Nothing in this candidate is live.",
+      "summary": "The Settings candidate improves PowerSync account boundaries. Astra’s separate local sync fix adds worker serialization, but neither completes permanent ownership of pending saves. The combined account-switch flow remains unverified and is not live.",
       "nextStep": "Reuse the candidate account protections, finish the legacy worker fix, then test two accounts with pending offline work.",
       "updated": "2026-09-05"
     },
@@ -1512,9 +1516,9 @@
       "id": "sets-20260905-offline-history",
       "title": "Protect older workouts when device storage is full",
       "area": "Data protection and sync",
-      "status": "issue",
-      "summary": "The current source can remove older local history without confirming it reached the cloud. This was reproduced with synthetic offline records.",
-      "nextStep": "Only remove records confirmed saved to the cloud. Preserve unsent history and give a recoverable storage-full message.",
+      "status": "testing",
+      "summary": "Astra implemented a local fix that preserves old workouts when storage is full. Without proof of a cloud copy, the app reports the failed save and keeps existing history. Preservation, retry and full-suite checks passed; this is not live.",
+      "nextStep": "Verify the storage-full message and retry in a test build, then approve release. Automatic history cleanup requires reliable cloud confirmation before it can return.",
       "updated": "2026-09-05",
       "assignee": "Unassigned"
     },
@@ -1712,9 +1716,9 @@
       "id": "sets-20260905-gen28-review-gaps",
       "title": "GEN-28 Round 3: strengthen checks and automated coverage",
       "area": "Program generator",
-      "status": "active",
-      "summary": "Round 3 is in progress. Powerbuilding main lifts at 4–6 reps and secondary compounds at 6–8 are confirmed correct; the earlier rep-rule issue is superseded. Strict rep/effort validation and normal automated-test coverage remain open.",
-      "nextStep": "Finish the focused checker repairs, prove invalid prescriptions fail and valid ones pass, preserve programme outputs during the file move, and run the final automated checks. Retain the separate founder decision on changed control programmes; no app integration yet.",
+      "status": "testing",
+      "summary": "The Round 3 local prototype now has stricter rep and effort checks and normal automated-test coverage. The agent reported passing final checks and unchanged programme outputs during relocation. The app still does not use this generator.",
+      "nextStep": "Resolve the remaining founder decision on the two Lower B control programmes, then review a bounded port into the app and test actual generated programmes before release.",
       "updated": "2026-09-05",
       "assignee": "Codex"
     },
