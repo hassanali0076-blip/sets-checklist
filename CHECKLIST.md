@@ -1,6 +1,6 @@
 # SETS — shared checklist
 
-Updated: 2026-09-05T04:02:07.641Z · Reviewed through 2026-09-05
+Updated: 2026-09-05T04:13:13.420Z · Reviewed through 2026-09-05
 
 - web: The live app includes Progression Engine V2 as an opt-in setting. Additional V2 fixes for stalled exercises and later-set targets, Settings changes, app wording updates and GEN-28 are not released.
 - backend: Development testing is available under the existing model. Verify the connection and test-account separation; installed deletion and retention behavior still needs checking.
@@ -125,14 +125,6 @@ ID: sets-20260905-balanced-day-duration · Program generator · Assigned to Unas
 The earlier source comparison found a greater-than-ten-minute spread in 29 of 72 synthetic profiles. The new allocator remains a separate prototype.
 
 Next: Balance estimated time across days and explain unavoidable limits; rerun the same profiles on the integration candidate.
-
-### GEN-28: close the remaining prescription and checker gaps
-
-ID: sets-20260905-gen28-review-gaps · Program generator · Assigned to Codex · Record updated 2026-09-05
-
-Round 2 passed 32 focused checks and repaired a nearly empty leg day. Review still found outdated powerbuilding rep targets and a checker that accepts incorrect effort targets and rep bands.
-
-Next: Apply the approved main and second-compound rep bands, check exact allowed rep and effort targets, add deliberately invalid examples, and include these tests in normal automated checks.
 
 ### Match equipment pictures to their labels
 
@@ -537,7 +529,7 @@ Next: Apply the rule once in the generator that ships. If GEN-28 is not ready by
 
 ID: sets-20260905-gen28-app-integration · Program generator · Assigned to Unassigned · Record updated 2026-09-05
 
-Fable’s prototype and Codex’s Round 2 are separate from the app. Neither is a deployed replacement generator.
+GEN-28 remains separate from the running app while Round 3 strengthens validation and automated coverage. Moving its files into the source folder does not itself integrate or deploy the generator.
 
 Next: Finish the review gaps and approve the changed control-program outputs. Map gym, injury and training options, then integrate behind an opt-in control. Preserve saved programs and compare real app outputs before rollout.
 
@@ -551,6 +543,13 @@ Next: Inventory shipped pages and links and make a recommendation for each befor
 
 ## In progress
 
+### GEN-28 Round 3: strengthen checks and automated coverage
+
+ID: sets-20260905-gen28-review-gaps · Program generator · Assigned to Codex · Record updated 2026-09-05
+
+Round 3 is in progress. Powerbuilding main lifts at 4–6 reps and secondary compounds at 6–8 are confirmed correct; the earlier rep-rule issue is superseded. Strict rep/effort validation and normal automated-test coverage remain open.
+
+Next: Finish the focused checker repairs, prove invalid prescriptions fail and valid ones pass, preserve programme outputs during the file move, and run the final automated checks. Retain the separate founder decision on changed control programmes; no app integration yet.
 
 ## Resolved live
 

@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "title": "SETS — shared checklist",
-  "updatedAt": "2026-09-05T04:02:07.641Z",
+  "updatedAt": "2026-09-05T04:13:13.420Z",
   "reviewedThrough": "2026-09-05",
   "release": {
     "web": "The live app includes Progression Engine V2 as an opt-in setting. Additional V2 fixes for stalled exercises and later-set targets, Settings changes, app wording updates and GEN-28 are not released.",
@@ -18,6 +18,10 @@
     "This update publishes checklist summaries only. It does not change the SETS app, PowerSync, task schedules or release permissions."
   ],
   "changes": [
+    {
+      "date": "2026-09-05",
+      "text": "Recorded GEN-28 Round 3 as in progress. The confirmed powerbuilding rep policy supersedes the earlier documentation conflict; strict checker validation, automated coverage and integration acceptance remain open."
+    },
     {
       "date": "2026-09-05",
       "text": "Clarified that the released Progression Engine V2 is already available in the live app as an opt-in setting. The latest additional V2 fixes remain unreleased. Replaced ambiguous copy terminology with app wording updates."
@@ -1706,11 +1710,11 @@
     },
     {
       "id": "sets-20260905-gen28-review-gaps",
-      "title": "GEN-28: close the remaining prescription and checker gaps",
+      "title": "GEN-28 Round 3: strengthen checks and automated coverage",
       "area": "Program generator",
-      "status": "issue",
-      "summary": "Round 2 passed 32 focused checks and repaired a nearly empty leg day. Review still found outdated powerbuilding rep targets and a checker that accepts incorrect effort targets and rep bands.",
-      "nextStep": "Apply the approved main and second-compound rep bands, check exact allowed rep and effort targets, add deliberately invalid examples, and include these tests in normal automated checks.",
+      "status": "active",
+      "summary": "Round 3 is in progress. Powerbuilding main lifts at 4–6 reps and secondary compounds at 6–8 are confirmed correct; the earlier rep-rule issue is superseded. Strict rep/effort validation and normal automated-test coverage remain open.",
+      "nextStep": "Finish the focused checker repairs, prove invalid prescriptions fail and valid ones pass, preserve programme outputs during the file move, and run the final automated checks. Retain the separate founder decision on changed control programmes; no app integration yet.",
       "updated": "2026-09-05",
       "assignee": "Codex"
     },
@@ -1719,7 +1723,7 @@
       "title": "Connect the validated GEN-28 generator to SETS",
       "area": "Program generator",
       "status": "planned",
-      "summary": "Fable’s prototype and Codex’s Round 2 are separate from the app. Neither is a deployed replacement generator.",
+      "summary": "GEN-28 remains separate from the running app while Round 3 strengthens validation and automated coverage. Moving its files into the source folder does not itself integrate or deploy the generator.",
       "nextStep": "Finish the review gaps and approve the changed control-program outputs. Map gym, injury and training options, then integrate behind an opt-in control. Preserve saved programs and compare real app outputs before rollout.",
       "updated": "2026-09-05",
       "assignee": "Unassigned"
