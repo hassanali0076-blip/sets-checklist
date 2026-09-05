@@ -1,10 +1,10 @@
 # SETS — shared checklist
 
-Updated: 2026-09-05T05:51:22.191Z · Reviewed through 2026-09-05
+Updated: 2026-09-05T07:09:18.978Z · Reviewed through 2026-09-05
 
 - web: The live app includes Progression Engine V2 as an opt-in setting. Additional V2 fixes for stalled exercises and later-set targets, Settings changes, storage-history and Sync Now fixes, app wording updates and GEN-28 are not released.
 - backend: Development testing is available under the existing model. Verify the connection and test-account separation; installed deletion and retention behavior still needs checking.
-- next: Fix the failed-save completion blocker before releasing the data-protection batch. Finish phone and isolated cloud checks. Make Sync Now cover both upload queues. Keep V2 opt-in; GEN-28 still needs acceptance and integration.
+- next: Finish phone acceptance for the locally repaired data-protection batch, then integration and release approval. Complete isolated cloud checks and make Sync Now cover both upload queues. Keep V2 opt-in; GEN-28 still needs acceptance and integration.
 
 > Reviewed through 5 September 2026. 84 current tasks and 123 archived records. These are work items, not a completion percentage or a count of confirmed bugs.
 
@@ -77,14 +77,6 @@ ID: sets-legacy-063 · Progression · Assigned to Unassigned · Record updated 2
 Reopened: an exact current-source case still asks below the written range. The opt-in V2 handles that case, but V2 is off by default. The supplied review also reports a default-engine set exceeding its own rep ceiling after another set’s progression rule is applied. Whether the builder can author an inverted rep range remains an open question.
 
 Next: Apply a narrow correction to the default paths using the approved capacity rule; preserve effort targets and real available weights. Also reproduce per-set target overrides, preserve each set’s own range, and verify the builder prevents a minimum above its maximum.
-
-### A set can show completed even when saving fails
-
-ID: sets-legacy-071 · Data protection and sync · Assigned to Unassigned · Record updated 2026-09-05
-
-Reopened and reproduced on desktop and a physical iPhone: when storage is full, the warning appears but the set still shows completed. Reload loses that completion. Existing history survives. Production source contains the same ignored save-result path; this is a release blocker.
-
-Next: Confirm saving succeeded before ticking the set, recording completion, starting rest or advancing the workout. Stop single-set, warm-up and bulk completion on failure, then retest storage-full logging and retry.
 
 ### Give changed app files unique download addresses
 
@@ -259,13 +251,21 @@ The released V2 engine is already in the app as an opt-in setting. This task cov
 
 Next: Integrate the reviewed V2-only changes and verify the complete save/reload flow. Keep V2 opt-in until remaining coverage and acceptance are complete.
 
+### A set can show completed even when saving fails
+
+ID: sets-legacy-071 · Data protection and sync · Assigned to Unassigned · Record updated 2026-09-05
+
+A local repair now leaves a set unticked when saving fails, preserves the entered values and allows retry. Single-set, warm-up and complete-all failure/retry checks pass. The updated compiled browser test also confirms retry saves once and survives reopening. The earlier phone failure is preserved as evidence; the repaired build still needs its phone run. Not released.
+
+Next: Run the repaired test build on the physical iPhone, then complete integration and release approval. Verify the released app before closing this task.
+
 ### Protect older workouts when device storage is full
 
 ID: sets-20260905-offline-history · Data protection and sync · Assigned to Unassigned · Record updated 2026-09-05
 
-The local preservation fix passed controlled desktop and physical-iPhone checks: all 500 synthetic older workouts and the previous active-workout save survive full storage. Both also reproduced the logger bug that shows an unsaved set as completed. Nothing is released.
+The preservation fix keeps all 500 synthetic older workouts and the previous active-workout save under full storage. A follow-up logger repair now prevents false completion; the updated compiled browser test passes storage failure, retry and reopening. The earlier build preserved history on the physical iPhone; the repaired build awaits its own phone result. Not released.
 
-Next: Resolve the failed-save completion blocker, then repeat storage-full logging and retry on the candidate build and phone. Keep automatic history cleanup disabled unless cloud saving is reliably confirmed.
+Next: Finish the repaired-build phone check, then integrate and release after approval. Keep automatic history cleanup disabled unless cloud saving is reliably confirmed.
 
 ### Review information collected in automatic reports
 
