@@ -1,12 +1,12 @@
 {
   "schemaVersion": 1,
   "title": "SETS — shared checklist",
-  "updatedAt": "2026-09-05T16:42:55.671Z",
+  "updatedAt": "2026-09-05T16:59:12.403Z",
   "reviewedThrough": "2026-09-05",
   "release": {
     "web": "The served web build now includes the newer V2 beta code, still opt-in. The default-on candidate is blocked by the latest review. Other implementation and release states remain task-specific.",
     "backend": "Development testing is available under the existing model. Verify the connection and test-account separation; installed deletion and retention behavior still needs checking.",
-    "next": "Repair the seven confirmed progression gaps and resolve the ceiling rule/test conflict before V2 default rollout. Local data-protection repairs retain their passing source and compiled-browser evidence; phone and real-service checks remain pending. Address the separate legacy database reset risk. GEN-28 app integration remains pending."
+    "next": "Complete the eight progression repairs before V2 default rollout; the previous ceiling-rule question is resolved by existing founder instructions. Local data-protection repairs retain their passing source and compiled-browser evidence; phone and real-service checks remain pending. Address the separate legacy database reset risk. GEN-28 app integration remains pending."
   },
   "notes": [
     "Reviewed through 5 September 2026. 88 current tasks and 123 archived records. These are work items, not a completion percentage or a count of confirmed bugs.",
@@ -18,6 +18,10 @@
     "This update publishes checklist summaries only. It does not change the SETS app, PowerSync, task schedules or release permissions."
   ],
   "changes": [
+    {
+      "date": "2026-09-05",
+      "text": "Resolved the progression ceiling-rule conflict using the existing dated founder instructions. It is now an implementation repair, not another decision for Aadam. The repair plan preserves newer stalled-lifter fixes, weight-rounding rules and existing approval checks. Eight repairs remain before default rollout; no app repair or release is claimed by this update."
+    },
     {
       "date": "2026-09-05",
       "text": "Recorded the completed V2 beta adversarial review: seven implementation gaps and one rule/test conflict block default rollout. Reused existing tasks, added three distinct defects, removed stale blanket coverage claims and supplied a repair for each. Selected engine failures reproduce in the served bundle; full phone behavior remains unverified. This publishes checklist status only."
@@ -1698,9 +1702,9 @@
       "id": "sets-20260905-maximum-weight-progression",
       "title": "Check progression at the equipment’s maximum weight",
       "area": "Progression",
-      "status": "testing",
-      "summary": "A confirmed rule/test conflict remains: the current specification withdraws the rep ceiling, but the effort-rating-off test and solver still enforce it and can prescribe fewer reps than were achieved. This is not yet an undisputed bug requiring a guessed policy change.",
-      "nextStep": "Check the dated founder approvals for an explicit exception. Align the rule, solver and test with the controlling decision; document any superseded approval before changing it.",
+      "status": "issue",
+      "summary": "The dated founder rules removed the old rep ceiling, including when effort ratings are off. The solver and a stale test still enforce the old limit and can prescribe fewer reps than were achieved. The decision is resolved; the implementation still needs repair.",
+      "nextStep": "Allow continued rep progression at the highest available weight. Replace only the superseded ceiling assertions with a dated explanation, preserve all unrelated approvals and verify repeated sessions. No new founder decision is needed.",
       "updated": "2026-09-05",
       "assignee": "Unassigned"
     },
@@ -1709,7 +1713,7 @@
       "title": "Complete V2 coverage before making it the default",
       "area": "Progression",
       "status": "issue",
-      "summary": "Default rollout is blocked by seven implementation gaps and one rule/test conflict in the latest review. Certain single-arm, bodyweight, plus-set and effort-rating-off combinations still use the older engine and violate the approved V2 rules. The existing 158 checks pass and all 1,008 audited persona calls use V2, but neither covers these failures.",
+      "summary": "Eight progression repairs now block default rollout. The ceiling rule is settled, and its code/test alignment is one of those repairs. Certain single-arm, bodyweight, plus-set and effort-rating-off combinations still use the older engine and violate the approved V2 rules. The existing 158 checks pass and all 1,008 audited persona calls use V2, but neither covers these failures.",
       "nextStep": "Repair the confirmed cases before default rollout. Combine exercise mode, set type and arm ownership correctly; preserve existing approval tests, then verify finish/reload, the compiled app and phone behavior.",
       "updated": "2026-09-05",
       "assignee": "Unassigned"

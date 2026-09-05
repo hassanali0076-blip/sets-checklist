@@ -1,10 +1,10 @@
 # SETS — shared checklist
 
-Updated: 2026-09-05T16:42:55.671Z · Reviewed through 2026-09-05
+Updated: 2026-09-05T16:59:12.403Z · Reviewed through 2026-09-05
 
 - web: The served web build now includes the newer V2 beta code, still opt-in. The default-on candidate is blocked by the latest review. Other implementation and release states remain task-specific.
 - backend: Development testing is available under the existing model. Verify the connection and test-account separation; installed deletion and retention behavior still needs checking.
-- next: Repair the seven confirmed progression gaps and resolve the ceiling rule/test conflict before V2 default rollout. Local data-protection repairs retain their passing source and compiled-browser evidence; phone and real-service checks remain pending. Address the separate legacy database reset risk. GEN-28 app integration remains pending.
+- next: Complete the eight progression repairs before V2 default rollout; the previous ceiling-rule question is resolved by existing founder instructions. Local data-protection repairs retain their passing source and compiled-browser evidence; phone and real-service checks remain pending. Address the separate legacy database reset risk. GEN-28 app integration remains pending.
 
 > Reviewed through 5 September 2026. 88 current tasks and 123 archived records. These are work items, not a completion percentage or a count of confirmed bugs.
 
@@ -110,11 +110,19 @@ The served V2 engine can recommend an unrealistic equipment jump when effort rat
 
 Next: Estimate achievable reps at the actual next equipment weight. Keep the current weight and build reps when the next step is too large; preserve already approved small-step behavior.
 
+### Check progression at the equipment’s maximum weight
+
+ID: sets-20260905-maximum-weight-progression · Progression · Assigned to Unassigned · Record updated 2026-09-05
+
+The dated founder rules removed the old rep ceiling, including when effort ratings are off. The solver and a stale test still enforce the old limit and can prescribe fewer reps than were achieved. The decision is resolved; the implementation still needs repair.
+
+Next: Allow continued rep progression at the highest available weight. Replace only the superseded ceiling assertions with a dated explanation, preserve all unrelated approvals and verify repeated sessions. No new founder decision is needed.
+
 ### Complete V2 coverage before making it the default
 
 ID: sets-20260905-v2-coverage-rollout · Progression · Assigned to Unassigned · Record updated 2026-09-05
 
-Default rollout is blocked by seven implementation gaps and one rule/test conflict in the latest review. Certain single-arm, bodyweight, plus-set and effort-rating-off combinations still use the older engine and violate the approved V2 rules. The existing 158 checks pass and all 1,008 audited persona calls use V2, but neither covers these failures.
+Eight progression repairs now block default rollout. The ceiling rule is settled, and its code/test alignment is one of those repairs. Certain single-arm, bodyweight, plus-set and effort-rating-off combinations still use the older engine and violate the approved V2 rules. The existing 158 checks pass and all 1,008 audited persona calls use V2, but neither covers these failures.
 
 Next: Repair the confirmed cases before default rollout. Combine exercise mode, set type and arm ownership correctly; preserve existing approval tests, then verify finish/reload, the compiled app and phone behavior.
 
@@ -402,14 +410,6 @@ ID: sets-20260905-v2-later-set-target · Progression · Assigned to Unassigned �
 A narrow V2 repair exists locally, with a regression case that fails on the current app source. This is separate from the broader fatigue-model work.
 
 Next: Integrate that focused repair and check later-set recommendations before and after save/reload.
-
-### Check progression at the equipment’s maximum weight
-
-ID: sets-20260905-maximum-weight-progression · Progression · Assigned to Unassigned · Record updated 2026-09-05
-
-A confirmed rule/test conflict remains: the current specification withdraws the rep ceiling, but the effort-rating-off test and solver still enforce it and can prescribe fewer reps than were achieved. This is not yet an undisputed bug requiring a guessed policy change.
-
-Next: Check the dated founder approvals for an explicit exception. Align the rule, solver and test with the controlling decision; document any superseded approval before changing it.
 
 ### GEN-28 Round 4: verify the repaired generator
 
