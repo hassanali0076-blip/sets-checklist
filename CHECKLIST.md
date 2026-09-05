@@ -1,12 +1,12 @@
 # SETS — shared checklist
 
-Updated: 2026-09-05T08:01:16.436Z · Reviewed through 2026-09-05
+Updated: 2026-09-05T11:43:48.889Z · Reviewed through 2026-09-05
 
 - web: The live app includes Progression Engine V2 as an opt-in setting. Additional V2 fixes for stalled exercises and later-set targets, Settings changes, storage-history and Sync Now fixes, app wording updates and GEN-28 are not released.
 - backend: Development testing is available under the existing model. Verify the connection and test-account separation; installed deletion and retention behavior still needs checking.
-- next: Hold the local data-protection batch. Correct the newly found upload-wait regression, unresolved-failure handling and completed-set edits; address draft recovery limits. Repeat the stronger tests, then complete service checks and obtain release approval. V2 stays opt-in; GEN-28 still needs acceptance and integration.
+- next: The local data-protection repairs pass source review, 7,906 full-suite tests and 11 compiled browser cases. Complete new-phone and real-service checks. Address the separately recorded legacy database reset risk before release. GEN-28 has a reviewed local prototype with full checks reported passing; app integration remains pending. V2 stays opt-in.
 
-> Reviewed through 5 September 2026. 84 current tasks and 123 archived records. These are work items, not a completion percentage or a count of confirmed bugs.
+> Reviewed through 5 September 2026. 85 current tasks and 123 archived records. These are work items, not a completion percentage or a count of confirmed bugs.
 
 > All 146 original IDs are retained. Stale reminders and duplicates are archived; missing findings and the seven individual watch checks have been added.
 
@@ -46,14 +46,6 @@ A controlled live-source case confirmed some saved training-method choices do no
 
 Next: Connect each supported option to the shipping generator, or make an explicit product decision about inactive controls. Local analysis can proceed before sync work.
 
-### Sync Now must wait for uploads
-
-ID: sets-legacy-009 · Data protection and sync · Assigned to Josh · Record updated 2026-09-05
-
-A deeper review found a regression in the lead agent’s local sync change: reopening can download older cloud data while a newer save is still uploading. A later sync can also forget an unresolved upload failure. Earlier phone tests passed different scenarios. The batch is held from release; PowerSync queue coverage remains separate.
-
-Next: Lead agent: wait for a confirmed completed upload drain and check the saved queue, keep unresolved failures visible, and block unsafe downloads. Add same-item replacement and offline-restart tests before repeating release checks.
-
 ### Make fatigue estimates mean the same thing everywhere
 
 ID: sets-legacy-010 · Progression · Assigned to Codex · Record updated 2026-09-05
@@ -85,14 +77,6 @@ ID: sets-legacy-063 · Progression · Assigned to Unassigned · Record updated 2
 Reopened: an exact current-source case still asks below the written range. The opt-in V2 handles that case, but V2 is off by default. The supplied review also reports a default-engine set exceeding its own rep ceiling after another set’s progression rule is applied. Whether the builder can author an inverted rep range remains an open question.
 
 Next: Apply a narrow correction to the default paths using the approved capacity rule; preserve effort targets and real available weights. Also reproduce per-set target overrides, preserve each set’s own range, and verify the builder prevents a minimum above its maximum.
-
-### A set or edit can appear saved when saving fails
-
-ID: sets-legacy-071 · Data protection and sync · Assigned to Unassigned · Record updated 2026-09-05
-
-New set completion is repaired locally and passes the controlled phone test. The deeper review confirms an existing gap: editing a completed set can still display a changed value that was not saved. Reopening restores the old value. Nothing is released.
-
-Next: Apply the same save-success check to completed-set editing. Keep rejected edits available for retry and confirm the screen, saved record and reopened workout agree before release.
 
 ### Give changed app files unique download addresses
 
@@ -150,6 +134,14 @@ Formula-shaped text is currently written unchanged into CSV cells. The raw expor
 
 Next: Escape formula-like text safely while preserving numeric values and normal CSV formatting.
 
+### Keep offline data when the local database cannot open
+
+ID: sets-20260905-indexeddb-open-failure · Data protection and sync · Assigned to Codex · Record updated 2026-09-05
+
+A pre-existing shared database helper can delete and recreate the local database after two failed open attempts. Temporary failures can therefore endanger offline history and pending uploads. The new strict workout-recovery reader avoids that policy; other legacy callers still use it.
+
+Next: Remove automatic deletion from the shared open-failure path. Preserve the database, offer retry or explicit recovery, and test affected loading, saving and pending-upload paths before release.
+
 ## Next release
 
 
@@ -186,6 +178,14 @@ ID: sets-legacy-008 · Data protection and sync · Assigned to Josh · Record up
 Current source leaves account-specific PowerSync data on the device. The unreleased Settings candidate adds account cleanup.
 
 Next: Integrate cleanup only with protection for unsent work. Test sign-out, sign-in and switching between two accounts.
+
+### Sync Now must wait for uploads
+
+ID: sets-legacy-009 · Data protection and sync · Assigned to Josh · Record updated 2026-09-05
+
+Local repairs now wait for the confirmed upload drain and saved queue, keep unresolved failures visible, and prevent an unsafe cloud download. The original upload-wait regression and retained-failure cases have passing regression tests. The new compiled browser checks pass; new phone and real-service checks remain pending; nothing is released. PowerSync queue coverage remains separate.
+
+Next: Complete the new phone checks, then verify real service boundaries before proposing integration and release.
 
 ### Avoid partially completed category deletion
 
@@ -259,13 +259,21 @@ The released V2 engine is already in the app as an opt-in setting. This task cov
 
 Next: Integrate the reviewed V2-only changes and verify the complete save/reload flow. Keep V2 opt-in until remaining coverage and acceptance are complete.
 
+### A set or edit can appear saved when saving fails
+
+ID: sets-legacy-071 · Data protection and sync · Assigned to Unassigned · Record updated 2026-09-05
+
+Local repairs now protect both new set completion and edits to completed sets. A rejected edit leaves the saved set unchanged, retains the attempted values with a clear warning, and supports a save-once retry after reopening. Earlier completion, warm-up and one-arm ownership checks remain green. The new compiled browser cases pass. New phone and service checks remain pending; nothing is released.
+
+Next: Finish the new physical-device checks, then verify service behavior and obtain release approval.
+
 ### Protect older workouts when device storage is full
 
 ID: sets-20260905-offline-history · Data protection and sync · Assigned to Unassigned · Record updated 2026-09-05
 
-The repaired compiled build passes controlled desktop and physical-iPhone checks: all 500 synthetic older workouts and the previous active save survive full storage; unsaved sets stay unticked; retry saves once and survives reopening. Nothing is released.
+The final repaired build passes the compiled browser checks: all 500 synthetic older workouts and the previous active save survive full storage, rejected sets stay unticked, and retry saves once and survives reopening. The final source suite passes. New phone acceptance remains pending; the previous phone result belongs to the earlier build. Nothing is released.
 
-Next: Keep the proven history-preservation policy. Resolve the newly found upload-wait and completed-set-edit problems, address the draft recovery limit, then repeat relevant release checks and obtain release approval.
+Next: Retain the history-preservation policy, complete new-phone acceptance, and address the separately tracked database-open reset risk before release.
 
 ### Review information collected in automatic reports
 
@@ -355,13 +363,13 @@ Older candidate fixes need comparison against current default and V2 behavior, i
 
 Next: Replay earned maximum-weight progression and save/reload, then integrate only general repairs that are still needed. Reproduce the reported ceiling case, confirm the intended limit for that exercise class, and cover it in save/reload and ceiling checks.
 
-### GEN-28 Round 3: strengthen checks and automated coverage
+### GEN-28 Round 4: verify the repaired generator
 
 ID: sets-20260905-gen28-review-gaps · Program generator · Assigned to Codex · Record updated 2026-09-05
 
-The Round 3 local prototype now has stricter rep and effort checks and normal automated-test coverage. The agent reported passing final checks and unchanged programme outputs during relocation. The app still does not use this generator.
+The Round 4 local prototype has an independent review pass, 56 focused tests passing and the complete automated check passing, reported by its owner on the final candidate. Review repairs cover constrained workout shapes, founder control failures, predecessor checks and truthful explanations. The app still does not use this generator.
 
-Next: Resolve the remaining founder decision on the two Lower B control programmes, then review a bounded port into the app and test actual generated programmes before release.
+Next: Review the program outputs and prepare a bounded app integration, preserving saved programs and existing app behavior.
 
 ### Preserve workout history and cycle identity during Redo
 
@@ -615,9 +623,9 @@ Next: Test week transitions near midnight, time-zone changes and daylight-saving
 
 ID: sets-20260905-workout-recovery-resilience · Data protection and sync · Assigned to Codex · Record updated 2026-09-05
 
-Review confirmed a recovery limit: values typed after device storage is already full can remain only in memory and disappear on reopening. The completion warning correctly says saving failed, but draft writes are silent and have no verified recovery copy. Earlier phone checks typed the entry before filling storage. Other source-deletion and damaged-data recovery checks remain open.
+Local repairs verify a second recovery copy when primary storage is full. If both stores reject input, SETS keeps it in memory with a persistent warning and retry. Review also repaired stale draft resurrection and new-start overwrites during recovery. Strict recovery reads preserve the database on open failure. Other legacy database readers, source-deletion and damaged-data checks remain separate. These controlled cases now pass in the compiled browser build; new phone acceptance remains pending.
 
-Next: Make draft saving report success or failure, attempt a verified recovery copy where storage permits, and keep an explicit unsaved warning with retry when no copy can be saved. Test full storage before typing and reopening before retry, alongside the remaining recovery cases.
+Next: Finish new-phone acceptance. Keep total-storage-failure limits explicit, and complete the remaining database-open, source-deletion and damaged-data recovery checks.
 
 ### Check whether linking a superset adds unintended sets
 
@@ -689,9 +697,9 @@ Next: Apply the rule once in the generator that ships. If GEN-28 is not ready by
 
 ID: sets-20260905-gen28-app-integration · Program generator · Assigned to Unassigned · Record updated 2026-09-05
 
-GEN-28 remains separate from the running app while Round 3 strengthens validation and automated coverage. Moving its files into the source folder does not itself integrate or deploy the generator.
+GEN-28 Round 4 has a reviewed local candidate with focused and complete automated checks passing, reported by its owner. It is still separate from the running app. Saved programs and existing generator behavior must be preserved during integration.
 
-Next: Finish the review gaps and approve the changed control-program outputs. Map gym, injury and training options, then integrate behind an opt-in control. Preserve saved programs and compare real app outputs before rollout.
+Next: Map gym, injury and training options, then integrate behind an opt-in control. Compare actual app outputs before rollout.
 
 ### Decide which public prototype pages should remain available
 
