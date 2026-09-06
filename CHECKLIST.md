@@ -1,12 +1,12 @@
 # SETS — shared checklist
 
-Updated: 2026-09-06T06:06:05.855Z · Reviewed through 2026-09-06
+Updated: 2026-09-06T07:36:48.214Z · Reviewed through 2026-09-06
 
-- web: The served build contains the earlier opt-in V2 beta. Both newer progression candidates now pass the bounded independent technical review, including the final repeated-target repair and preservation of newer production changes. Neither reviewed candidate is the served app; device, service and release acceptance remain separate.
+- web: The repaired progression release is now served, with V2 on by default and a saved opt-out respected. Fable’s latest wording and Save changes work are preserved. Four saving defects were repaired and independently reviewed. The full suite passes 8,163 tests with zero failures and two existing skips; all 96 checked progression outputs match in the served build. Physical-phone and authenticated workout acceptance remain separate. The existing cache-safe deployment passed asset checksums, content types, exact build identity and the missing-file check, retaining the previous build’s complete asset generation.
 - backend: Development testing is available under the existing model. Verify the connection and test-account separation; installed deletion and retention behavior still needs checking.
-- next: Complete rendered-app, physical-device and authenticated service acceptance for the technically reviewed progression candidates, refreshing the production base before integration or release. Quiet automatic recovery retains its 14 controlled physical-iPhone and compiled-browser passes; current-production integration and real-service verification remain pending. The separate database reset risk and GEN-28 integration remain open. No app deployment or default activation is authorized by this checklist update.
+- next: Finish physical-phone and authenticated save/reload checks for the released progression changes. Quiet automatic recovery retains its 14 controlled phone passes but is still a separate unintegrated candidate. GEN-28 remains a separate prototype. Continue data-protection repairs and the remaining checklist work; this progression release does not close those tasks.
 
-> Latest progression review: 6 September 2026. Other task evidence retains its own date. There are 88 current tasks and 123 archived records; these are work items, not a completion percentage or a count of confirmed bugs.
+> Latest progression release verification: 6 September 2026. Other task evidence retains its own date. There are 90 current tasks and 123 archived records; these are work items, not a completion percentage or a count of confirmed bugs.
 
 > All 146 original IDs are retained. Stale reminders and duplicates are archived; missing findings and the seven individual watch checks have been added.
 
@@ -70,13 +70,13 @@ The earlier candidate label overstated completeness. The current source still la
 
 Next: Keep durable deletion records and reject outdated writes. Test deleting on one device and reconnecting another.
 
-### Keep default progression targets inside the rep range
+### Check the remaining rep-range cases
 
-ID: sets-legacy-063 · Progression · Assigned to Unassigned · Record updated 2026-09-05
+ID: sets-legacy-063 · Progression · Assigned to Unassigned · Record updated 2026-09-06
 
-Reopened: an exact current-source case still asks below the written range. The opt-in V2 handles that case, but V2 is off by default. The supplied review also reports a default-engine set exceeding its own rep ceiling after another set’s progression rule is applied. Whether the builder can author an inverted rep range remains an open question.
+V2 is now the released default and handles the previously reproduced range case. The older engine remains available through an explicit opt-out, so its reported range violations still need a narrow review. Per-set range handling and whether the builder can author an inverted range remain open checks.
 
-Next: Apply a narrow correction to the default paths using the approved capacity rule; preserve effort targets and real available weights. Also reproduce per-set target overrides, preserve each set’s own range, and verify the builder prevents a minimum above its maximum.
+Next: Replay the remaining cases in the opt-out legacy engine and verify the builder rejects an inverted range. Preserve the approved V2 rules; do not reimpose the withdrawn rep ceiling.
 
 ### Give changed app files unique download addresses
 
@@ -141,6 +141,14 @@ ID: sets-20260905-indexeddb-open-failure · Data protection and sync · Assigned
 A pre-existing shared database helper can delete and recreate the local database after two failed open attempts. Temporary failures can therefore endanger offline history and pending uploads. The new strict workout-recovery reader avoids that policy; other legacy callers still use it.
 
 Next: Remove automatic deletion from the shared open-failure path. Preserve the database, offer retry or explicit recovery, and test affected loading, saving and pending-upload paths before release.
+
+### Offer a set-count change only when a normal set was added
+
+ID: sets-20260906-chain-count-change-prompt · Workout screens and history · Assigned to Codex · Record updated 2026-09-06
+
+Existing source logic can offer a separate set-count change when a new drop or myo continuation was inserted inside the original rows. This older detection issue is separate from the released saving-composition repairs. The newly inserted continuation should belong to its parent’s type change.
+
+Next: Compare the original and current chain layout when counting extra normal sets. Suppress the false count entry, preserve genuine added-set choices, and test both adjacent and older continuation layouts.
 
 ## Next release
 
@@ -255,9 +263,9 @@ Next: Reuse the candidate account protections, finish the legacy worker fix, the
 
 ID: sets-legacy-034 · Progression · Assigned to You · Record updated 2026-09-06
 
-The released V2 engine remains opt-in. The additional stalled-lifter repair is included in both pushed candidates that now pass technical review. Its 26 original checks and the restored relative and absolute performance limits pass. These additional fixes are not the served app; device and authenticated service acceptance remain separate.
+The additional stalled-lifter repairs are included in the served V2 release. Independent review preserved the original recovery checks and performance limits; controlled live-engine outputs match the reviewed source. V2 is now the default, with a saved opt-out respected. Complete phone and authenticated save/reload acceptance remains open.
 
-Next: Preserve the accepted stalled-lifter behavior during integration. Verify complete save and reload flows in the final app and keep default activation separate from repair acceptance.
+Next: Verify the full workout-save and next-session flow on the phone; preserve the released recovery checks. Default activation has already been approved and deployed.
 
 ### A set or edit can appear saved when saving fails
 
@@ -347,37 +355,13 @@ A narrow V2 repair exists locally, with a regression case that fails on the curr
 
 Next: Integrate that focused repair and check later-set recommendations before and after save/reload.
 
-### Treat repeated failed weights differently from one bad day
-
-ID: sets-20260905-v2-repeated-fumbles · Progression · Assigned to Unassigned · Record updated 2026-09-06
-
-The reviewed candidates now use recent-history and consolidation checks with effort ratings off. The tested recovery paths select available equipment weights and preserve the intended weight order. This is candidate evidence; the repaired behavior is not verified in the served app.
-
-Next: Preserve the accepted recovery checks during integration. Verify complete workout save and reload behavior in the final app before closing this task.
-
-### Check progression where equipment has large weight jumps
-
-ID: sets-20260905-coarse-weight-jumps · Progression · Assigned to Unassigned · Record updated 2026-09-06
-
-The two repeated-target failures are fixed in both reviewed candidates. Rep-goal selection and earned weight increases now use the same unrounded feasibility rule, with the existing rep-cap continuation when an ordinary increase is unavailable. Full sequences progress through the weight change and following session; overshoots are preserved. The served app still has the earlier behavior.
-
-Next: Keep the accepted capacity model, weight-increase rules and frozen sequence checks unchanged. Verify the progression sequence in the rendered workout and physical-device flow on the final release candidate.
-
-### Check progression at the equipment’s maximum weight
-
-ID: sets-20260905-maximum-weight-progression · Progression · Assigned to Unassigned · Record updated 2026-09-05
-
-The reviewed unreleased candidates now pass the original maximum-weight rule: achieved reps can continue beyond the withdrawn ceiling. This specific repair has evidence, but the currently served build still has the older behavior. Five other progression interaction groups and integration checks block the candidates from release.
-
-Next: Preserve the repaired ceiling rule and its unchanged acceptance case while fixing the remaining interactions. Verify repeated-session and released-app behavior before marking this resolved live.
-
-### Complete V2 coverage before making it the default
+### Verify the released V2 rollout
 
 ID: sets-20260905-v2-coverage-rollout · Progression · Assigned to Unassigned · Record updated 2026-09-06
 
-Both exact progression candidates now pass the independent technical review. All 17 original, eight adjacent and two continuation checks pass unchanged on each candidate. The opt-in full suite passes 8,121 tests with two skips; each compiled candidate matches all 96 source outputs. Newer production changes and original acceptance limits are preserved. The reviewed repairs are not live.
+V2 is now the released default, with a saved opt-out respected. All 27 frozen engine review cases pass; all 96 checked outputs match in the served build and the browser uses V2 by default. The full suite passes 8,163 tests with two existing skips. Physical-phone and authenticated migration/history/save/reload acceptance is still open.
 
-Next: Astra to prepare final app acceptance from the latest production base, preserving the reviewed changes. Verify rendered workouts, physical devices and authenticated migration/cloud histories. Complete any outstanding product approvals and obtain release approval separately; technical review does not activate V2 by default.
+Next: Verify real workout flows on the phone and authenticated accounts. Keep the default choice and the exact released regression checks; further app fixes remain separate.
 
 ### GEN-28 Round 4: verify the repaired generator
 
@@ -565,11 +549,11 @@ Next: Identify inconsistent evidence without silently editing the athlete’s hi
 
 ### Define useful progression for band exercises
 
-ID: sets-20260905-band-progression-policy · Progression · Assigned to Codex · Record updated 2026-09-05
+ID: sets-20260905-band-progression-policy · Progression · Assigned to Codex · Record updated 2026-09-06
 
-The beta now defines rep-based progression for bands and bodyweight exercises, so a blanket request for a new product decision is stale. Some combinations still bypass V2 in the latest review. Complete band-specific app acceptance remains open.
+The released V2 engine applies the approved rep-based policy; controlled bodyweight/plus/single-arm outputs and the reviewed ownership checks pass. The latest separate band review is parked and has not been implemented. Complete band-specific phone acceptance remains open.
 
-Next: Apply the approved rep-based policy and verify ordinary, plus, single-arm and shortened band sessions through the real app wiring. Coordinate shared repairs with the V2 coverage task.
+Next: Verify band exercise flows on the phone. Review the parked band-specific findings as a separate scope, preserving the released rep-based policy and keeping removed ceiling-card wording removed.
 
 ### Make engine checks reject unusable plans and unexplained stagnation
 
@@ -671,25 +655,25 @@ Next: Measure realistic long-term growth and cleanup with synthetic histories. D
 
 ID: sets-20260905-v2-shortened-workout-plan · Progression · Assigned to Codex · Record updated 2026-09-06
 
-The reviewed candidates now supply every authored workout target, including the tested plus-set paths after a shortened session. The reviewed finish and display cases pass without rewriting completed history. This candidate repair is not live.
+The full-plan repair is included in the served release. Source tests cover authored targets, plus-set paths after shortened sessions, and preservation of completed history. The rendered finish/reload flow still needs phone and authenticated acceptance.
 
-Next: Retain the full-plan and history checks during integration. Verify shortened sessions through the rendered finish and reload flow before release.
-
-### Do not increase a badly missed set after another set progresses
-
-ID: sets-20260905-v2-cap-hit-cascade · Progression · Assigned to Codex · Record updated 2026-09-06
-
-The newer candidates pass the original and adjacent progression-order checks. Recovery holds are applied before the final weight-order rule, and equipment adjustment does not add an unearned extra weight increase. The reviewed fixes are not live.
-
-Next: Preserve the accepted ordering and earned-increase checks during integration, then verify the resulting session in the final app.
+Next: Verify shortened sessions through the phone finish and reload flow, preserving the released full-plan and history checks.
 
 ### Recheck gym equipment before restoring a plan after a deload
 
 ID: sets-20260905-deload-gym-plan-carry · Progression · Assigned to Codex · Record updated 2026-09-06
 
-The newer candidates pass the original reviewed carry case: a restored plan must match current gym and equipment eligibility. The reviewed finish and display cases pass. Device and real-service acceptance remain pending; this is not a live fix.
+The gym-eligibility repair is included in the served release. Source tests verify that a carried plan matches current gym/equipment eligibility and preserves unchanged-gym behavior. Fable’s wording also keeps the carried plan’s own explanation. Phone and authenticated workflow acceptance remains open.
 
-Next: Preserve current-gym eligibility and unchanged-gym carry behavior during integration. Verify deload return and gym switching on the final app build before closing this task.
+Next: Verify deload return and gym switching on the phone and an authenticated account before closing the workflow check.
+
+### Preserve targets and set totals when saving workout changes
+
+ID: sets-20260906-save-target-type-composition · Workout screens and history · Assigned to Codex · Record updated 2026-09-06
+
+Four independently reproduced saving defects are repaired in the served release: targets attaching to a continuation, untouched templates appearing edited, existing chains gaining an extra row, and selected added sets disappearing with type edits. All 15 frozen saving cases and independent selection/order controls pass. Phone and authenticated save/reload acceptance remains open.
+
+Next: Verify the released Save changes sheet on the phone: edit a target, insert or remove a chain, add a normal set, choose which changes to save, then reopen the program. Keep the frozen ownership and count checks.
 
 ## Planned
 
@@ -738,6 +722,37 @@ Next: Inventory shipped pages and links and make a recommendation for each befor
 
 ## Resolved live
 
+### Treat repeated failed weights differently from one bad day
+
+ID: sets-20260905-v2-repeated-fumbles · Progression · Assigned to Unassigned · Record updated 2026-09-06
+
+The repaired V2 engine is now served. Controlled live cases for one-off misses, repeated misses and failed-weight memory match the reviewed outputs, including effort ratings off and valid equipment weights. Broader phone acceptance is tracked in the rollout task.
+
+Next: Keep the recovery and weight-order regression cases. Complete phone save/reload acceptance through the V2 rollout task.
+
+### Check progression where equipment has large weight jumps
+
+ID: sets-20260905-coarse-weight-jumps · Progression · Assigned to Unassigned · Record updated 2026-09-06
+
+The repaired engine is now served. Controlled live cases match the reviewed building-reps goals, earned weight changes, rep-cap continuation and following-session results. The unchanged sequence tests also pass; the previous repeated-target blocker is closed.
+
+Next: Preserve the shared feasibility rule and frozen sequence checks. Complete the broader phone workflow acceptance through the rollout task.
+
+### Check progression at the equipment’s maximum weight
+
+ID: sets-20260905-maximum-weight-progression · Progression · Assigned to Unassigned · Record updated 2026-09-06
+
+The repaired maximum-weight behavior is now served and its controlled live outputs match the reviewed source. Achieved reps can continue beyond the withdrawn ceiling. The old five-group technical block is closed; broader phone acceptance remains separate.
+
+Next: Preserve the accepted maximum-weight rule and its regression cases. Complete phone workflow acceptance through the rollout task.
+
+### Do not increase a badly missed set after another set progresses
+
+ID: sets-20260905-v2-cap-hit-cascade · Progression · Assigned to Codex · Record updated 2026-09-06
+
+The repaired progression order is now served. Controlled live cases match the reviewed recovery holds, weight order and equipment snapping, without an unearned extra increase. The frozen original and adjacent checks pass.
+
+Next: Keep the recovery-before-ordering and earned-increase regression checks. Complete broader phone acceptance through the rollout task.
 
 ## Earlier sign-off
 
