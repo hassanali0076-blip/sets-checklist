@@ -1,15 +1,15 @@
 {
   "schemaVersion": 1,
   "title": "SETS — shared checklist",
-  "updatedAt": "2026-09-05T19:23:11.546Z",
-  "reviewedThrough": "2026-09-05",
+  "updatedAt": "2026-09-06T05:11:59.739Z",
+  "reviewedThrough": "2026-09-06",
   "release": {
-    "web": "The served build still contains the earlier opt-in V2 beta. Re-review blocks both the newer repaired opt-in candidate and its default-on candidate. Neither reviewed candidate is the served build; other release states remain task-specific.",
+    "web": "The served build still contains the earlier opt-in V2 beta. Both newer progression candidates remain blocked by one repeated-target defect. Four other repair groups and preservation of newer production changes pass the bounded review; neither candidate is the served app.",
     "backend": "Development testing is available under the existing model. Verify the connection and test-account separation; installed deletion and retention behavior still needs checking.",
-    "next": "Repair five remaining progression interaction groups, preserve the original acceptance checks and incorporate missing production changes before either V2 candidate is released. The original eight repair examples now pass. Quiet automatic recovery passes 14 controlled physical-iPhone and compiled-browser checks; its real-service verification and app integration remain pending. The separate database reset risk and GEN-28 integration remain open."
+    "next": "Repair the remaining progression target rule and preserve the accepted fixes and original checks. Then complete final app, phone and real-service acceptance before release. Quiet automatic recovery retains its 14 controlled physical-iPhone and compiled-browser passes; current-production integration and real-service verification remain pending. The separate database reset risk and GEN-28 integration remain open."
   },
   "notes": [
-    "Reviewed through 5 September 2026. 88 current tasks and 123 archived records. These are work items, not a completion percentage or a count of confirmed bugs.",
+    "Latest progression review: 6 September 2026. Other task evidence retains its own date. There are 88 current tasks and 123 archived records; these are work items, not a completion percentage or a count of confirmed bugs.",
     "All 146 original IDs are retained. Stale reminders and duplicates are archived; missing findings and the seven individual watch checks have been added.",
     "Known issue means the stated source or candidate defect has evidence. Needs checking also includes unreleased repairs and unconfirmed reports; read each summary for the distinction.",
     "Local tests, a pushed branch, integration, deployment and real-device acceptance are separate. Earlier sign-offs have not all been rerun in this review.",
@@ -18,6 +18,10 @@
     "This update publishes checklist summaries only. It does not change the SETS app, PowerSync, task schedules or release permissions."
   ],
   "changes": [
+    {
+      "date": "2026-09-06",
+      "text": "Recorded the final bounded progression review. Four repair groups, newer production preservation and restored original acceptance checks pass; one repeated-target defect remains in two continuation cases. Updated eight existing records with solutions and candidate-only status. All IDs and assignments are preserved. No app release or PowerSync change."
+    },
     {
       "date": "2026-09-05",
       "text": "Recorded the final progression re-review: both newer candidates remain blocked. Original repair cases now pass, including the withdrawn rep ceiling, but five interaction groups, approval-check deviations and missing production changes remain. Updated the two affected records with concrete repair steps. No app source, release or ownership change."
@@ -436,9 +440,9 @@
       "area": "Progression",
       "status": "testing",
       "assignee": "You",
-      "summary": "The released V2 engine is already in the app as an opt-in setting. This task covers additional stall-recovery fixes in a local candidate: 25 focused comparison cases passed, but these extra fixes are not pushed, integrated or live.",
-      "nextStep": "Integrate the reviewed V2-only changes and verify the complete save/reload flow. Keep V2 opt-in until remaining coverage and acceptance are complete.",
-      "updated": "2026-09-05"
+      "summary": "The released V2 engine remains opt-in. The additional stalled-lifter repair is now included in the pushed progression candidates; its 26 original checks and the restored relative and absolute performance limits pass review. These additional fixes are not the served app, and the broader candidate has a separate repeated-target blocker.",
+      "nextStep": "Preserve the accepted stalled-lifter behavior during the remaining candidate repair. Verify complete save and reload flows in the integrated app and keep default activation separate from repair acceptance.",
+      "updated": "2026-09-06"
     },
     {
       "id": "sets-legacy-035",
@@ -1694,10 +1698,10 @@
       "id": "sets-20260905-v2-repeated-fumbles",
       "title": "Treat repeated failed weights differently from one bad day",
       "area": "Progression",
-      "status": "issue",
-      "summary": "With effort ratings off, the current V2 planner recommends a recently failed weight again without using the required history. This mode needs the approved history and consolidation checks.",
-      "nextStep": "Use the same recent-history and consolidation rules in the effort-rating-off mode, without inventing effort ratings. Check failed-history controls, expiry and earned return to the heavier weight.",
-      "updated": "2026-09-05",
+      "status": "testing",
+      "summary": "The reviewed candidates now use recent-history and consolidation checks with effort ratings off. The tested recovery paths select available equipment weights and preserve the intended weight order. This is candidate evidence; the repaired behavior is not verified in the served app.",
+      "nextStep": "Preserve these accepted recovery checks while fixing the remaining repeated-target defect. Verify complete workout save and reload behavior in the final integrated app before closing this task.",
+      "updated": "2026-09-06",
       "assignee": "Unassigned"
     },
     {
@@ -1705,9 +1709,9 @@
       "title": "Check progression where equipment has large weight jumps",
       "area": "Progression",
       "status": "issue",
-      "summary": "The served V2 engine can recommend an unrealistic equipment jump when effort ratings are off. Its check uses the written target reps rather than whether the available next weight is achievable. The default engine also fails the reviewed case.",
-      "nextStep": "Estimate achievable reps at the actual next equipment weight. Keep the current weight and build reps when the next step is too large; preserve already approved small-step behavior.",
-      "updated": "2026-09-05",
+      "summary": "The served V2 engine has a reproduced unrealistic equipment jump with effort ratings off. The newer candidates prevent that jump but can repeatedly prescribe a rep target that cannot earn the next weight. Two continuation checks still fail; the repair is not live.",
+      "nextStep": "Use the same complete feasibility rule for the rep goal and the actual weight increase, including unrounded capacity. When the normal increase cannot be earned, use the existing rep-cap continuation. Preserve earned increases and actual performance; test the full sequence through the eventual weight change.",
+      "updated": "2026-09-06",
       "assignee": "Unassigned"
     },
     {
@@ -1725,9 +1729,9 @@
       "title": "Complete V2 coverage before making it the default",
       "area": "Progression",
       "status": "issue",
-      "summary": "Both the repaired opt-in and default-on candidates remain blocked. The original eight repairs pass their 17-entry review harness, but eight new assertions expose five interaction groups: extra weight increases after equipment adjustment, unavailable weights in plus or recovery paths, missing planned sets, ascending loads after a recovery hold, and repeated targets when the next weight is too large. The opt-in candidate passes its full 8,100-test suite, which excludes these new cases. Candidate source also omits newer production changes.",
-      "nextStep": "Use one Fable implementation owner to preserve current production and original approval checks, repair the five groups, and rerun both frozen harnesses plus the compiled app. Restore removed passing progression limits and preserve legacy expectations separately. Rendered-app, phone and cloud acceptance remain required before release.",
-      "updated": "2026-09-05",
+      "summary": "The newer opt-in and default-on candidates remain blocked by one repeated-target defect with two reproduced cases. The four other repair groups, preservation of newer production changes and restored original acceptance checks pass the bounded review. The original 17 checks and eight adjacent checks pass. The opt-in full suite passes 8,117 tests with two skips, but excludes the two new failing continuation checks. These candidates are not the served app.",
+      "nextStep": "Have the existing implementation owner repair the remaining target rule and preserve the accepted fixes. Keep all three review harnesses unchanged and check complete progression sequences, then complete rendered-app, phone and cloud acceptance on the final candidate before release.",
+      "updated": "2026-09-06",
       "assignee": "Unassigned"
     },
     {
@@ -2004,11 +2008,11 @@
       "id": "sets-20260905-equipment-edit-blank-plan",
       "title": "Keep workout targets usable after equipment changes",
       "area": "Progression",
-      "status": "issue",
+      "status": "testing",
       "assignee": "Codex",
-      "summary": "The latest review reproduces blank V2 targets after equipment changes when effort ratings are off. The engine keeps a weight that is unavailable or above the new maximum, and the display rejects the plan. The corresponding default-engine cases now produce valid targets.",
-      "nextStep": "Choose a valid current equipment weight before V2 calculates the next plan, preserve the recorded history, and verify finish, reload and single-arm targets.",
-      "updated": "2026-09-05"
+      "summary": "The newer candidates pass the reviewed equipment-change cases: planning uses available current weights, finish and display validation accept the targets, and recorded history remains unchanged. The fix is not verified in the served app.",
+      "nextStep": "Preserve current-equipment validation during the remaining progression repair. Complete rendered workout, reload, single-arm and device acceptance on the final integrated build.",
+      "updated": "2026-09-06"
     },
     {
       "id": "sets-20260905-engine-toggle-session-plan",
@@ -2183,32 +2187,32 @@
     {
       "id": "sets-20260905-v2-shortened-workout-plan",
       "title": "Keep next-workout targets after a shortened session",
-      "summary": "When only some planned sets are completed, V2 can return too few next-workout targets in effort-rating-off and bodyweight modes. The display then rejects the plan and shows no recommendation.",
-      "nextStep": "Plan every authored set while preserving the completed sets as the only observed evidence. Test one and two completed sets out of three through finish and reload.",
+      "summary": "The reviewed candidates now supply every authored workout target, including the tested plus-set paths after a shortened session. The reviewed finish and display cases pass without rewriting completed history. This candidate repair is not live.",
+      "nextStep": "Retain the full-plan and history checks while repairing the remaining progression defect. Verify shortened sessions through the rendered finish and reload flow before release.",
       "area": "Progression",
-      "status": "issue",
+      "status": "testing",
       "assignee": "Codex",
-      "updated": "2026-09-05"
+      "updated": "2026-09-06"
     },
     {
       "id": "sets-20260905-v2-cap-hit-cascade",
       "title": "Do not increase a badly missed set after another set progresses",
-      "summary": "A reproduced V2 case raises the weight of a later set that managed only one rep, after an earlier set earns progression. It also makes the later set heavier than the first. The previous and current default engine handle the tested case correctly.",
-      "nextStep": "Apply the same session progression and descending-weight rules to this path. Keep the failed set from receiving its own automatic increase and preserve existing progression approvals.",
+      "summary": "The newer candidates pass the original and adjacent progression-order checks. Recovery holds are applied before the final weight-order rule, and equipment adjustment does not add an unearned extra weight increase. The reviewed fixes are not live.",
+      "nextStep": "Preserve the accepted ordering and earned-increase checks during the remaining target repair, then verify the resulting session in the final integrated app.",
       "area": "Progression",
-      "status": "issue",
+      "status": "testing",
       "assignee": "Codex",
-      "updated": "2026-09-05"
+      "updated": "2026-09-06"
     },
     {
       "id": "sets-20260905-deload-gym-plan-carry",
       "title": "Recheck gym equipment before restoring a plan after a deload",
-      "summary": "The finish logic can restore a pre-deload plan from another gym, including a weight above the current equipment maximum. This source-level failure affects the new carry path with either engine setting; the final phone display has not been verified.",
-      "nextStep": "Validate gym, station, available weights and workout prescription before reusing the old plan. Use matching normal-session evidence or a safe starting plan when they differ, while preserving unchanged-gym carry behavior.",
+      "summary": "The newer candidates pass the original reviewed carry case: a restored plan must match current gym and equipment eligibility. The reviewed finish and display cases pass. Device and real-service acceptance remain pending; this is not a live fix.",
+      "nextStep": "Preserve current-gym eligibility and unchanged-gym carry behavior while completing the progression repair. Verify deload return and gym switching on the final app build before closing this task.",
       "area": "Progression",
-      "status": "issue",
+      "status": "testing",
       "assignee": "Codex",
-      "updated": "2026-09-05"
+      "updated": "2026-09-06"
     }
   ]
 }
